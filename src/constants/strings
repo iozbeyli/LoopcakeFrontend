@@ -1,0 +1,3 @@
+module.exports = {
+    passwordStrings: ["Very Weak","Weak","Normal","Strong","Very Strong"]
+};

@@ -1,0 +1,5 @@
+module.exports= {
+  passwordColors: [
+      "red","orange","yellow","olive","green"
+  ]
+};
