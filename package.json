@@ -39,6 +39,7 @@
     "react-codemirror": "^1.0.0",
     "react-cookie": "^2.0.7",
     "react-dom": "^15.5.4",
+    "react-gitgraph": "^0.0.3",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
