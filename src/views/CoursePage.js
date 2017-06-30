@@ -6,6 +6,7 @@ import {ProjectCard} from "../components/CourseComponents/ProjectCard";
 import {DetailsCard} from "../components/CourseComponents/detailsCard";
 import AnnouncementCard from "../components/AnnouncementComponents/announcementCard";
 import {AttachmentCard} from "../components/AttachmentComponents/attachmentCard";
+import ChecklistCard from '../components/ChecklistComponents/checklistCard';
 class CoursePage extends React.Component{
     constructor(props){
         super(props);
@@ -82,6 +83,7 @@ class CoursePage extends React.Component{
             ];
         return(
         <div>
+            <ChecklistCard/>
             <AttachmentCard attachments={attachments} folders={folders} />
             <DetailsCard {...details}/>
             <AnnouncementCard announcements={announcementList} editable/>

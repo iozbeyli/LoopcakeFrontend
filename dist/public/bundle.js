@@ -43213,6 +43213,10 @@ var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
 var _attachmentCard = __webpack_require__(493);
 
+var _checklistCard = __webpack_require__(1023);
+
+var _checklistCard2 = _interopRequireDefault(_checklistCard);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43283,6 +43287,7 @@ var CoursePage = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
+                _react2.default.createElement(_checklistCard2.default, null),
                 _react2.default.createElement(_attachmentCard.AttachmentCard, { attachments: attachments, folders: folders }),
                 _react2.default.createElement(_detailsCard.DetailsCard, details),
                 _react2.default.createElement(_announcementCard2.default, { announcements: announcementList, editable: true }),
@@ -85498,6 +85503,184 @@ module.exports = {
     passwordStrings: ["Very Weak","Weak","Normal","Strong","Very Strong"]
 };
 
+
+/***/ }),
+/* 1022 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = __webpack_require__(15);
+
+var _propTypes = __webpack_require__(8);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Checklist = function (_React$Component) {
+  _inherits(Checklist, _React$Component);
+
+  function Checklist(props) {
+    _classCallCheck(this, Checklist);
+
+    var _this = _possibleConstructorReturn(this, (Checklist.__proto__ || Object.getPrototypeOf(Checklist)).call(this, props));
+
+    _this.toggle = function (e, numer, fa) {
+      console.log(e);
+      console.log(numer);
+      console.log(fa);
+    };
+
+    _this.state = {
+      checkpoints: _this.props.checkpoints
+    };
+    return _this;
+  }
+
+  _createClass(Checklist, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _semanticUiReact.Grid,
+        null,
+        _react2.default.createElement(
+          _semanticUiReact.Grid.Row,
+          null,
+          _react2.default.createElement(
+            _semanticUiReact.Grid.Column,
+            { width: 16 },
+            _react2.default.createElement(
+              _semanticUiReact.List,
+              null,
+              this.props.checkpoints.map(function (checkpoint) {
+                return _react2.default.createElement(
+                  _semanticUiReact.List.Item,
+                  { key: checkpoint.label },
+                  _react2.default.createElement(
+                    _semanticUiReact.List.Content,
+                    { floated: 'right' },
+                    _react2.default.createElement(
+                      _semanticUiReact.Label,
+                      { color: 'blue' },
+                      checkpoint.point,
+                      ' Points'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _semanticUiReact.List.Content,
+                    null,
+                    _react2.default.createElement(_semanticUiReact.Checkbox, { checked: checkpoint.status, onChange: _this2.toggle, toggle: true, label: checkpoint.label })
+                  )
+                );
+              })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Checklist;
+}(_react2.default.Component);
+
+exports.default = Checklist;
+
+
+Checklist.propTypes = {
+  checkpoints: _propTypes2.default.arrayOf({
+    point: _propTypes2.default.number,
+    status: _propTypes2.default.bool,
+    label: _propTypes2.default.string
+  })
+};
+
+/***/ }),
+/* 1023 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _checklist = __webpack_require__(1022);
+
+var _checklist2 = _interopRequireDefault(_checklist);
+
+var _card = __webpack_require__(85);
+
+var _card2 = _interopRequireDefault(_card);
+
+var _semanticUiReact = __webpack_require__(15);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ChecklistCard = function (_React$Component) {
+  _inherits(ChecklistCard, _React$Component);
+
+  function ChecklistCard(props) {
+    _classCallCheck(this, ChecklistCard);
+
+    return _possibleConstructorReturn(this, (ChecklistCard.__proto__ || Object.getPrototypeOf(ChecklistCard)).call(this, props));
+  }
+
+  _createClass(ChecklistCard, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_card2.default, {
+        title: 'Checklist',
+        content: _react2.default.createElement(
+          _semanticUiReact.Grid,
+          null,
+          _react2.default.createElement(
+            _semanticUiReact.Grid.Column,
+            { width: 16 },
+            _react2.default.createElement(_semanticUiReact.Progress, { percent: 55, size: 'small', color: 'yellow' }),
+            _react2.default.createElement(_checklist2.default, { checkpoints: [{ point: 10, status: true, label: "Naber" }, { point: 30, status: false, label: "fas" }] })
+          )
+        )
+      });
+    }
+  }]);
+
+  return ChecklistCard;
+}(_react2.default.Component);
+
+exports.default = ChecklistCard;
 
 /***/ })
 /******/ ]);
