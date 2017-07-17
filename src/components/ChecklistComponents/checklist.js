@@ -6,14 +6,35 @@ export default class Checklist extends React.Component{
   constructor(props){
       super(props);
       this.state = {
-        checkpoints: this.props.checkpoints
+        checkpoints:props.checkpoints
       }
+      props.changeChecklist(this.props.checkpoints);
   }
 
+  checkpointsToState = (checkpoints) => {
+    let stateCheck={};
+
+    checkpoints.map((check)=>{
+      stateCheck[check.label] = check;
+    });
+    this.setState({
+      checkpoints: stateCheck
+    });
+
+  };
+
   toggle = (e,numer,fa) => {
-    console.log(e);
-    console.log(numer);
-    console.log(fa);
+    let stateCheck = this.state.checkpoints;
+    for(let value of stateCheck){
+      if(value.label === numer.label){
+          value.status = !value.status;
+          break;
+      }
+    }
+    this.setState({
+      checkpoints:stateCheck
+    });
+    this.props.changeChecklist(stateCheck);
   }
 
   render(){
@@ -22,7 +43,7 @@ export default class Checklist extends React.Component{
         <Grid.Row>
           <Grid.Column width={16}>
             <List>
-                {this.props.checkpoints.map(checkpoint=>(
+                {this.state.checkpoints.map(checkpoint=>(
                   <List.Item key={checkpoint.label}>
                     <List.Content floated="right">
                       <Label color='blue'>
@@ -37,8 +58,6 @@ export default class Checklist extends React.Component{
 
             </List>
           </Grid.Column>
-
-
         </Grid.Row>
       </Grid>
     );
@@ -46,9 +65,10 @@ export default class Checklist extends React.Component{
 }
 
 Checklist.propTypes={
-    checkpoints: PropTypes.arrayOf({
+    checkpoints: PropTypes.arrayOf(PropTypes.shape({
       point: PropTypes.number,
       status: PropTypes.bool,
       label: PropTypes.string
-    })
+    })),
+    changeChecklist: PropTypes.func.isRequired
 }

@@ -11,10 +11,6 @@ const SidebarMenu = Components.SidebarComponents.SidebarMenu;
 
 class App extends React.Component {
 
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-    };
-
     hideSidebar=()=>{
         this.setState({
            sidebarOpen: !this.state.sidebarOpen
@@ -28,11 +24,6 @@ class App extends React.Component {
         };
         console.log(props.match)
     };
-
-    componentWillMount(){
-        const { cookies } = this.props;
-        console.log(cookies.get('token'));
-    }
 
     render(){
         const left=[
@@ -51,7 +42,7 @@ class App extends React.Component {
                             </Grid.Column>
                         )}
                         <Grid.Column width={this.state.sidebarOpen ? 13 : 16}>
-                            <Route path={`${this.props.match.url}/home`} component={Home}/>
+                            <Route path={`${this.props.match.url}/`} component={Home}/>
                             <Route path={`${this.props.match.url}/announcements`} component={AnnouncementPage}/>
                             <Route path={`${this.props.match.url}/course`} component={CoursePage}/>
                             <Route path={`${this.props.match.url}/repo`} component={RepoPage}/>
@@ -63,4 +54,4 @@ class App extends React.Component {
 
 };
 
-export default withCookies(App);
+export default App;

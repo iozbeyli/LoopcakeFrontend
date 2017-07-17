@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form} from '../components/FormComponents';
-import {Grid,Card} from 'semantic-ui-react';
+import {Grid,Card,Image,Header} from 'semantic-ui-react';
 import {Authentication} from '../database';
 import { withCookies, Cookies } from 'react-cookie';
 import PropTypes,{instanceOf} from 'prop-types';
@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
     constructor(props){
         super(props);
         this.state={
-
+          
         };
     }
 
@@ -45,12 +45,26 @@ class LoginPage extends React.Component {
             }
         ];
         return(
-            <Grid centered >
-                <Grid.Row stretched>
+            <Grid style={{
+                            position: 'fixed',
+                            top: 0,
+                            left: 0,
+                            bottom: 0,
+                            right: 0,
+                            overflow: 'auto',
+                            background: '#2c3e50', 
+                            }}>
+                <Grid.Row></Grid.Row>
+                <Grid.Row centered>
                     <Grid.Column width={5}>
-                        <Card>
+                        <Image centered height={50} size="small" src={require('../../static/images/loopcakeWhiteLogoWithText.svg')}></Image>
+                        <br/>
+                        <Card fluid>
                             <Card.Content>
-                                <Form onSubmit={this.handleSubmit} formData={formFieldData}/>
+                                <Header as="h1" textAlign="center">
+                                    Log In
+                                </Header>
+                                <Form extra={<a>Forgot My Password</a>} onSubmit={this.handleSubmit} formData={formFieldData}/>
                             </Card.Content>
                         </Card>
                     </Grid.Column>

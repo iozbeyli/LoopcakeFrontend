@@ -23,6 +23,7 @@ class FormInput extends React.Component{
     render(){
         return (
             <div>
+            <br/>
                 <Form.Input
                     label={this.props.label}
                     placeholder={this.props.placeholder}
@@ -32,8 +33,6 @@ class FormInput extends React.Component{
                 />
                 {this.props.type === 'password' && this.props.withMeter && <PasswordMeter password={this.state.value}/>}
             </div>
-
-
         );
     }
 

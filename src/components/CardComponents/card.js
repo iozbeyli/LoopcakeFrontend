@@ -10,13 +10,15 @@ class _Card extends React.Component{
 
     render(){
         const {title,content,editable} = this.props;
+        console.log("editable");
+        console.log(editable);
         return(
             <Card fluid>
                 {title&&<Button color="blue">{title}</Button>}
                 <Card.Content>
                     {content}
                     {editable && <br/>}
-                    {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content}/>}
+                    {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
                 </Card.Content>
             </Card>
         );
@@ -35,7 +37,8 @@ _Card.propTypes={
         content: PropTypes.oneOfType([
             PropTypes.element,
             PropTypes.arrayOf(PropTypes.element)
-        ]).isRequired
+        ]).isRequired,
+        actions: PropTypes.arrayOf(PropTypes.element)
     })
 };
 

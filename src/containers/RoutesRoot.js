@@ -4,7 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import PropTypes,{instanceOf} from 'prop-types';
 import {AppRoutes} from '../routes';
 import { withCookies, Cookies } from 'react-cookie';
-
+import { connect } from 'react-redux';
 class RoutesRoot extends React.Component{
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
@@ -19,10 +19,12 @@ class RoutesRoot extends React.Component{
     render(){
         return(
             <div>
-                {AppRoutes}
+              <AppRoutes/>
             </div>
         );
     }
 }
+
+
 
 export default withCookies(RoutesRoot);

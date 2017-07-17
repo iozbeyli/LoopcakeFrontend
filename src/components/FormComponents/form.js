@@ -52,7 +52,9 @@ class LCForm extends React.Component{
                     );
                 })}
                 <br/>
-                <Button type='submit'>Submit</Button>
+                {this.props.extra}
+                <br/>
+                <Button floated="right" color="red" type='submit'>Submit</Button>
             </Form>
         );
     };
