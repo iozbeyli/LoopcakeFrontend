@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {AttachmentList} from './attachmentList';
 import {Accordion,Header} from "semantic-ui-react";
 import Folder from "./folder";
-
+import AttachmentEditor from './attachmentEditor';
 export const AttachmentCard = ({attachments,folders}) => {
     return(
         <Card
@@ -19,6 +19,11 @@ export const AttachmentCard = ({attachments,folders}) => {
                     }
                 </div>
             }
+            editable={{
+              icon:"pencil",
+              title: "Edit Attachments",
+              content: <AttachmentEditor/>
+          }}
         />
     );
 };

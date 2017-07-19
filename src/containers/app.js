@@ -4,12 +4,21 @@ import {Home,AnnouncementPage,CoursePage,RepoPage} from '../views';
 import Components from '../components';
 import {Route} from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
+import {connect} from 'react-redux';
 import PropTypes,{instanceOf} from 'prop-types';
 const NavigationBar = Components.NavigationComponents.NavigationBar;
 const SidebarMenu = Components.SidebarComponents.SidebarMenu;
 
 
+const mapStateToProps = (state) =>({
+  ...state
+});
+
+const mapDispatchToProps = (dispatch) =>({});
+
 class App extends React.Component {
+
+
 
     hideSidebar=()=>{
         this.setState({
@@ -22,7 +31,8 @@ class App extends React.Component {
         this.state={
             sidebarOpen:true
         };
-        console.log(props.match)
+        console.log("props")
+        console.log(props)
     };
 
     render(){
@@ -54,4 +64,4 @@ class App extends React.Component {
 
 };
 
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App);

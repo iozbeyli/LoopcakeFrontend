@@ -22,7 +22,7 @@ class ServerRoot extends React.Component{
                     location={this.props.location}
                     context={this.props.context}
                 >
-                    {AppRoutes}
+                    <AppRoutes/>
                 </StaticRouter>
             </Provider>
         );

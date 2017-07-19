@@ -46,7 +46,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "semantic-ui-less": "^2.2.10",
-    "semantic-ui-react": "^0.68.5",
+    "semantic-ui-react": "^0.71.1",
     "superagent": "^3.5.2",
     "universal-cookie-express": "^2.0.5",
     "zxcvbn": "^4.4.2"

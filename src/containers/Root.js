@@ -14,9 +14,7 @@ export default class Root extends React.Component{
         return(
             <Provider store={this.props.store}>
                 <Router>
-                    <CookiesProvider>
                         <RoutesRoot/>
-                    </CookiesProvider>
                 </Router>
             </Provider>
         );

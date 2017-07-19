@@ -4,6 +4,13 @@ import {Grid,Card,Image,Header} from 'semantic-ui-react';
 import {Authentication} from '../database';
 import { withCookies, Cookies } from 'react-cookie';
 import PropTypes,{instanceOf} from 'prop-types';
+import {connect} from 'react-redux';
+import {loginAction} from '../actions/authentication';
+const mapStateToProps = (state) =>({
+  ...state
+});
+
+const mapDispatchToProps = (dispatch) =>({});
 
 class LoginPage extends React.Component {
     static propTypes = {
@@ -25,6 +32,12 @@ class LoginPage extends React.Component {
             }else{
                 console.log(resp);
                 this.props.cookies.set('token', resp.body.data.token, { path: '/' });
+                loginAction(
+                    {
+                        email:'iozbeyli@ku.edu.tr',
+                        token: resp.body.data.token
+                    }
+                    )
             }
         };
         Authentication.Login(data,handleResponse);
@@ -77,4 +90,4 @@ class LoginPage extends React.Component {
 
 };
 
-export default withCookies(LoginPage);
+export default connect(mapStateToProps,mapDispatchToProps)(withCookies(LoginPage));

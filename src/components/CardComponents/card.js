@@ -19,6 +19,7 @@ class _Card extends React.Component{
                     {content}
                     {editable && <br/>}
                     {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
+                    {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
                 </Card.Content>
             </Card>
         );
