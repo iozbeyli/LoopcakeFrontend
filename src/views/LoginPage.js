@@ -6,11 +6,8 @@ import { withCookies, Cookies } from 'react-cookie';
 import PropTypes,{instanceOf} from 'prop-types';
 import {connect} from 'react-redux';
 import {loginAction} from '../actions/authentication';
-const mapStateToProps = (state) =>({
-  ...state
-});
 
-const mapDispatchToProps = (dispatch) =>({});
+
 
 class LoginPage extends React.Component {
     static propTypes = {
@@ -23,6 +20,13 @@ class LoginPage extends React.Component {
           
         };
     }
+
+
+  componentWillUpdate(nextProps, nextState){
+    console.log("Next Props");
+    console.log(nextProps);
+  }
+
 
     handleSubmit = (formData) => {
         let data = {...formData};
@@ -90,4 +94,4 @@ class LoginPage extends React.Component {
 
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(withCookies(LoginPage));
+export default withCookies(LoginPage);

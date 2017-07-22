@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route,IndexRoute,Redirect} from 'react-router-dom';
-import {Login,Register} from '../views';
+import {Register} from '../views';
+import Login from '../containers/pages/visibleLoginPage';
 import App from '../containers/app';
 
 class AppRoutes extends React.Component{
