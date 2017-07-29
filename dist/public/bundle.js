@@ -26684,8 +26684,8 @@ var LoginPage = function (_React$Component) {
                     });
                 }
             };
-            _this.props.loginAction("da", "fa");
-            //Authentication.Login(data,handleResponse);
+            //this.props.loginAction("da","fa");
+            _database.Authentication.Login(data, handleResponse);
         };
 
         console.log("Login Props");

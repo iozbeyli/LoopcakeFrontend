@@ -46,8 +46,8 @@ class LoginPage extends React.Component {
                     )
             }
         };
-        this.props.loginAction("da","fa");
-        //Authentication.Login(data,handleResponse);
+        //this.props.loginAction("da","fa");
+        Authentication.Login(data,handleResponse);
     };
 
     render(){
