@@ -1,0 +1,3 @@
+module.exports = {
+    instructorPhoto: "http://www2.denizyuret.com/public_html/dyuret-cropped.jpg"
+};

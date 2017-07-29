@@ -36,7 +36,7 @@ app.get('*',(req,res)=>{
 
     const initialState = store.getState();
     const html = template(body)(initialState);
-    console.log("body",html);
+    
     if(context.url){
         res.writeHead(301,{
             Location: context.url
