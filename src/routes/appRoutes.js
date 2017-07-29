@@ -12,14 +12,29 @@ class AppRoutes extends React.Component{
   render(){
     return(
       <div>
-          <Route path="/app" component={App}/>
-          <Route exact path="/" component={Login}/>
+          <Route path="/login" component={Login}/>
+          <PrivateRoute exact path="/app" component={App}/>
           <Route path="/register" component={Register}/>
       </div>
     );
   }
 }
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => {
+    console.log(props);
+    return(
+    false ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+    )
+  )}
+}/>
+)
 
 
 export default AppRoutes;
