@@ -408,7 +408,7 @@ var App = function (_React$Component) {
 
 ;
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
+exports.default = App;
 
 /***/ }),
 /* 10 */
@@ -3994,8 +3994,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -4015,8 +4013,6 @@ var _app = __webpack_require__(9);
 var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4039,8 +4035,7 @@ var AppRoutes = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _visibleLoginPage2.default }),
-        _react2.default.createElement(PrivateRoute, { exact: true, path: '/app', component: _app2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/app', component: _app2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/register', component: _views.Register })
       );
     }
@@ -4048,19 +4043,6 @@ var AppRoutes = function (_React$Component) {
 
   return AppRoutes;
 }(_react2.default.Component);
-
-var PrivateRoute = function PrivateRoute(_ref) {
-  var Component = _ref.component,
-      rest = _objectWithoutProperties(_ref, ['component']);
-
-  return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
-      console.log(props);
-      return false ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: {
-          pathname: '/login',
-          state: { from: props.location }
-        } });
-    } }));
-};
 
 exports.default = AppRoutes;
 
