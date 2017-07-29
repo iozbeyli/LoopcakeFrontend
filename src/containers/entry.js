@@ -7,6 +7,13 @@ import { withCookies, Cookies } from 'react-cookie';
 import { connect } from 'react-redux';
 import Login from './pages/visibleLoginPage';
 import App from './app';
+
+const mapStateToProps = (state) =>({
+  ...state
+});
+
+const mapDispatchToProps = (dispatch) =>({});
+
 class Entry extends React.Component{
    
 
@@ -15,6 +22,10 @@ class Entry extends React.Component{
             return(
                 <App {...this.props}/>
             );
+        }else{
+        	return(
+        		<Login {...this.props}/>
+        		);
         }
         
     }

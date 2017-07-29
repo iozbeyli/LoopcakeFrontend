@@ -52,7 +52,7 @@ class App extends React.Component {
                             </Grid.Column>
                         )}
                         <Grid.Column width={this.state.sidebarOpen ? 13 : 16}>
-                            <Route path={`${this.props.match.url}/`} component={Home}/>
+                            <Route exact path={`${this.props.match.url}/`} component={Home}/>
                             <Route path={`${this.props.match.url}/announcements`} component={AnnouncementPage}/>
                             <Route path={`${this.props.match.url}/course`} component={CoursePage}/>
                             <Route path={`${this.props.match.url}/repo`} component={RepoPage}/>
