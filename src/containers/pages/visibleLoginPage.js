@@ -7,7 +7,10 @@ const mapStateToProps = (state) =>({
 });
 
 const mapDispatchToProps = (dispatch) =>({
-    
+    loginAction: (email,token) => {
+    	console.log("Login Action");
+    	dispatch(loginAction(email,token))
+    }
 });
 
 const VisibleLoginPage = connect(mapStateToProps,mapDispatchToProps)(LoginPage); 

@@ -16,6 +16,8 @@ class LoginPage extends React.Component {
 
     constructor(props){
         super(props);
+        console.log("Login Props");
+        console.log(props);
         this.state={
           
         };
@@ -44,7 +46,8 @@ class LoginPage extends React.Component {
                     )
             }
         };
-        Authentication.Login(data,handleResponse);
+        this.props.loginAction("da","fa");
+        //Authentication.Login(data,handleResponse);
     };
 
     render(){
