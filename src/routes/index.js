@@ -1,4 +1,4 @@
-import AppRoutes from './visibleAppRoutes';
+import AppRoutes from './appRoutes';
 
 module.exports = {
     AppRoutes
