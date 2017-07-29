@@ -1,3 +1,5 @@
 module.exports={
-  LOGIN:'LOGIN'
+  LOGIN:'LOGIN',
+  TOKEN: 'TOKEN',
+  LOGOUT: 'LOGOUT'
 };

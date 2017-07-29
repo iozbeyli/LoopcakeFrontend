@@ -24,10 +24,7 @@ class LoginPage extends React.Component {
     }
 
 
-  componentWillUpdate(nextProps, nextState){
-    console.log("Next Props");
-    console.log(nextProps);
-  }
+  
 
 
     handleSubmit = (formData) => {
@@ -38,15 +35,10 @@ class LoginPage extends React.Component {
             }else{
                 console.log(resp);
                 this.props.cookies.set('token', resp.body.data.token, { path: '/' });
-                loginAction(
-                    {
-                        email:'iozbeyli@ku.edu.tr',
-                        token: resp.body.data.token
-                    }
-                    )
+                this.props.cookies.set('user',resp.body.data.user,{path: '/'});
+                this.props.loginAction(resp.body.data.user.email,resp.body.data.token);
             }
         };
-        //this.props.loginAction("da","fa");
         Authentication.Login(data,handleResponse);
     };
 
@@ -97,4 +89,4 @@ class LoginPage extends React.Component {
 
 };
 
-export default withCookies(LoginPage);
+export default LoginPage;

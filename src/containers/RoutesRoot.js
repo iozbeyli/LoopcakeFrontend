@@ -6,14 +6,9 @@ import {AppRoutes} from '../routes';
 import { withCookies, Cookies } from 'react-cookie';
 import { connect } from 'react-redux';
 class RoutesRoot extends React.Component{
+    
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
-    };
-
-    componentWillMount(){
-        const { cookies } = this.props;
-
-        cookies.set('name', "naber", { path: '/' });
     };
 
     render(){

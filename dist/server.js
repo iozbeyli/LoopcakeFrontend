@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 69);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,12 +92,6 @@ module.exports = require("react-router-dom");
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,10 +179,16 @@ _Card.propTypes = {
 exports.default = _Card;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-cookie");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 /* 7 */
@@ -308,8 +308,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -318,15 +316,19 @@ var _semanticUiReact = __webpack_require__(2);
 
 var _views = __webpack_require__(29);
 
+var _AnnouncementPage = __webpack_require__(70);
+
+var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
+
 var _components = __webpack_require__(62);
 
 var _components2 = _interopRequireDefault(_components);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _propTypes = __webpack_require__(1);
 
@@ -342,14 +344,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var NavigationBar = _components2.default.NavigationComponents.NavigationBar;
 var SidebarMenu = _components2.default.SidebarComponents.SidebarMenu;
-
-var mapStateToProps = function mapStateToProps(state) {
-    return _extends({}, state);
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {};
-};
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -368,15 +362,16 @@ var App = function (_React$Component) {
         _this.state = {
             sidebarOpen: true
         };
-        console.log("props");
-        console.log(props);
+
         return _this;
     }
 
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            var left = [{ destination: "/app", title: "Home" }];
+            console.log("App Props");
+            console.log(this.props);
+            var left = [{ destination: "/", title: "Dashboard" }];
             var right = [{ destination: "/logout", title: "Logout" }];
             return _react2.default.createElement(
                 'div',
@@ -393,10 +388,10 @@ var App = function (_React$Component) {
                     _react2.default.createElement(
                         _semanticUiReact.Grid.Column,
                         { width: this.state.sidebarOpen ? 13 : 16 },
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: this.props.match.url + '/', component: _views.Home }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + '/announcements', component: _views.AnnouncementPage }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + '/course', component: _views.CoursePage }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + '/repo', component: _views.RepoPage })
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '' + this.props.match.url, component: _views.Home }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'announcements', component: _AnnouncementPage2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'course', component: _views.CoursePage }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'repo', component: _views.RepoPage })
                     )
                 )
             );
@@ -466,18 +461,33 @@ module.exports = require("redux");
 
 
 Object.defineProperty(exports, "__esModule", {
-     value: true
+	value: true
 });
 exports.loginAction = loginAction;
+exports.tokenAction = tokenAction;
+exports.logoutAction = logoutAction;
 
 var _types = __webpack_require__(14);
 
 function loginAction(email, token) {
-     return {
-          type: _types.LOGIN,
-          token: token,
-          email: email
-     };
+	return {
+		type: _types.LOGIN,
+		token: token,
+		email: email
+	};
+}
+
+function tokenAction(token) {
+	return {
+		type: _types.TOKEN,
+		token: token
+	};
+}
+
+function logoutAction() {
+	return {
+		type: LOGOUT
+	};
 }
 
 /***/ }),
@@ -488,7 +498,9 @@ function loginAction(email, token) {
 
 
 module.exports = {
-  LOGIN: 'LOGIN'
+  LOGIN: 'LOGIN',
+  TOKEN: 'TOKEN',
+  LOGOUT: 'LOGOUT'
 };
 
 /***/ }),
@@ -518,7 +530,7 @@ var _announcement2 = _interopRequireDefault(_announcement);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -755,7 +767,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _zxcvbn = __webpack_require__(91);
+var _zxcvbn = __webpack_require__(90);
 
 var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
@@ -1449,13 +1461,13 @@ var _semanticUiReact = __webpack_require__(2);
 
 var _database = __webpack_require__(10);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(5);
 
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _authentication = __webpack_require__(13);
 
@@ -1481,13 +1493,10 @@ var LoginPage = function (_React$Component) {
                 if (err) {} else {
                     console.log(resp);
                     _this.props.cookies.set('token', resp.body.data.token, { path: '/' });
-                    (0, _authentication.loginAction)({
-                        email: 'iozbeyli@ku.edu.tr',
-                        token: resp.body.data.token
-                    });
+                    _this.props.cookies.set('user', resp.body.data.user, { path: '/' });
+                    _this.props.loginAction(resp.body.data.user.email, resp.body.data.token);
                 }
             };
-            //this.props.loginAction("da","fa");
             _database.Authentication.Login(data, handleResponse);
         };
 
@@ -1498,12 +1507,6 @@ var LoginPage = function (_React$Component) {
     }
 
     _createClass(LoginPage, [{
-        key: 'componentWillUpdate',
-        value: function componentWillUpdate(nextProps, nextState) {
-            console.log("Next Props");
-            console.log(nextProps);
-        }
-    }, {
         key: 'render',
         value: function render() {
             var formFieldData = [{
@@ -1568,7 +1571,7 @@ LoginPage.propTypes = {
 };
 ;
 
-exports.default = (0, _reactCookie.withCookies)(LoginPage);
+exports.default = LoginPage;
 
 /***/ }),
 /* 29 */
@@ -1577,7 +1580,7 @@ exports.default = (0, _reactCookie.withCookies)(LoginPage);
 "use strict";
 
 
-var _HomePage = __webpack_require__(73);
+var _HomePage = __webpack_require__(72);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
@@ -1585,19 +1588,19 @@ var _LoginPage = __webpack_require__(28);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-var _RegisterPage = __webpack_require__(74);
+var _RegisterPage = __webpack_require__(73);
 
 var _RegisterPage2 = _interopRequireDefault(_RegisterPage);
 
-var _AnnouncementPage = __webpack_require__(71);
+var _AnnouncementPage = __webpack_require__(70);
 
 var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
 
-var _CoursePage = __webpack_require__(72);
+var _CoursePage = __webpack_require__(71);
 
 var _CoursePage2 = _interopRequireDefault(_CoursePage);
 
-var _RepoPage = __webpack_require__(75);
+var _RepoPage = __webpack_require__(74);
 
 var _RepoPage2 = _interopRequireDefault(_RepoPage);
 
@@ -1628,7 +1631,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _reactRouterDom = __webpack_require__(3);
 
@@ -1638,7 +1641,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _routes = __webpack_require__(11);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1658,14 +1661,6 @@ var RoutesRoot = function (_React$Component) {
     }
 
     _createClass(RoutesRoot, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            var cookies = this.props.cookies;
-
-
-            cookies.set('name', "naber", { path: '/' });
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -2061,7 +2056,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -2530,7 +2525,7 @@ var _checklistCreator = __webpack_require__(48);
 
 var _checklistCreator2 = _interopRequireDefault(_checklistCreator);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -2984,7 +2979,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _ListComponents = __webpack_require__(55);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -3056,7 +3051,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -3106,7 +3101,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _card = __webpack_require__(5);
+var _card = __webpack_require__(4);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -3402,7 +3397,7 @@ var NavigationBar = function NavigationBar(_ref) {
         _react2.default.createElement(
             _semanticUiReact.Menu.Item,
             null,
-            _react2.default.createElement('img', { src: __webpack_require__(81) })
+            _react2.default.createElement('img', { src: __webpack_require__(80) })
         ),
         left.map(function (item) {
             return _react2.default.createElement(_MenuComponents.LinkMenuItem, { key: item.title, destination: item.destination, title: item.title });
@@ -3438,7 +3433,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCodemirror = __webpack_require__(88);
+var _reactCodemirror = __webpack_require__(87);
 
 var _reactCodemirror2 = _interopRequireDefault(_reactCodemirror);
 
@@ -3568,12 +3563,12 @@ var CodeEditor = function (_React$Component) {
 
 function initCodemirror(window) {
     if (!window.CodeMirror) {
-        __webpack_require__(85);
-        window.CodeMirror = __webpack_require__(84);
+        __webpack_require__(84);
+        window.CodeMirror = __webpack_require__(83);
         //require ('node_modules/codemirror/addon/mode/loadmode.js');
+        __webpack_require__(85);
         __webpack_require__(86);
-        __webpack_require__(87);
-        __webpack_require__(78);
+        __webpack_require__(77);
     }
 }
 
@@ -3602,7 +3597,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGitgraph = __webpack_require__(89);
+var _reactGitgraph = __webpack_require__(88);
 
 var _reactGitgraph2 = _interopRequireDefault(_reactGitgraph);
 
@@ -3735,7 +3730,7 @@ var SidebarMenu = function SidebarMenu() {
         properties: {
             header: _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/app/announcements', style: { color: 'black' } },
+                { to: '/announcements', style: { color: 'black' } },
                 'Announcements'
             ),
             items: []
@@ -3749,14 +3744,14 @@ var SidebarMenu = function SidebarMenu() {
                 name: 'Computer Graphics',
                 element: _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: '/app/course/Computer Graphics', style: { color: 'black' } },
+                    { to: '/course/Computer Graphics', style: { color: 'black' } },
                     'Computer Graphics'
                 )
             }, {
                 name: 'Computer Network',
                 element: _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: '/app/course/Computer Network', style: { color: 'black' } },
+                    { to: '/course/Computer Network', style: { color: 'black' } },
                     'Computer Network'
                 )
             }]
@@ -3777,7 +3772,7 @@ var SidebarMenu = function SidebarMenu() {
                 name: 'Loopcake Frontend',
                 element: _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: '/app/repo/Loopcake Frontend', style: { color: 'black' } },
+                    { to: '/repo/Loopcake Frontend', style: { color: 'black' } },
                     'Loopcake Frontend'
                 )
             }, { name: 'LoopcakeMobile' }]
@@ -3831,11 +3826,11 @@ module.exports = {
 "use strict";
 
 
-var _colors = __webpack_require__(82);
+var _colors = __webpack_require__(81);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _strings = __webpack_require__(83);
+var _strings = __webpack_require__(82);
 
 var _strings2 = _interopRequireDefault(_strings);
 
@@ -3859,13 +3854,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _LoginPage = __webpack_require__(28);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
 var _authentication = __webpack_require__(13);
+
+var _reactCookie = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3882,7 +3879,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     };
 };
 
-var VisibleLoginPage = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LoginPage2.default);
+var VisibleLoginPage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LoginPage2.default));
 
 exports.default = VisibleLoginPage;
 
@@ -3934,7 +3931,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.post = post;
 exports.get = get;
 
-var _superagent = __webpack_require__(90);
+var _superagent = __webpack_require__(89);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -3978,6 +3975,10 @@ exports.default = function () {
     switch (action.type) {
         case _actions.Types.LOGIN:
             return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token, tokenValid: Boolean(action.token), userMail: action.email });
+        case _actions.Types.TOKEN:
+            return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token });
+        case _actions.Types.LOGOUT:
+            return _extends({}, state, { loggedIn: false, token: undefined, tokenValid: false, userMail: undefined });
         default:
             return state;
     }
@@ -4008,7 +4009,7 @@ var _visibleLoginPage = __webpack_require__(64);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
-var _entry = __webpack_require__(92);
+var _entry = __webpack_require__(91);
 
 var _entry2 = _interopRequireDefault(_entry);
 
@@ -4035,8 +4036,7 @@ var AppRoutes = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/app', component: _entry2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/register', component: _views.Register })
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _entry2.default })
       );
     }
   }]);
@@ -4047,8 +4047,7 @@ var AppRoutes = function (_React$Component) {
 exports.default = AppRoutes;
 
 /***/ }),
-/* 69 */,
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4074,7 +4073,7 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _redux = __webpack_require__(12);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _reducers = __webpack_require__(32);
 
@@ -4082,7 +4081,7 @@ var _reducers2 = _interopRequireDefault(_reducers);
 
 var _routes = __webpack_require__(11);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(5);
 
 var _RoutesRoot = __webpack_require__(31);
 
@@ -4139,7 +4138,7 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4194,7 +4193,7 @@ var AnnouncementPage = function (_React$Component) {
 exports.default = AnnouncementPage;
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4316,7 +4315,7 @@ var CoursePage = function (_React$Component) {
 exports.default = CoursePage;
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4366,7 +4365,7 @@ var Home = function (_React$Component) {
 exports.default = Home;
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4462,7 +4461,7 @@ var RegisterPage = function RegisterPage() {
 exports.default = RegisterPage;
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4522,10 +4521,10 @@ var RepoPage = function (_React$Component) {
 exports.default = RepoPage;
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(77)(undefined);
+exports = module.exports = __webpack_require__(76)(undefined);
 // imports
 
 
@@ -4536,7 +4535,7 @@ exports.push([module.i, ".CodeMirror{\n    height: auto;\n}", ""]);
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports) {
 
 /*
@@ -4618,13 +4617,13 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(76);
+var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -4632,7 +4631,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(79)(content, options);
+var update = __webpack_require__(78)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -4649,7 +4648,7 @@ if(false) {
 }
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -4695,7 +4694,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(80);
+var	fixUrls = __webpack_require__(79);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -5008,7 +5007,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports) {
 
 
@@ -5103,13 +5102,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports) {
 
 module.exports= {
@@ -5119,7 +5118,7 @@ module.exports= {
 };
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -5128,55 +5127,55 @@ module.exports = {
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror");
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/lib/codemirror.css");
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/mode/meta.js");
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/theme/rubyblue.css");
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-codemirror");
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-gitgraph");
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports) {
 
 module.exports = require("superagent");
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5194,7 +5193,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(6);
 
 var _reactRouterDom = __webpack_require__(3);
 
@@ -5204,7 +5203,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _routes = __webpack_require__(11);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(5);
 
 var _visibleLoginPage = __webpack_require__(64);
 
@@ -5213,6 +5212,10 @@ var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 var _app = __webpack_require__(9);
 
 var _app2 = _interopRequireDefault(_app);
+
+var _authentication = __webpack_require__(13);
+
+var _views = __webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5227,25 +5230,51 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        tokenAction: function tokenAction(token) {
+            console.log("Token Action");
+            dispatch((0, _authentication.tokenAction)(token));
+        }
+    };
 };
 
 var Entry = function (_React$Component) {
     _inherits(Entry, _React$Component);
 
-    function Entry() {
+    function Entry(props) {
         _classCallCheck(this, Entry);
 
-        return _possibleConstructorReturn(this, (Entry.__proto__ || Object.getPrototypeOf(Entry)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Entry.__proto__ || Object.getPrototypeOf(Entry)).call(this, props));
+
+        console.log("Entry");
+        console.log(props);
+        _this.state = {
+            register: false
+        };
+        return _this;
     }
 
     _createClass(Entry, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var cookies = this.props.cookies;
+
+            var token = cookies.get('token');
+            this.props.tokenAction(token);
+        }
+    }, {
         key: 'render',
         value: function render() {
-            if (true) {
+            console.log("state");
+            console.log(this.state);
+            if (this.props.user.loggedIn) {
                 return _react2.default.createElement(_app2.default, this.props);
             } else {
-                return _react2.default.createElement(_visibleLoginPage2.default, this.props);
+                if (this.state.register) {
+                    return _react2.default.createElement(_views.Register, this.props);
+                } else {
+                    return _react2.default.createElement(_visibleLoginPage2.default, this.props);
+                }
             }
         }
     }]);
@@ -5253,7 +5282,10 @@ var Entry = function (_React$Component) {
     return Entry;
 }(_react2.default.Component);
 
-exports.default = Entry;
+Entry.propTypes = {
+    cookies: (0, _propTypes.instanceOf)(_reactCookie.Cookies).isRequired
+};
+exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Entry));
 
 /***/ })
 /******/ ]);
