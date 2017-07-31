@@ -2,6 +2,7 @@ import React from 'react';
 import {Card,Grid,Image} from 'semantic-ui-react';
 import AnnouncementCard from "../AnnouncementComponents/announcementCard";
 import {placeholders} from '../../constants';
+import CalendarCard from '../CalendarComponents/calendarCard';
 
 export default class CourseCard extends React.Component{
 
@@ -37,7 +38,7 @@ export default class CourseCard extends React.Component{
       			<AnnouncementCard announcements={announcementList}/>
       		</Card.Content>
       		<Card.Content extra>
-      			<AnnouncementCard announcements={announcementList}/>
+      			<CalendarCard />
       		</Card.Content>
       		<Card.Content extra>
       			<AnnouncementCard announcements={announcementList}/>

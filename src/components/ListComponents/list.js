@@ -22,7 +22,7 @@ class _List extends React.Component{
 }
 
 _List.propTypes={
-    item: PropTypes.arrayOf(PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.string,
         image: PropTypes.string,
         header: PropTypes.string.isRequired,
