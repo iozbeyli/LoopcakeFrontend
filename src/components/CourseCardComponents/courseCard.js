@@ -3,6 +3,7 @@ import {Card,Grid,Image} from 'semantic-ui-react';
 import AnnouncementCard from "../AnnouncementComponents/announcementCard";
 import {placeholders} from '../../constants';
 import CalendarCard from '../CalendarComponents/calendarCard';
+import {ProjectCard} from '../CourseComponents/ProjectCard'
 
 export default class CourseCard extends React.Component{
 
@@ -41,7 +42,7 @@ export default class CourseCard extends React.Component{
       			<CalendarCard />
       		</Card.Content>
       		<Card.Content extra>
-      			<AnnouncementCard announcements={announcementList}/>
+      			<ProjectCard items={[{header:'Writing Scheme Using Scheme', progressPercent: 0}]}/>
       		</Card.Content>
       		<Card.Content extra>
       			<AnnouncementCard announcements={announcementList}/>

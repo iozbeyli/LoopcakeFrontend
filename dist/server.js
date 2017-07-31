@@ -3110,6 +3110,8 @@ var _calendarCard = __webpack_require__(94);
 
 var _calendarCard2 = _interopRequireDefault(_calendarCard);
 
+var _ProjectCard = __webpack_require__(55);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3183,7 +3185,7 @@ var CourseCard = function (_React$Component) {
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
           { extra: true },
-          _react2.default.createElement(_announcementCard2.default, { announcements: announcementList })
+          _react2.default.createElement(_ProjectCard.ProjectCard, { items: [{ header: 'Writing Scheme Using Scheme', progressPercent: 0 }] })
         ),
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
@@ -3232,7 +3234,8 @@ var _semanticUiReact = __webpack_require__(2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
-    var items = _ref.items;
+    var items = _ref.items,
+        isEditable = _ref.isEditable;
 
 
     var temp = [];
@@ -3254,7 +3257,7 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
     return _react2.default.createElement(_card2.default, {
         title: 'Project List',
         content: _react2.default.createElement(_ListComponents.List, { items: temp }),
-        editable: {
+        editable: isEditable && {
             icon: 'add square',
             title: 'Create Project',
             content: _react2.default.createElement(
@@ -3270,7 +3273,8 @@ ProjectCard.propTypes = {
     items: _propTypes2.default.arrayOf(_propTypes2.default.shape({
         header: _propTypes2.default.string.isRequired,
         progressPercent: _propTypes2.default.number.isRequired
-    }))
+    })),
+    isEditable: _propTypes2.default.bool
 };
 
 /***/ }),

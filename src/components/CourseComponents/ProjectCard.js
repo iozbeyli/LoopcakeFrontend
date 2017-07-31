@@ -4,7 +4,7 @@ import {List} from '../ListComponents';
 import Card from '../CardComponents/card';
 import {Link} from 'react-router-dom';
 import {Progress} from 'semantic-ui-react';
-export const ProjectCard = ({items}) => {
+export const ProjectCard = ({items, isEditable}) => {
 
     let temp = [];
     items.map(item=>{
@@ -22,7 +22,7 @@ export const ProjectCard = ({items}) => {
       <Card
           title="Project List"
           content={<List items={temp}/>}
-          editable={{
+          editable={isEditable && {
               icon:'add square',
               title: 'Create Project',
               content: <a>aasdf</a>
@@ -36,5 +36,6 @@ ProjectCard.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         header: PropTypes.string.isRequired,
         progressPercent: PropTypes.number.isRequired
-    }))
+    })),
+    isEditable: PropTypes.bool
 };
