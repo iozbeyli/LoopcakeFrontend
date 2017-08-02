@@ -4,7 +4,7 @@ import {List} from '../ListComponents';
 import Card from '../CardComponents/card';
 import {Link} from 'react-router-dom';
 import {Progress} from 'semantic-ui-react';
-export const ProjectCard = ({items, isEditable}) => {
+export const ProjectCard = ({items, isEditable, hidable}) => {
 
     let temp = [];
     items.map(item=>{
@@ -20,13 +20,14 @@ export const ProjectCard = ({items, isEditable}) => {
 
   return(
       <Card
-          title="Project List"
-          content={<List items={temp}/>}
-          editable={isEditable && {
-              icon:'add square',
-              title: 'Create Project',
-              content: <a>aasdf</a>
-          }}
+        title="Project List"
+        content={<List items={temp}/>}
+        editable={isEditable && {
+             icon:'add square',
+             title: 'Create Project',
+             content: <a>aasdf</a>
+         }}
+        hidable={hidable}
       />
   );
 };
@@ -37,5 +38,6 @@ ProjectCard.propTypes = {
         header: PropTypes.string.isRequired,
         progressPercent: PropTypes.number.isRequired
     })),
-    isEditable: PropTypes.bool
+    isEditable: PropTypes.bool,
+    hidable: PropTypes.bool
 };

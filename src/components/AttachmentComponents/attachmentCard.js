@@ -8,6 +8,7 @@ import AttachmentEditor from './attachmentEditor';
 export const AttachmentCard = ({attachments,folders}) => {
     return(
         <Card
+            hidable={this.props.hidable}
             title="Attachments"
             content={
                 <div>
@@ -40,6 +41,7 @@ AttachmentCard.propTypes={
             fileType: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired
         }))
-    }))
+    })),
+    hidable: PropTypes.bool
 };
 

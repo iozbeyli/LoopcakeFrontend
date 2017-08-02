@@ -101,6 +101,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -129,19 +131,56 @@ var _Card = function (_React$Component) {
     function _Card(props) {
         _classCallCheck(this, _Card);
 
-        return _possibleConstructorReturn(this, (_Card.__proto__ || Object.getPrototypeOf(_Card)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (_Card.__proto__ || Object.getPrototypeOf(_Card)).call(this, props));
+
+        _this._handleClick = function () {
+            _this.setState(_extends({}, _this.state, { hidden: !_this.state.hidden }));
+        };
+
+        _this.state = { hidden: props.hidable };
+        return _this;
     }
 
     _createClass(_Card, [{
-        key: 'render',
-        value: function render() {
+        key: '_renderContent',
+        value: function _renderContent() {
+            if (this.state.hidden) {
+                return null;
+            }
             var _props = this.props,
                 title = _props.title,
                 content = _props.content,
                 editable = _props.editable;
 
-            console.log("editable");
-            console.log(editable);
+            return _react2.default.createElement(
+                _semanticUiReact.Card.Content,
+                null,
+                content,
+                editable && _react2.default.createElement('br', null),
+                editable && _react2.default.createElement(_cardModal.CardModal, { title: editable.title, icon: editable.icon, content: editable.content, actions: editable.actions }),
+                editable && _react2.default.createElement(_cardModal.CardModal, { title: editable.title, icon: editable.icon, content: editable.content, actions: editable.actions })
+            );
+        }
+    }, {
+        key: '_renderHidableOptionSelectorLabelWithIcon',
+        value: function _renderHidableOptionSelectorLabelWithIcon() {
+            if (!this.props.hidable) {
+                return null;
+            }
+            return _react2.default.createElement(
+                _semanticUiReact.Label,
+                { onClick: this._handleClick, as: 'a', color: 'blue', attached: 'top right' },
+                _react2.default.createElement(_semanticUiReact.Icon, { name: this.state.hidden ? 'triangle right' : 'dropdown' })
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props2 = this.props,
+                title = _props2.title,
+                content = _props2.content,
+                editable = _props2.editable;
+
             return _react2.default.createElement(
                 _semanticUiReact.Card,
                 { fluid: true },
@@ -150,14 +189,8 @@ var _Card = function (_React$Component) {
                     { color: 'blue' },
                     title
                 ),
-                _react2.default.createElement(
-                    _semanticUiReact.Card.Content,
-                    null,
-                    content,
-                    editable && _react2.default.createElement('br', null),
-                    editable && _react2.default.createElement(_cardModal.CardModal, { title: editable.title, icon: editable.icon, content: editable.content, actions: editable.actions }),
-                    editable && _react2.default.createElement(_cardModal.CardModal, { title: editable.title, icon: editable.icon, content: editable.content, actions: editable.actions })
-                )
+                this._renderHidableOptionSelectorLabelWithIcon(),
+                this._renderContent()
             );
         }
     }]);
@@ -173,7 +206,8 @@ _Card.propTypes = {
         title: _propTypes2.default.string.isRequired,
         content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]).isRequired,
         actions: _propTypes2.default.arrayOf(_propTypes2.default.element)
-    })
+    }),
+    hidable: _propTypes2.default.bool
 };
 
 exports.default = _Card;
@@ -1297,6 +1331,7 @@ var AnnouncementCard = function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(_card2.default, {
+                hidable: this.props.hidable,
                 title: 'Announcements',
                 content: this.props.announcements.map(function (announcement) {
                     return _react2.default.createElement(_announcement2.default, {
@@ -1329,7 +1364,8 @@ AnnouncementCard.propTypes = {
         date: _propTypes2.default.string.isRequired,
         content: _propTypes2.default.string.isRequired
     })).isRequired,
-    editable: _propTypes2.default.bool
+    editable: _propTypes2.default.bool,
+    hidable: _propTypes2.default.bool
 };
 
 exports.default = AnnouncementCard;
@@ -2230,7 +2266,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
     var items = _ref.items,
-        isEditable = _ref.isEditable;
+        isEditable = _ref.isEditable,
+        hidable = _ref.hidable;
 
 
     var temp = [];
@@ -2260,7 +2297,8 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
                 null,
                 'aasdf'
             )
-        }
+        },
+        hidable: hidable
     });
 };
 
@@ -2269,7 +2307,8 @@ ProjectCard.propTypes = {
         header: _propTypes2.default.string.isRequired,
         progressPercent: _propTypes2.default.number.isRequired
     })),
-    isEditable: _propTypes2.default.bool
+    isEditable: _propTypes2.default.bool,
+    hidable: _propTypes2.default.bool
 };
 
 /***/ }),
@@ -4947,6 +4986,7 @@ var AttachmentCard = exports.AttachmentCard = function AttachmentCard(_ref) {
         folders = _ref.folders;
 
     return _react2.default.createElement(_card2.default, {
+        hidable: undefined.props.hidable,
         title: 'Attachments',
         content: _react2.default.createElement(
             'div',
@@ -4975,7 +5015,8 @@ AttachmentCard.propTypes = {
             fileType: _propTypes2.default.string.isRequired,
             name: _propTypes2.default.string.isRequired
         }))
-    }))
+    })),
+    hidable: _propTypes2.default.bool
 };
 
 /***/ }),
@@ -5191,6 +5232,7 @@ var CalendarCard = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(_card2.default, {
+				hidable: this.props.hidable,
 				title: 'Calendar',
 				content: _react2.default.createElement(_ListComponents.List, { items: CalendarCard.data })
 			});
@@ -5981,22 +6023,22 @@ var CourseCard = function (_React$Component) {
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
           { extra: true },
-          _react2.default.createElement(_announcementCard2.default, { announcements: announcementList })
+          _react2.default.createElement(_announcementCard2.default, { hidable: true, announcements: announcementList })
         ),
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
           { extra: true },
-          _react2.default.createElement(_calendarCard2.default, null)
+          _react2.default.createElement(_calendarCard2.default, { hidable: true })
         ),
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
           { extra: true },
-          _react2.default.createElement(_ProjectCard.ProjectCard, { items: [{ header: 'Writing Scheme Using Scheme', progressPercent: 0 }] })
+          _react2.default.createElement(_ProjectCard.ProjectCard, { hidable: true, items: [{ header: 'Writing Scheme Using Scheme', progressPercent: 0 }] })
         ),
         _react2.default.createElement(
           _semanticUiReact.Card.Content,
           { extra: true },
-          _react2.default.createElement(_gradeCard2.default, null)
+          _react2.default.createElement(_gradeCard2.default, { hidable: true })
         )
       );
     }
@@ -6058,6 +6100,7 @@ var GradeCard = function (_Component) {
         key: 'render',
         value: function render() {
             return _React2.default.createElement(_card2.default, {
+                hidable: this.props.hidable,
                 title: 'Grades',
                 content: this._renderList()
             });

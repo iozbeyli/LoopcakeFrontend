@@ -12,6 +12,7 @@ class AnnouncementCard extends React.Component{
     render(){
         return(
             <Card
+                hidable={this.props.hidable}
                 title="Announcements"
                 content={this.props.announcements.map((announcement)=>(
                     <Announcement
@@ -43,7 +44,8 @@ AnnouncementCard.propTypes = {
             content: PropTypes.string.isRequired,
         }
     )).isRequired,
-    editable: PropTypes.bool
+    editable: PropTypes.bool,
+    hidable: PropTypes.bool
 };
 
 export default AnnouncementCard;

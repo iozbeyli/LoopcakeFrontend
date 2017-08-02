@@ -16,6 +16,7 @@ export default class GradeCard extends Component{
     render() {
         return (
             <Card
+                hidable={this.props.hidable}
                 title="Grades"
                 content={this._renderList()}
             />

@@ -37,16 +37,16 @@ export default class CourseCard extends React.Component{
       			</Grid>
       		</Card.Content>
       		<Card.Content extra>
-      			<AnnouncementCard announcements={announcementList}/>
+      			<AnnouncementCard hidable announcements={announcementList}/>
       		</Card.Content>
       		<Card.Content extra>
-      			<CalendarCard />
+      			<CalendarCard hidable/>
       		</Card.Content>
       		<Card.Content extra>
-      			<ProjectCard items={[{header:'Writing Scheme Using Scheme', progressPercent: 0}]}/>
+      			<ProjectCard hidable items={[{header:'Writing Scheme Using Scheme', progressPercent: 0}]}/>
       		</Card.Content>
       		<Card.Content extra>
-      			<GradeCard />
+      			<GradeCard hidable/>
       		</Card.Content>
 		</Card>
 		);

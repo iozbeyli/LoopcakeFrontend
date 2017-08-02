@@ -11,6 +11,7 @@ export default class CalendarCard extends React.Component{
 	render(){
 		return(
 			<Card 
+				hidable={this.props.hidable}
 				title="Calendar"
 				content={(<List items = {CalendarCard.data} />)}
 			/>
