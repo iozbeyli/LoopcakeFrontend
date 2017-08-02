@@ -33,16 +33,26 @@ class _Card extends React.Component{
             return null;
         }
         return (
-            <Label onClick={this._handleClick} as='a' color="blue" attached='top right'>
+            <Label size="large" onClick={this._handleClick} as='a' color="blue" attached='top right'>
                 <Icon name={this.state.hidden ? 'triangle right': 'dropdown'}/>
             </Label>
         );
     }
+
+    _renderRightIcon() {
+        return (
+            <Label size="large" color="blue" attached='top left'>
+                <Icon name={this.props.icon}/>
+            </Label>
+        );
+    }
+
     render(){
-        const {title,content,editable} = this.props;
+        const {title,content,editable,icon} = this.props;
         return(
             <Card fluid>
                 {title&&<Button color="blue">{title}</Button>}
+                {icon&&this._renderRightIcon()}
                 {this._renderHidableOptionSelectorLabelWithIcon()}
                 {this._renderContent()}
             </Card>
@@ -52,6 +62,7 @@ class _Card extends React.Component{
 
 _Card.propTypes={
     title: PropTypes.string,
+    icon: PropTypes.string,
     content: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.arrayOf(PropTypes.element)
@@ -65,7 +76,7 @@ _Card.propTypes={
         ]).isRequired,
         actions: PropTypes.arrayOf(PropTypes.element)
     }),
-    hidable: PropTypes.bool,
+    hidable: PropTypes.bool
 };
 
 export default _Card;

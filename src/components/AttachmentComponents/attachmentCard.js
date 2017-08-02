@@ -5,10 +5,10 @@ import {AttachmentList} from './attachmentList';
 import {Accordion,Header} from "semantic-ui-react";
 import Folder from "./folder";
 import AttachmentEditor from './attachmentEditor';
-export const AttachmentCard = ({attachments,folders}) => {
+export const AttachmentCard = ({attachments,folders,hidable}) => {
     return(
         <Card
-            hidable={this.props.hidable}
+            hidable={hidable}
             title="Attachments"
             content={
                 <div>

@@ -12,6 +12,7 @@ class AnnouncementCard extends React.Component{
     render(){
         return(
             <Card
+                icon='alarm'
                 hidable={this.props.hidable}
                 title="Announcements"
                 content={this.props.announcements.map((announcement)=>(

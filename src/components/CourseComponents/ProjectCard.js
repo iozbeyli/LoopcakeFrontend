@@ -20,6 +20,7 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
 
   return(
       <Card
+        icon="coffee"
         title="Project List"
         content={<List items={temp}/>}
         editable={isEditable && {

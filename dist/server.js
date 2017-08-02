@@ -169,8 +169,17 @@ var _Card = function (_React$Component) {
             }
             return _react2.default.createElement(
                 _semanticUiReact.Label,
-                { onClick: this._handleClick, as: 'a', color: 'blue', attached: 'top right' },
+                { size: 'large', onClick: this._handleClick, as: 'a', color: 'blue', attached: 'top right' },
                 _react2.default.createElement(_semanticUiReact.Icon, { name: this.state.hidden ? 'triangle right' : 'dropdown' })
+            );
+        }
+    }, {
+        key: '_renderRightIcon',
+        value: function _renderRightIcon() {
+            return _react2.default.createElement(
+                _semanticUiReact.Label,
+                { size: 'large', color: 'blue', attached: 'top left' },
+                _react2.default.createElement(_semanticUiReact.Icon, { name: this.props.icon })
             );
         }
     }, {
@@ -179,7 +188,8 @@ var _Card = function (_React$Component) {
             var _props2 = this.props,
                 title = _props2.title,
                 content = _props2.content,
-                editable = _props2.editable;
+                editable = _props2.editable,
+                icon = _props2.icon;
 
             return _react2.default.createElement(
                 _semanticUiReact.Card,
@@ -189,6 +199,7 @@ var _Card = function (_React$Component) {
                     { color: 'blue' },
                     title
                 ),
+                icon && this._renderRightIcon(),
                 this._renderHidableOptionSelectorLabelWithIcon(),
                 this._renderContent()
             );
@@ -200,6 +211,7 @@ var _Card = function (_React$Component) {
 
 _Card.propTypes = {
     title: _propTypes2.default.string,
+    icon: _propTypes2.default.string,
     content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]).isRequired,
     editable: _propTypes2.default.shape({
         icon: _propTypes2.default.string.isRequired,
@@ -1331,6 +1343,7 @@ var AnnouncementCard = function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(_card2.default, {
+                icon: 'alarm',
                 hidable: this.props.hidable,
                 title: 'Announcements',
                 content: this.props.announcements.map(function (announcement) {
@@ -2287,6 +2300,7 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
     });
 
     return _react2.default.createElement(_card2.default, {
+        icon: 'coffee',
         title: 'Project List',
         content: _react2.default.createElement(_ListComponents.List, { items: temp }),
         editable: isEditable && {
@@ -4983,10 +4997,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var AttachmentCard = exports.AttachmentCard = function AttachmentCard(_ref) {
     var attachments = _ref.attachments,
-        folders = _ref.folders;
+        folders = _ref.folders,
+        hidable = _ref.hidable;
 
     return _react2.default.createElement(_card2.default, {
-        hidable: undefined.props.hidable,
+        hidable: hidable,
         title: 'Attachments',
         content: _react2.default.createElement(
             'div',
@@ -5232,6 +5247,7 @@ var CalendarCard = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(_card2.default, {
+				icon: 'calendar',
 				hidable: this.props.hidable,
 				title: 'Calendar',
 				content: _react2.default.createElement(_ListComponents.List, { items: CalendarCard.data })
@@ -6100,6 +6116,7 @@ var GradeCard = function (_Component) {
         key: 'render',
         value: function render() {
             return _React2.default.createElement(_card2.default, {
+                icon: 'font',
                 hidable: this.props.hidable,
                 title: 'Grades',
                 content: this._renderList()
