@@ -1270,18 +1270,19 @@ exports.logoutAction = logoutAction;
 
 var _types = __webpack_require__(30);
 
-function loginAction(email, token) {
+function loginAction(user, token) {
 	return {
 		type: _types.LOGIN,
 		token: token,
-		email: email
+		user: user
 	};
 }
 
-function tokenAction(token) {
+function tokenAction(user, token) {
 	return {
 		type: _types.TOKEN,
-		token: token
+		token: token,
+		user: user
 	};
 }
 
@@ -1429,6 +1430,10 @@ var _semanticUiReact = __webpack_require__(2);
 
 var _views = __webpack_require__(22);
 
+var _visibleHomePage = __webpack_require__(128);
+
+var _visibleHomePage2 = _interopRequireDefault(_visibleHomePage);
+
 var _AnnouncementPage = __webpack_require__(47);
 
 var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
@@ -1501,7 +1506,7 @@ var App = function (_React$Component) {
                     _react2.default.createElement(
                         _semanticUiReact.Grid.Column,
                         { width: this.state.sidebarOpen ? 13 : 16 },
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '' + this.props.match.url, component: _views.Home }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '' + this.props.match.url, component: _visibleHomePage2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'announcements', component: _AnnouncementPage2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'course', component: _views.CoursePage }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: this.props.match.url + 'repo', component: _views.RepoPage })
@@ -1525,22 +1530,18 @@ exports.default = App;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.API_URL = undefined;
-
 var _authentication = __webpack_require__(98);
 
 var _authentication2 = _interopRequireDefault(_authentication);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var API_URL = exports.API_URL = "http://165.227.139.238:5567";
+var API_URL = "http://loopcake.com:5567";
 //export const API_URL = "http://172.20.120.133:5567";
 
 module.exports = {
-    Authentication: _authentication2.default
+    Authentication: _authentication2.default,
+    API_URL: API_URL
 };
 
 /***/ }),
@@ -2179,7 +2180,8 @@ module.exports = getIteratorFn;
 module.exports = {
   LOGIN: 'LOGIN',
   TOKEN: 'TOKEN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  COURSE_SUMMARY: 'COURSE_SUMMARY'
 };
 
 /***/ }),
@@ -2286,16 +2288,16 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
     var temp = [];
     items.map(function (item) {
         temp.push({
-            header: item.header,
+            header: item.name,
             buttons: [{
                 title: _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: "/app/student/" + item.header },
+                    { to: "/app/project/" + item.name },
                     'Go To Page'
                 ),
                 onClick: function onClick() {}
             }],
-            extra: _react2.default.createElement(_semanticUiReact.Progress, { color: 'yellow', percent: item.progressPercent, size: 'small' })
+            extra: _react2.default.createElement(_semanticUiReact.Progress, { color: 'yellow', percent: 30, size: 'small' })
         });
     });
 
@@ -2318,8 +2320,8 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
 
 ProjectCard.propTypes = {
     items: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-        header: _propTypes2.default.string.isRequired,
-        progressPercent: _propTypes2.default.number.isRequired
+        name: _propTypes2.default.string.isRequired,
+        progressPercent: _propTypes2.default.number
     })),
     isEditable: _propTypes2.default.bool,
     hidable: _propTypes2.default.bool
@@ -3185,9 +3187,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        loginAction: function loginAction(email, token) {
+        loginAction: function loginAction(user, token) {
             console.log("Login Action");
-            dispatch((0, _authentication.loginAction)(email, token));
+            dispatch((0, _authentication.loginAction)(user, token));
         }
     };
 };
@@ -3309,7 +3311,7 @@ var LoginPage = function (_React$Component) {
                     console.log(resp);
                     _this.props.cookies.set('token', resp.body.data.token, { path: '/' });
                     _this.props.cookies.set('user', resp.body.data.user, { path: '/' });
-                    _this.props.loginAction(resp.body.data.user.email, resp.body.data.token);
+                    _this.props.loginAction(resp.body.data.user, resp.body.data.token);
                 }
             };
             _database.Authentication.Login(data, handleResponse);
@@ -3476,10 +3478,15 @@ var _userReducer = __webpack_require__(100);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
+var _course = __webpack_require__(131);
+
+var _course2 = _interopRequireDefault(_course);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-   user: _userReducer2.default
+   user: _userReducer2.default,
+   course: _course2.default
 });
 
 /***/ }),
@@ -4728,7 +4735,7 @@ var Announcement = function (_React$Component) {
                 _react2.default.createElement(
                     _semanticUiReact.Accordion.Title,
                     null,
-                    _react2.default.createElement(_announcementTitle2.default, { title: this.props.title, courseTitle: this.props.courseTitle, date: this.props.date })
+                    _react2.default.createElement(_announcementTitle2.default, { title: this.props.title, courseTitle: this.props.courseTitle, date: new Date(this.props.date).toDateString() })
                 ),
                 _react2.default.createElement(
                     _semanticUiReact.Accordion.Content,
@@ -5949,7 +5956,7 @@ ChecklistFormInput.propTypes = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -5976,6 +5983,10 @@ var _gradeCard = __webpack_require__(86);
 
 var _gradeCard2 = _interopRequireDefault(_gradeCard);
 
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5985,85 +5996,127 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var CourseCard = function (_React$Component) {
-  _inherits(CourseCard, _React$Component);
+	_inherits(CourseCard, _React$Component);
 
-  function CourseCard() {
-    _classCallCheck(this, CourseCard);
+	function CourseCard() {
+		_classCallCheck(this, CourseCard);
 
-    return _possibleConstructorReturn(this, (CourseCard.__proto__ || Object.getPrototypeOf(CourseCard)).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, (CourseCard.__proto__ || Object.getPrototypeOf(CourseCard)).apply(this, arguments));
+	}
 
-  _createClass(CourseCard, [{
-    key: 'render',
-    value: function render() {
-      var announcementList = [{ title: "Loopcake", date: "Yesterday", content: "Awesome" }, { title: "Loopcak", date: "Yesterday", content: "Awesome" }, { title: "Loopca", date: "Yesterday", content: "Awesome" }];
-      return _react2.default.createElement(
-        _semanticUiReact.Card,
-        { fluid: true },
-        _react2.default.createElement(
-          _semanticUiReact.Card.Content,
-          null,
-          _react2.default.createElement(
-            _semanticUiReact.Grid,
-            null,
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Column,
-              { width: 5 },
-              _react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
-            ),
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Column,
-              { width: 11 },
-              _react2.default.createElement(
-                _semanticUiReact.Card.Header,
-                null,
-                'Matthew'
-              ),
-              _react2.default.createElement(
-                _semanticUiReact.Card.Meta,
-                null,
-                _react2.default.createElement(
-                  'span',
-                  { className: 'date' },
-                  'Joined in 2015'
-                )
-              ),
-              _react2.default.createElement(
-                _semanticUiReact.Card.Description,
-                null,
-                'Matthew is a musician living in Nashville.'
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Card.Content,
-          { extra: true },
-          _react2.default.createElement(_announcementCard2.default, { hidable: true, announcements: announcementList })
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Card.Content,
-          { extra: true },
-          _react2.default.createElement(_calendarCard2.default, { hidable: true })
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Card.Content,
-          { extra: true },
-          _react2.default.createElement(_ProjectCard.ProjectCard, { hidable: true, items: [{ header: 'Writing Scheme Using Scheme', progressPercent: 0 }] })
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Card.Content,
-          { extra: true },
-          _react2.default.createElement(_gradeCard2.default, { hidable: true })
-        )
-      );
-    }
-  }]);
+	_createClass(CourseCard, [{
+		key: '_getHeader',
+		value: function _getHeader() {
+			console.log("Props ", this.props);
+			if (this.props.data && this.props.data.course) {
+				console.log("Datum: ", this.props.data.course.name);
+				var course = this.props.data.course; //.instructors[0];
+				return course.name;
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var announcementList = [{ title: "Loopcake", date: "Yesterday", content: "Awesome" }, { title: "Loopcak", date: "Yesterday", content: "Awesome" }, { title: "Loopca", date: "Yesterday", content: "Awesome" }];
+			return _react2.default.createElement(
+				_semanticUiReact.Card,
+				{ fluid: true },
+				_react2.default.createElement(
+					_semanticUiReact.Card.Content,
+					null,
+					_react2.default.createElement(
+						_semanticUiReact.Grid,
+						null,
+						_react2.default.createElement(
+							_semanticUiReact.Grid.Column,
+							{ width: 5 },
+							_react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
+						),
+						_react2.default.createElement(
+							_semanticUiReact.Grid.Column,
+							{ width: 11 },
+							_react2.default.createElement(
+								_semanticUiReact.Card.Header,
+								null,
+								this._getHeader()
+							),
+							_react2.default.createElement(
+								_semanticUiReact.Card.Meta,
+								null,
+								_react2.default.createElement(
+									'span',
+									{ className: 'date' },
+									'Joined in 2015'
+								)
+							),
+							_react2.default.createElement(
+								_semanticUiReact.Card.Description,
+								null,
+								'Matthew is a musician living in Nashville.'
+							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Card.Content,
+					{ extra: true },
+					_react2.default.createElement(_announcementCard2.default, { hidable: true, announcements: this.props.data.announcements })
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Card.Content,
+					{ extra: true },
+					_react2.default.createElement(_calendarCard2.default, { hidable: true })
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Card.Content,
+					{ extra: true },
+					_react2.default.createElement(_ProjectCard.ProjectCard, { hidable: true, items: this.props.data.projects /*[{header:'Writing Scheme Using Scheme', progressPercent: 0}]*/ })
+				),
+				_react2.default.createElement(
+					_semanticUiReact.Card.Content,
+					{ extra: true },
+					_react2.default.createElement(_gradeCard2.default, { hidable: true })
+				)
+			);
+		}
+	}]);
 
-  return CourseCard;
+	return CourseCard;
 }(_react2.default.Component);
 
 exports.default = CourseCard;
+
+
+CourseCard.propTypes = {
+	data: _propTypes2.default.shape({
+		course: _propTypes2.default.shape({
+			_id: _propTypes2.default.string,
+			name: _propTypes2.default.string,
+			abbreviation: _propTypes2.default.string,
+			code: _propTypes2.default.string,
+			details: _propTypes2.default.shape({
+				year: _propTypes2.default.string,
+				_id: _propTypes2.default.string,
+				relatedCourses: _propTypes2.default.array,
+				programmingLanguages: _propTypes2.default.array,
+				sections: _propTypes2.default.array
+			}),
+			attachments: _propTypes2.default.array,
+			instructors: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+				_id: _propTypes2.default.string,
+				email: _propTypes2.default.string,
+				name: _propTypes2.default.string,
+				surname: _propTypes2.default.string,
+				photo: _propTypes2.default.string
+			}))
+		}),
+		announcements: _propTypes2.default.array,
+		calender: _propTypes2.default.array,
+		grades: _propTypes2.default.array,
+		myGroups: _propTypes2.default.array,
+		projects: _propTypes2.default.array
+	})
+};
 
 /***/ }),
 /* 86 */
@@ -6954,9 +7007,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        tokenAction: function tokenAction(token) {
+        tokenAction: function tokenAction(user, token) {
             console.log("Token Action");
-            dispatch((0, _authentication.tokenAction)(token));
+            dispatch((0, _authentication.tokenAction)(user, token));
         }
     };
 };
@@ -6983,7 +7036,8 @@ var Entry = function (_React$Component) {
             var cookies = this.props.cookies;
 
             var token = cookies.get('token');
-            this.props.tokenAction(token);
+            var user = cookies.get('user');
+            this.props.tokenAction(user, token);
         }
     }, {
         key: 'render',
@@ -7064,14 +7118,14 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function post(api, postData, respFunc) {
-    _superagent2.default.post(api).send(postData).set('X-API-Key', 'foobar').set('Accept', 'application/json').end(function (err, res) {
+function post(api, postData, respFunc, token) {
+    _superagent2.default.post(api).send(postData).set('X-API-Key', 'foobar').set('Accept', 'application/json').set('Authorization', 'Bearer ' + token).end(function (err, res) {
         respFunc(err, res);
     });
 };
 
-function get(api, getData, respFunc) {
-    _superagent2.default.get(api).query(getData).end(function (err, res) {
+function get(api, getData, respFunc, token) {
+    _superagent2.default.get(api).set('Authorization', 'Bearer ' + token).query(getData).end(function (err, res) {
         respFunc(err, res);
     });
 };
@@ -7101,11 +7155,11 @@ exports.default = function () {
     console.log(action);
     switch (action.type) {
         case _actions.Types.LOGIN:
-            return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token, tokenValid: Boolean(action.token), userMail: action.email });
+            return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token, tokenValid: Boolean(action.token), user: action.user });
         case _actions.Types.TOKEN:
-            return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token });
+            return _extends({}, state, { loggedIn: Boolean(action.token), token: action.token, user: action.user });
         case _actions.Types.LOGOUT:
-            return _extends({}, state, { loggedIn: false, token: undefined, tokenValid: false, userMail: undefined });
+            return _extends({}, state, { loggedIn: false, token: undefined, tokenValid: false, user: undefined });
         default:
             return state;
     }
@@ -7394,7 +7448,7 @@ exports.default = CoursePage;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -7402,6 +7456,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _courseCard = __webpack_require__(85);
 
@@ -7418,43 +7476,56 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Home = function (_React$Component) {
-  _inherits(Home, _React$Component);
+	_inherits(Home, _React$Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+	function Home() {
+		_classCallCheck(this, Home);
 
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	}
 
-  _createClass(Home, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _semanticUiReact.Grid,
-        null,
-        _react2.default.createElement(
-          _semanticUiReact.Grid.Column,
-          { width: 5 },
-          _react2.default.createElement(_courseCard2.default, null)
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Grid.Column,
-          { width: 5 },
-          _react2.default.createElement(_courseCard2.default, null)
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Grid.Column,
-          { width: 5 },
-          _react2.default.createElement(_courseCard2.default, null)
-        )
-      );
-    }
-  }]);
+	_createClass(Home, [{
+		key: '_renderCourses',
+		value: function _renderCourses() {
+			if (!this.props.courses) {
+				return null;
+			}
+			return this.props.courses.map(function (course) {
+				return _react2.default.createElement(
+					_semanticUiReact.Grid.Column,
+					{ key: course.course._id, width: 5 },
+					_react2.default.createElement(_courseCard2.default, { data: course })
+				);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			console.log("Home Page", this.props);
+			return _react2.default.createElement(
+				_semanticUiReact.Grid,
+				null,
+				this._renderCourses()
+			);
+		}
+	}]);
 
-  return Home;
+	return Home;
 }(_react2.default.Component);
 
 exports.default = Home;
+
+
+Home.propTypes = {
+	courses: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+		announcements: _propTypes2.default.array,
+		calender: _propTypes2.default.array,
+		course: _propTypes2.default.object,
+		grades: _propTypes2.default.array,
+		myGroups: _propTypes2.default.array,
+		projects: _propTypes2.default.array
+	}))
+};
 
 /***/ }),
 /* 105 */
@@ -8298,6 +8369,196 @@ module.exports = require("superagent");
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(7);
+
+var _views = __webpack_require__(22);
+
+__webpack_require__(17);
+
+var _reactCookie = __webpack_require__(6);
+
+var _course = __webpack_require__(129);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _course2 = __webpack_require__(130);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _VisibleHomePage = function (_Component) {
+  _inherits(_VisibleHomePage, _Component);
+
+  function _VisibleHomePage() {
+    _classCallCheck(this, _VisibleHomePage);
+
+    return _possibleConstructorReturn(this, (_VisibleHomePage.__proto__ || Object.getPrototypeOf(_VisibleHomePage)).apply(this, arguments));
+  }
+
+  _createClass(_VisibleHomePage, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      console.log("Props: ", this.props);
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(resp);
+          var courses = [];
+          resp.body.data.forEach(function (element) {
+            var handleCourseResponse = function handleCourseResponse(err, resp) {
+              if (err) {} else {
+                console.log("Course", resp);
+                _this2.props.courseSummaryAction(resp.body.data);
+              }
+            };
+            (0, _course.getCourseSummary)(element._id, _this2.props.user.token, handleCourseResponse);
+          }, _this2);
+        }
+      };
+      (0, _course.getAttendedCourses)(this.props.user.user._id, this.props.user.token, handleResponse);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return this.props.course ? _react2.default.createElement(_views.Home, { courses: Object.keys(this.props.course).map(function (k) {
+          return _this3.props.course[k];
+        }) }) : null;
+    }
+  }]);
+
+  return _VisibleHomePage;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state, {
+    getAttendedCourses: _course.getAttendedCourses
+  });
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    courseSummaryAction: function courseSummaryAction(course) {
+      console.log("Course Action");
+      dispatch((0, _course2.courseSummaryAction)(course));
+    }
+  };
+};
+
+var VisibleHomePage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_VisibleHomePage));
+
+exports.default = VisibleHomePage;
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getAttendedCourses = getAttendedCourses;
+exports.getCourseSummary = getCourseSummary;
+
+var _communicationController = __webpack_require__(99);
+
+var _index = __webpack_require__(21);
+
+function getAttendedCourses(userId, token, responseFunc) {
+    (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
+}
+
+function getCourseSummary(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId + '/summary', {}, responseFunc, token);
+}
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+     value: true
+});
+exports.courseSummaryAction = courseSummaryAction;
+
+var _types = __webpack_require__(30);
+
+function courseSummaryAction(course) {
+     return {
+          type: _types.COURSE_SUMMARY,
+          course: course
+     };
+}
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(70);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var INITIAL_STATE = {};
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+    var action = arguments[1];
+
+    console.log("course reducer");
+    console.log(action);
+    switch (action.type) {
+
+        case _actions.Types.COURSE_SUMMARY:
+            return _extends({}, state, _defineProperty({}, action.course.course._id, action.course));
+        default:
+            return state;
+    }
+};
 
 /***/ })
 /******/ ]);

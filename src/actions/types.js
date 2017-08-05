@@ -1,5 +1,6 @@
 module.exports={
   LOGIN:'LOGIN',
   TOKEN: 'TOKEN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  COURSE_SUMMARY: 'COURSE_SUMMARY'
 };

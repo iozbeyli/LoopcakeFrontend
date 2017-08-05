@@ -13,7 +13,7 @@ class Announcement extends React.Component{
          return(
             <Accordion>
                 <Accordion.Title>
-                    <AnnouncementTitle title={this.props.title} courseTitle={this.props.courseTitle} date={this.props.date} />
+                    <AnnouncementTitle title={this.props.title} courseTitle={this.props.courseTitle} date={(new Date(this.props.date)).toDateString()} />
                 </Accordion.Title>
                 <Accordion.Content>
                     <AnnouncementContent content={this.props.content}/>

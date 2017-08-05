@@ -8,9 +8,9 @@ const mapStateToProps = (state) =>({
 });
 
 const mapDispatchToProps = (dispatch) =>({
-    loginAction: (email,token) => {
+    loginAction: (user,token) => {
     	console.log("Login Action");
-    	dispatch(loginAction(email,token))
+    	dispatch(loginAction(user,token))
     }
 });
 

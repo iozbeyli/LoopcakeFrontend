@@ -1,17 +1,18 @@
 import {LOGIN,TOKEN} from './types';
 
-export function loginAction(email,token){
+export function loginAction(user,token){
 	return{
       type: LOGIN,
       token: token,
-      email: email
+      user: user
     }
 }
 
-export function tokenAction(token){
+export function tokenAction(user,token){
 	return{
 		type: TOKEN,
-		token: token
+		token: token,
+		user: user
 	}
 }
 

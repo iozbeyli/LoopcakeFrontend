@@ -9,12 +9,12 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
     let temp = [];
     items.map(item=>{
         temp.push({
-            header: item.header,
+            header: item.name,
             buttons:[{
-                title: <Link to={"/app/student/"+item.header}>Go To Page</Link>,
+                title: <Link to={"/app/project/"+item.name}>Go To Page</Link>,
                 onClick: ()=>{}
             }],
-            extra: <Progress color="yellow" percent={item.progressPercent} size="small"/>
+            extra: <Progress color="yellow" percent={30} size="small"/>
         }) ;
     });
 
@@ -36,8 +36,8 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
 
 ProjectCard.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
-        header: PropTypes.string.isRequired,
-        progressPercent: PropTypes.number.isRequired
+        name: PropTypes.string.isRequired,
+        progressPercent: PropTypes.number
     })),
     isEditable: PropTypes.bool,
     hidable: PropTypes.bool

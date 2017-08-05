@@ -36,7 +36,7 @@ class LoginPage extends React.Component {
                 console.log(resp);
                 this.props.cookies.set('token', resp.body.data.token, { path: '/' });
                 this.props.cookies.set('user',resp.body.data.user,{path: '/'});
-                this.props.loginAction(resp.body.data.user.email,resp.body.data.token);
+                this.props.loginAction(resp.body.data.user,resp.body.data.token);
             }
         };
         Authentication.Login(data,handleResponse);

@@ -15,9 +15,9 @@ const mapStateToProps = (state) =>({
 });
 
 const mapDispatchToProps = (dispatch) =>({
-    tokenAction: (token) => {
+    tokenAction: (user,token) => {
         console.log("Token Action");
-        dispatch(tokenAction(token))
+        dispatch(tokenAction(user,token))
     }
 });
 
@@ -37,8 +37,8 @@ class Entry extends React.Component{
     componentWillMount() {
         const { cookies } = this.props;
         let token  = cookies.get('token');
-        this.props.tokenAction(token);
-
+        let user = cookies.get('user');
+        this.props.tokenAction(user,token);
     }
 
     render(){
