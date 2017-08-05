@@ -5987,6 +5987,10 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _courseHeader = __webpack_require__(132);
+
+var _courseHeader2 = _interopRequireDefault(_courseHeader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6005,16 +6009,6 @@ var CourseCard = function (_React$Component) {
 	}
 
 	_createClass(CourseCard, [{
-		key: '_getHeader',
-		value: function _getHeader() {
-			console.log("Props ", this.props);
-			if (this.props.data && this.props.data.course) {
-				console.log("Datum: ", this.props.data.course.name);
-				var course = this.props.data.course; //.instructors[0];
-				return course.name;
-			}
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			var announcementList = [{ title: "Loopcake", date: "Yesterday", content: "Awesome" }, { title: "Loopcak", date: "Yesterday", content: "Awesome" }, { title: "Loopca", date: "Yesterday", content: "Awesome" }];
@@ -6024,38 +6018,7 @@ var CourseCard = function (_React$Component) {
 				_react2.default.createElement(
 					_semanticUiReact.Card.Content,
 					null,
-					_react2.default.createElement(
-						_semanticUiReact.Grid,
-						null,
-						_react2.default.createElement(
-							_semanticUiReact.Grid.Column,
-							{ width: 5 },
-							_react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
-						),
-						_react2.default.createElement(
-							_semanticUiReact.Grid.Column,
-							{ width: 11 },
-							_react2.default.createElement(
-								_semanticUiReact.Card.Header,
-								null,
-								this._getHeader()
-							),
-							_react2.default.createElement(
-								_semanticUiReact.Card.Meta,
-								null,
-								_react2.default.createElement(
-									'span',
-									{ className: 'date' },
-									'Joined in 2015'
-								)
-							),
-							_react2.default.createElement(
-								_semanticUiReact.Card.Description,
-								null,
-								'Matthew is a musician living in Nashville.'
-							)
-						)
-					)
+					_react2.default.createElement(_courseHeader2.default, { course: this.props.data.course })
 				),
 				_react2.default.createElement(
 					_semanticUiReact.Card.Content,
@@ -8558,6 +8521,151 @@ exports.default = function () {
         default:
             return state;
     }
+};
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = __webpack_require__(2);
+
+var _constants = __webpack_require__(45);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CourseHeader = function (_React$Component) {
+  _inherits(CourseHeader, _React$Component);
+
+  function CourseHeader() {
+    _classCallCheck(this, CourseHeader);
+
+    return _possibleConstructorReturn(this, (CourseHeader.__proto__ || Object.getPrototypeOf(CourseHeader)).apply(this, arguments));
+  }
+
+  _createClass(CourseHeader, [{
+    key: '_getHeader',
+    value: function _getHeader() {
+      console.log("Props ", this.props);
+      if (this.props.course) {
+        console.log("Datum: ", this.props.course.name);
+        var course = this.props.course;
+        return course.name;
+      }
+    }
+  }, {
+    key: '_getDetail',
+    value: function _getDetail() {
+      if (this.props.course) {
+        var course = this.props.course;
+        console.log("C ", course);
+        var str = "";
+        for (var i = 0; i < course.instructors.length; ++i) {
+          var ins = course.instructors[i];
+          str += ins.name + " " + ins.surname;
+          if (i != course.instructors.length) {
+            str += "\n";
+          }
+        }
+        return str;
+      }
+    }
+  }, {
+    key: '_getAbv',
+    value: function _getAbv() {
+      if (this.props.course) {
+        var course = this.props.course;
+        return course.abbreviation + " " + course.code;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _semanticUiReact.Grid,
+        null,
+        _react2.default.createElement(
+          _semanticUiReact.Grid.Column,
+          { width: 5 },
+          _react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
+        ),
+        _react2.default.createElement(
+          _semanticUiReact.Grid.Column,
+          { width: 11 },
+          _react2.default.createElement(
+            _semanticUiReact.Card.Header,
+            null,
+            this._getHeader()
+          ),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Meta,
+            null,
+            _react2.default.createElement(
+              'span',
+              { className: 'date' },
+              this._getAbv()
+            )
+          ),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Description,
+            null,
+            this._getDetail()
+          )
+        )
+      );
+    }
+  }]);
+
+  return CourseHeader;
+}(_react2.default.Component);
+
+exports.default = CourseHeader;
+
+
+CourseHeader.propTypes = {
+  course: _propTypes2.default.shape({
+    _id: _propTypes2.default.string,
+    name: _propTypes2.default.string,
+    abbreviation: _propTypes2.default.string,
+    code: _propTypes2.default.string,
+    details: _propTypes2.default.shape({
+      year: _propTypes2.default.string,
+      _id: _propTypes2.default.string,
+      relatedCourses: _propTypes2.default.array,
+      programmingLanguages: _propTypes2.default.array,
+      sections: _propTypes2.default.array
+    }),
+    attachments: _propTypes2.default.array,
+    instructors: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+      _id: _propTypes2.default.string,
+      email: _propTypes2.default.string,
+      name: _propTypes2.default.string,
+      surname: _propTypes2.default.string,
+      photo: _propTypes2.default.string
+    }))
+  })
 };
 
 /***/ })

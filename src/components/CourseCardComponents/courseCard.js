@@ -6,17 +6,11 @@ import CalendarCard from '../CalendarComponents/calendarCard';
 import {ProjectCard} from '../CourseComponents/ProjectCard';
 import GradeCard from '../CourseCardComponents/gradeCard';
 import PropTypes from 'prop-types';
+import CourseHeader from './courseHeader'
 
 export default class CourseCard extends React.Component{
 
-	_getHeader() {
-		console.log("Props ", this.props);
-		if (this.props.data && this.props.data.course) {
-			console.log("Datum: ", this.props.data.course.name);
-			const course = this.props.data.course//.instructors[0];
-			return course.name
-		}
-	}
+	
 	render(){
 		const announcementList = [
             {title: "Loopcake",date:"Yesterday",content:"Awesome"},
@@ -26,24 +20,7 @@ export default class CourseCard extends React.Component{
 		return(
 		<Card fluid>
     		<Card.Content>
-      			<Grid>
-        			<Grid.Column width={5}>
-          				<Image shape="circular" src={placeholders.instructorPhoto} />
-        			</Grid.Column>
-        			<Grid.Column width={11}>
-          				<Card.Header>
-        					{this._getHeader()}
-      					</Card.Header>
-      					<Card.Meta>
-        					<span className='date'>
-          						Joined in 2015
-        					</span>
-      					</Card.Meta>
-      					<Card.Description>
-        					Matthew is a musician living in Nashville.
-      					</Card.Description>
-        			</Grid.Column>
-      			</Grid>
+      			<CourseHeader course={this.props.data.course}/>
       		</Card.Content>
       		<Card.Content extra>
       			<AnnouncementCard hidable announcements={this.props.data.announcements}/>
