@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 export default class CourseHeader extends React.Component{
 
     _getHeader() {
-		console.log("Props ", this.props);
 		if (this.props.course) {
-			console.log("Datum: ", this.props.course.name);
 			const course = this.props.course
 			return course.name
 		}
@@ -17,8 +15,7 @@ export default class CourseHeader extends React.Component{
 
     _getDetail() {
 		if (this.props.course) {
-            const course = this.props.course
-            console.log("C ", course);
+            const course = this.props.course;
             let str = "";
             for (let i = 0; i < course.instructors.length; ++i) {
                 let ins = course.instructors[i];

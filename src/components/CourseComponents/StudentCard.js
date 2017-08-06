@@ -4,10 +4,11 @@ import Card from '../CardComponents/card';
 
 import {UserList} from '../UserComponents/userList';
 
-export const StudentCard = ({items}) => {
+export const StudentCard = ({items,hidable}) => {
 
     return (
         <Card
+            hidable= {hidable}
             title="Students"
             content={<UserList items={items}/>}
             editable={{
@@ -22,8 +23,9 @@ export const StudentCard = ({items}) => {
 
 
 StudentCard.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
+    hidable: PropTypes.bool,
+    items: PropTypes.arrayOf(PropTypes.shape({
       image: PropTypes.string.isRequired,
       header: PropTypes.string.isRequired
-  }))
+    }))
 };

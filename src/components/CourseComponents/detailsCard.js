@@ -18,18 +18,6 @@ export const DetailsCard = (props) => (
         content={
         <Grid>
             <Grid.Column width={16}>
-                <Grid.Row textAlign="center">
-                    <Header>
-                        {props.name}
-                        <Header.Subheader>
-                            {props.abbreviation}
-                        </Header.Subheader>
-                        <Header.Subheader>
-                            {props.term} {props.year}
-                        </Header.Subheader>
-                    </Header>
-                </Grid.Row>
-                <br/>
                 <Grid.Row>
                         <_Header title="Programming Languages"/>
                         {props.programmingLanguages.map((lang) => (

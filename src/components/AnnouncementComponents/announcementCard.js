@@ -11,7 +11,8 @@ class AnnouncementCard extends React.Component{
 
     render(){
         return(
-            <Card
+            this.props.announcements ? <Card
+                loading= {!this.props.announcements}
                 icon='alarm'
                 hidable={this.props.hidable}
                 title="Announcements"
@@ -31,7 +32,12 @@ class AnnouncementCard extends React.Component{
                         icon: 'announcement'
                     }
                 }
-            />
+            /> : 
+            <Card 
+            loading
+            title="Announcements"
+            icon='alarm' />
+            
         );
     }
 }
@@ -44,7 +50,7 @@ AnnouncementCard.propTypes = {
             date: PropTypes.string.isRequired,
             content: PropTypes.string.isRequired,
         }
-    )).isRequired,
+    )),
     editable: PropTypes.bool,
     hidable: PropTypes.bool
 };

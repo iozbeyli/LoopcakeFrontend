@@ -7,7 +7,8 @@ import {Progress} from 'semantic-ui-react';
 export const ProjectCard = ({items, isEditable, hidable}) => {
 
     let temp = [];
-    items.map(item=>{
+    if(items){
+        items.map(item=>{
         temp.push({
             header: item.name,
             buttons:[{
@@ -16,9 +17,12 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
             }],
             extra: <Progress color="yellow" percent={30} size="small"/>
         }) ;
-    });
+        });
+    }
+    
 
   return(
+      items ?
       <Card
         icon="coffee"
         title="Project List"
@@ -29,7 +33,7 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
              content: <a>aasdf</a>
          }}
         hidable={hidable}
-      />
+      /> : <Card loading icon="coffee" title="Project List"/>
   );
 };
 

@@ -14,8 +14,7 @@ class AnnouncementContent extends React.Component{
             <Grid centered>
                 <Grid.Column width={15}>
                     {content.substring(0,Math.min(140,content.length))+" "}
-                    <AnnouncementModal content={content} trigger={<a>...more</a>}/>
-                    <br/>
+                    <AnnouncementModal content={content} trigger={<div style={{'display':"inline"}}><a>...more</a><br/></div>}/>
                 </Grid.Column>
             </Grid>
         );

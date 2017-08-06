@@ -42,8 +42,7 @@ class _VisibleHomePage extends Component {
 }
 
 const mapStateToProps = (state) =>({
-  ...state,
-  getAttendedCourses
+  ...state
 });
 
 const mapDispatchToProps = (dispatch) =>({

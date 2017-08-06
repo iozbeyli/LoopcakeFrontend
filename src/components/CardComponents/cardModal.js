@@ -7,7 +7,7 @@ const panes = [
   { menuItem: 'Create Folder'},
 ]
 
-export const CardModal = ({icon,title,content,actions}) =>{console.log("Actions"); console.log(actions); return(
+export const CardModal = ({icon,title,content,actions}) =>{return(
     <Modal trigger={<Label color="red" attached='bottom right'><Icon name={icon}/>{title}</Label>}>
         <Modal.Header>
             <Header icon={icon} content={title} />

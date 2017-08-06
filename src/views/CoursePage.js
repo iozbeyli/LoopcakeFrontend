@@ -1,12 +1,15 @@
 import React from 'react';
 import {StudentCard} from "../components/CourseComponents/StudentCard";
 import {Link} from 'react-router-dom';
-import {Progress} from 'semantic-ui-react';
+import {Progress,Grid} from 'semantic-ui-react';
 import {ProjectCard} from "../components/CourseComponents/ProjectCard";
 import {DetailsCard} from "../components/CourseComponents/detailsCard";
+import ProfileCard from '../components/CourseComponents/profileCard';
 import AnnouncementCard from "../components/AnnouncementComponents/announcementCard";
 import {AttachmentCard} from "../components/AttachmentComponents/attachmentCard";
 import ChecklistCard from '../components/ChecklistComponents/checklistCard';
+import PropTypes from 'prop-types';
+
 class CoursePage extends React.Component{
     constructor(props){
         super(props);
@@ -25,11 +28,11 @@ class CoursePage extends React.Component{
         ];
         const projectList = [
             {
-                header: 'Rubic Cube',
+                name: 'Rubic Cube',
                 progressPercent: 25
             },
             {
-                header: 'Texture Mapping',
+                name: 'Texture Mapping',
                progressPercent: 12
             }
         ];
@@ -82,19 +85,34 @@ class CoursePage extends React.Component{
             }
             ];
         return(
-        <div>
-            <ChecklistCard/>
-            <AttachmentCard attachments={attachments} folders={folders} />
-            <DetailsCard {...details}/>
-            <AnnouncementCard announcements={announcementList} editable/>
-            <ProjectCard items={projectList}/>
-            <StudentCard items={studentList}/>
-
-        </div>
+        <Grid>
+            <Grid.Column width={12}>
+                <AnnouncementCard announcements={this.props.data.announcements} editable/>
+                <ProjectCard items={this.props.data.projects}/>
+                <AttachmentCard hidable attachments={attachments} folders={folders} />
+            </Grid.Column>
+            <Grid.Column width={4}>
+                <ProfileCard course={this.props.data.course}/>
+                <DetailsCard {...details}/>
+                <StudentCard hidable items={studentList}/>
+            </Grid.Column>
+        </Grid>
 
 
         );
     }
 }
 
+CoursePage.propTypes={
+	data: PropTypes.shape({
+		announcements: PropTypes.array,
+		calender: PropTypes.array,
+		course: PropTypes.object,
+		grades: PropTypes.array,
+		myGroups: PropTypes.array,
+		projects: PropTypes.array
+	})
+};
+
 export default CoursePage;
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Grid, Label, Icon, Modal} from 'semantic-ui-react';
+import {Card, Button, Grid, Label, Icon, Modal,Dimmer,Loader,Segment,Image} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {CardModal} from "./cardModal";
 
@@ -22,6 +22,21 @@ class _Card extends React.Component{
                 {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
             </Card.Content>
         )
+    }
+
+    _renderLoader(){
+        return(
+            <Card.Content>
+                <Dimmer.Dimmable dimmed={true}>
+                    <Dimmer active={true} inverted>
+                        <Loader size="small">Loading</Loader>
+                    </Dimmer>
+                    <br/>
+                    <br/>
+                    <br/>
+                </Dimmer.Dimmable>
+            </Card.Content>
+        );
     }
 
     _handleClick = () => {
@@ -48,13 +63,13 @@ class _Card extends React.Component{
     }
 
     render(){
-        const {title,content,editable,icon} = this.props;
+        const {title,content,editable,icon,loading} = this.props;
         return(
             <Card fluid>
                 {title&&<Button color="blue">{title}</Button>}
                 {icon&&this._renderRightIcon()}
                 {this._renderHidableOptionSelectorLabelWithIcon()}
-                {this._renderContent()}
+                {loading ? this._renderLoader() : this._renderContent()}
             </Card>
         );
     }
@@ -66,7 +81,7 @@ _Card.propTypes={
     content: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.arrayOf(PropTypes.element)
-    ]).isRequired,
+    ]),
     editable: PropTypes.shape({
         icon: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -76,7 +91,8 @@ _Card.propTypes={
         ]).isRequired,
         actions: PropTypes.arrayOf(PropTypes.element)
     }),
-    hidable: PropTypes.bool
+    hidable: PropTypes.bool,
+    loading: PropTypes.bool
 };
 
 export default _Card;
