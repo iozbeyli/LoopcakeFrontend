@@ -11,7 +11,7 @@ const SidebarMenu = () => {
             type: 'subMenu',
             name: 'announcements',
             properties: {
-                header: <Link to="/announcements" style={{color:'black'}}>Announcements</Link>,
+                header: <Link to="/announcements" style={{color:'white'}}>Announcements</Link>,
                 items:[]
             }
         },
@@ -23,11 +23,11 @@ const SidebarMenu = () => {
                 items: [
                     {
                         name: 'Computer Graphics',
-                        element: <Link to="/course/Computer Graphics" style={{color:'black'}}>Computer Graphics</Link>
+                        element: <Link to="/course/Computer Graphics" style={{color:'white'}}>Computer Graphics</Link>
                     },
                     {
                         name: 'Computer Network',
-                        element: <Link to="/course/Computer Network" style={{color:'black'}}>Computer Network</Link>
+                        element: <Link to="/course/Computer Network" style={{color:'white'}}>Computer Network</Link>
                     }
                 ]
             }
@@ -51,7 +51,7 @@ const SidebarMenu = () => {
                 items: [
                     {
                         name: 'Loopcake Frontend',
-                        element: <Link to="/repo/Loopcake Frontend" style={{color:'black'}}>Loopcake Frontend</Link>
+                        element: <Link to="/repo/Loopcake Frontend" style={{color:'white'}}>Loopcake Frontend</Link>
                     },
                     {name: 'LoopcakeMobile' }
                 ]
@@ -60,7 +60,7 @@ const SidebarMenu = () => {
         ];
 
     return(
-        <Menu props={{inverted:true,vertical:true,fluid:true,color:'blue'}} items={menuItems}/>
+        <Menu fluid props={{inverted:true,vertical:true,fluid:true,color:'blue'}} items={menuItems}/>
     );
 
 };
