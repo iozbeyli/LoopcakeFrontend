@@ -65,10 +65,8 @@ class App extends React.Component {
                                 
                         )}
                         
-                        
                         <Grid.Column style={{paddingLeft:this.state.sidebarOpen ? 10 : 0,paddingRight:0}} width={this.state.sidebarOpen ? 13 : 16}>
                             <NavigationBar style={{paddingLeft:0}} hide={this.hideSidebar} right={right} left={left}/>
-                            <br/>
                             <div style={{paddingRight:20,paddingLeft:15}}>
                                 <Route exact path={`${this.props.match.url}`} component={Home}/>
                                 <Route path={`${this.props.match.url}announcements`} component={AnnouncementPage}/>

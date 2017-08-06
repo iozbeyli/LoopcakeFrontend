@@ -293,7 +293,7 @@ var warning = __webpack_require__(7);
 var canDefineProperty = __webpack_require__(15);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-var REACT_ELEMENT_TYPE = __webpack_require__(31);
+var REACT_ELEMENT_TYPE = __webpack_require__(32);
 
 var RESERVED_PROPS = {
   key: true,
@@ -713,7 +713,7 @@ var _HomePage = __webpack_require__(113);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _LoginPage = __webpack_require__(53);
+var _LoginPage = __webpack_require__(54);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -762,7 +762,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _listItem = __webpack_require__(42);
+var _listItem = __webpack_require__(43);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -955,7 +955,7 @@ var _prodInvariant = __webpack_require__(9);
 var ReactNoopUpdateQueue = __webpack_require__(21);
 
 var canDefineProperty = __webpack_require__(15);
-var emptyObject = __webpack_require__(29);
+var emptyObject = __webpack_require__(30);
 var invariant = __webpack_require__(10);
 var warning = __webpack_require__(7);
 
@@ -1673,7 +1673,7 @@ exports.default = AnnouncementCard;
 "use strict";
 
 
-var _formInput = __webpack_require__(39);
+var _formInput = __webpack_require__(40);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
@@ -1681,7 +1681,7 @@ var _form = __webpack_require__(94);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _passwordMeter = __webpack_require__(40);
+var _passwordMeter = __webpack_require__(41);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -1698,15 +1698,15 @@ module.exports = {
 "use strict";
 
 
-var _colors = __webpack_require__(122);
+var _colors = __webpack_require__(121);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _strings = __webpack_require__(124);
+var _strings = __webpack_require__(123);
 
 var _strings2 = _interopRequireDefault(_strings);
 
-var _placeholders = __webpack_require__(123);
+var _placeholders = __webpack_require__(122);
 
 var _placeholders2 = _interopRequireDefault(_placeholders);
 
@@ -1833,7 +1833,6 @@ var App = function (_React$Component) {
                         _semanticUiReact.Grid.Column,
                         { style: { paddingLeft: this.state.sidebarOpen ? 10 : 0, paddingRight: 0 }, width: this.state.sidebarOpen ? 13 : 16 },
                         _react2.default.createElement(NavigationBar, { style: { paddingLeft: 0 }, hide: this.hideSidebar, right: right, left: left }),
-                        _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             'div',
                             { style: { paddingRight: 20, paddingLeft: 15 } },
@@ -1871,7 +1870,7 @@ exports.getCourse = getCourse;
 exports.getCourseProjectList = getCourseProjectList;
 exports.getCourseAnnouncementList = getCourseAnnouncementList;
 
-var _communicationController = __webpack_require__(52);
+var _communicationController = __webpack_require__(53);
 
 var _index = __webpack_require__(16);
 
@@ -1897,18 +1896,24 @@ function getCourseAnnouncementList(courseId, token, responseFunc) {
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("fbjs/lib/emptyObject");
+module.exports = __webpack_require__.p + "loopcakeWhiteLogoWithText.svg?5a4f08fe673e24a06ece825d23f477ea";
 
 /***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux");
+module.exports = require("fbjs/lib/emptyObject");
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1933,7 +1938,7 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 module.exports = REACT_ELEMENT_TYPE;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1963,7 +1968,7 @@ var ReactElement = __webpack_require__(8);
 var checkReactTypeSpec = __webpack_require__(71);
 
 var canDefineProperty = __webpack_require__(15);
-var getIteratorFn = __webpack_require__(34);
+var getIteratorFn = __webpack_require__(35);
 var warning = __webpack_require__(7);
 
 function getDeclarationErrorAddendum() {
@@ -2191,7 +2196,7 @@ var ReactElementValidator = {
 module.exports = ReactElementValidator;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2221,7 +2226,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = ReactPropTypeLocationNames;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2267,7 +2272,7 @@ function getIteratorFn(maybeIterable) {
 module.exports = getIteratorFn;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2284,7 +2289,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2347,7 +2352,7 @@ AttachmentList.propTypes = {
 };
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2491,7 +2496,7 @@ CourseHeader.propTypes = {
 };
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2510,7 +2515,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _ListComponents = __webpack_require__(41);
+var _ListComponents = __webpack_require__(42);
 
 var _card = __webpack_require__(6);
 
@@ -2573,7 +2578,7 @@ ProjectCard.propTypes = {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2591,7 +2596,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _passwordMeter = __webpack_require__(40);
+var _passwordMeter = __webpack_require__(41);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -2668,7 +2673,7 @@ FormInput.defaultProps = {
 exports.default = FormInput;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2684,7 +2689,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _zxcvbn = __webpack_require__(134);
+var _zxcvbn = __webpack_require__(133);
 
 var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
@@ -2715,13 +2720,13 @@ PasswordMeter.propTypes = {
 exports.default = PasswordMeter;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _listItem = __webpack_require__(42);
+var _listItem = __webpack_require__(43);
 
 var _list = __webpack_require__(13);
 
@@ -2736,7 +2741,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2824,7 +2829,7 @@ ListItem.propTypes = {
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2906,33 +2911,33 @@ ButtonMenuItem.defaultProps = {
 exports.default = ButtonMenuItem;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _buttonMenuItem = __webpack_require__(43);
+var _buttonMenuItem = __webpack_require__(44);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _linkMenuItem = __webpack_require__(45);
+var _linkMenuItem = __webpack_require__(46);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _subMenu = __webpack_require__(48);
+var _subMenu = __webpack_require__(49);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
-var _subMenuItem = __webpack_require__(49);
+var _subMenuItem = __webpack_require__(50);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
-var _menu = __webpack_require__(46);
+var _menu = __webpack_require__(47);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _menuItem = __webpack_require__(47);
+var _menuItem = __webpack_require__(48);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -2947,7 +2952,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3015,7 +3020,7 @@ LinkMenuItem.propTypes = {
 };
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3037,7 +3042,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _menuItem = __webpack_require__(47);
+var _menuItem = __webpack_require__(48);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -3067,7 +3072,7 @@ var _Menu = function (_React$Component) {
                 _react2.default.createElement(
                     _semanticUiReact.Menu.Item,
                     null,
-                    _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(54) })
+                    _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(29) })
                 ),
                 this.props.items.map(function (item) {
                     return _react2.default.createElement(_menuItem2.default, {
@@ -3097,7 +3102,7 @@ _Menu.propTypes = {
 exports.default = _Menu;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3117,15 +3122,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _linkMenuItem = __webpack_require__(45);
+var _linkMenuItem = __webpack_require__(46);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _buttonMenuItem = __webpack_require__(43);
+var _buttonMenuItem = __webpack_require__(44);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _subMenuItem = __webpack_require__(49);
+var _subMenuItem = __webpack_require__(50);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
@@ -3175,7 +3180,7 @@ MenuItem.propTypes = {
 exports.default = MenuItem;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3245,7 +3250,7 @@ SubMenu.propTypes = {
 };
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3267,7 +3272,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _subMenu = __webpack_require__(48);
+var _subMenu = __webpack_require__(49);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
@@ -3322,7 +3327,7 @@ SubMenuItem.propTypes = {
 exports.default = SubMenuItem;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3383,7 +3388,7 @@ UserList.propTypes = {
 };
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3397,7 +3402,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _reactRedux = __webpack_require__(5);
 
-var _LoginPage = __webpack_require__(53);
+var _LoginPage = __webpack_require__(54);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -3425,7 +3430,7 @@ var VisibleLoginPage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(ma
 exports.default = VisibleLoginPage;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3437,7 +3442,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.post = post;
 exports.get = get;
 
-var _superagent = __webpack_require__(133);
+var _superagent = __webpack_require__(132);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -3456,7 +3461,7 @@ function get(api, getData, respFunc, token) {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3556,7 +3561,7 @@ var LoginPage = function (_React$Component) {
                     _react2.default.createElement(
                         _semanticUiReact.Grid.Column,
                         { width: 5 },
-                        _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(54) }),
+                        _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(29) }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             _semanticUiReact.Card,
@@ -3591,12 +3596,6 @@ LoginPage.propTypes = {
 ;
 
 exports.default = LoginPage;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "loopcakeWhiteLogoWithText.svg?5a4f08fe673e24a06ece825d23f477ea";
 
 /***/ }),
 /* 55 */
@@ -3674,7 +3673,7 @@ Object.defineProperty(exports, "__esModule", {
    value: true
 });
 
-var _redux = __webpack_require__(30);
+var _redux = __webpack_require__(31);
 
 var _userReducer = __webpack_require__(108);
 
@@ -3944,7 +3943,7 @@ var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
   var canDefineProperty = __webpack_require__(15);
-  var ReactElementValidator = __webpack_require__(32);
+  var ReactElementValidator = __webpack_require__(33);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
   createFactory = ReactElementValidator.createFactory;
@@ -4036,7 +4035,7 @@ module.exports = React;
 var PooledClass = __webpack_require__(62);
 var ReactElement = __webpack_require__(8);
 
-var emptyFunction = __webpack_require__(129);
+var emptyFunction = __webpack_require__(128);
 var traverseAllChildren = __webpack_require__(73);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
@@ -4234,10 +4233,10 @@ var _prodInvariant = __webpack_require__(9),
 
 var ReactComponent = __webpack_require__(19);
 var ReactElement = __webpack_require__(8);
-var ReactPropTypeLocationNames = __webpack_require__(33);
+var ReactPropTypeLocationNames = __webpack_require__(34);
 var ReactNoopUpdateQueue = __webpack_require__(21);
 
-var emptyObject = __webpack_require__(29);
+var emptyObject = __webpack_require__(30);
 var invariant = __webpack_require__(10);
 var warning = __webpack_require__(7);
 
@@ -4966,7 +4965,7 @@ var ReactElement = __webpack_require__(8);
  */
 var createDOMFactory = ReactElement.createFactory;
 if (process.env.NODE_ENV !== 'production') {
-  var ReactElementValidator = __webpack_require__(32);
+  var ReactElementValidator = __webpack_require__(33);
   createDOMFactory = ReactElementValidator.createFactory;
 }
 
@@ -5135,7 +5134,7 @@ module.exports = ReactDOMFactories;
 var _require = __webpack_require__(8),
     isValidElement = _require.isValidElement;
 
-var factory = __webpack_require__(130);
+var factory = __webpack_require__(129);
 
 module.exports = factory(isValidElement);
 
@@ -5183,7 +5182,7 @@ var _assign = __webpack_require__(17);
 var ReactComponent = __webpack_require__(19);
 var ReactNoopUpdateQueue = __webpack_require__(21);
 
-var emptyObject = __webpack_require__(29);
+var emptyObject = __webpack_require__(30);
 
 /**
  * Base class helpers for the updating state of a component.
@@ -5246,7 +5245,7 @@ module.exports = '15.5.4';
 
 var _prodInvariant = __webpack_require__(9);
 
-var ReactPropTypeLocationNames = __webpack_require__(33);
+var ReactPropTypeLocationNames = __webpack_require__(34);
 var ReactPropTypesSecret = __webpack_require__(68);
 
 var invariant = __webpack_require__(10);
@@ -5382,9 +5381,9 @@ module.exports = onlyChild;
 var _prodInvariant = __webpack_require__(9);
 
 var ReactCurrentOwner = __webpack_require__(14);
-var REACT_ELEMENT_TYPE = __webpack_require__(31);
+var REACT_ELEMENT_TYPE = __webpack_require__(32);
 
-var getIteratorFn = __webpack_require__(34);
+var getIteratorFn = __webpack_require__(35);
 var invariant = __webpack_require__(10);
 var KeyEscapeUtils = __webpack_require__(61);
 var warning = __webpack_require__(7);
@@ -5867,7 +5866,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _attachmentList = __webpack_require__(36);
+var _attachmentList = __webpack_require__(37);
 
 var _semanticUiReact = __webpack_require__(2);
 
@@ -6021,7 +6020,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _attachmentList = __webpack_require__(36);
+var _attachmentList = __webpack_require__(37);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6107,7 +6106,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListComponents = __webpack_require__(41);
+var _ListComponents = __webpack_require__(42);
 
 var _card = __webpack_require__(6);
 
@@ -6857,7 +6856,7 @@ var _calendarCard = __webpack_require__(82);
 
 var _calendarCard2 = _interopRequireDefault(_calendarCard);
 
-var _ProjectCard = __webpack_require__(38);
+var _ProjectCard = __webpack_require__(39);
 
 var _gradeCard = __webpack_require__(90);
 
@@ -6867,7 +6866,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _courseHeader = __webpack_require__(37);
+var _courseHeader = __webpack_require__(38);
 
 var _courseHeader2 = _interopRequireDefault(_courseHeader);
 
@@ -7050,7 +7049,7 @@ var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _userList = __webpack_require__(50);
+var _userList = __webpack_require__(51);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7116,7 +7115,7 @@ var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _userList = __webpack_require__(50);
+var _userList = __webpack_require__(51);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7207,7 +7206,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _courseHeader = __webpack_require__(37);
+var _courseHeader = __webpack_require__(38);
 
 var _courseHeader2 = _interopRequireDefault(_courseHeader);
 
@@ -7269,7 +7268,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _formInput = __webpack_require__(39);
+var _formInput = __webpack_require__(40);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
@@ -7407,7 +7406,7 @@ var _app = __webpack_require__(27);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(44);
+var _MenuComponents = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7455,7 +7454,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCodemirror = __webpack_require__(131);
+var _reactCodemirror = __webpack_require__(130);
 
 var _reactCodemirror2 = _interopRequireDefault(_reactCodemirror);
 
@@ -7585,11 +7584,11 @@ var CodeEditor = function (_React$Component) {
 
 function initCodemirror(window) {
     if (!window.CodeMirror) {
-        __webpack_require__(126);
-        window.CodeMirror = __webpack_require__(125);
+        __webpack_require__(125);
+        window.CodeMirror = __webpack_require__(124);
         //require ('node_modules/codemirror/addon/mode/loadmode.js');
+        __webpack_require__(126);
         __webpack_require__(127);
-        __webpack_require__(128);
         __webpack_require__(118);
     }
 }
@@ -7619,7 +7618,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGitgraph = __webpack_require__(132);
+var _reactGitgraph = __webpack_require__(131);
 
 var _reactGitgraph2 = _interopRequireDefault(_reactGitgraph);
 
@@ -7734,11 +7733,11 @@ var _app = __webpack_require__(27);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(44);
+var _MenuComponents = __webpack_require__(45);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _menu = __webpack_require__(46);
+var _menu = __webpack_require__(47);
 
 var _menu2 = _interopRequireDefault(_menu);
 
@@ -7864,7 +7863,7 @@ var _routes = __webpack_require__(18);
 
 var _reactCookie = __webpack_require__(4);
 
-var _visibleLoginPage = __webpack_require__(51);
+var _visibleLoginPage = __webpack_require__(52);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
@@ -8338,7 +8337,7 @@ exports.default = VisibleHomePage;
 "use strict";
 
 
-var _communicationController = __webpack_require__(52);
+var _communicationController = __webpack_require__(53);
 
 var _database = __webpack_require__(16);
 
@@ -8379,7 +8378,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(35);
+var _actions = __webpack_require__(36);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -8445,7 +8444,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(35);
+var _actions = __webpack_require__(36);
 
 var INITIAL_STATE = {};
 
@@ -8488,7 +8487,7 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _views = __webpack_require__(12);
 
-var _visibleLoginPage = __webpack_require__(51);
+var _visibleLoginPage = __webpack_require__(52);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
@@ -8554,7 +8553,7 @@ var _template2 = _interopRequireDefault(_template);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _redux = __webpack_require__(30);
+var _redux = __webpack_require__(31);
 
 var _reactRedux = __webpack_require__(5);
 
@@ -8698,7 +8697,7 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _ProjectCard = __webpack_require__(38);
+var _ProjectCard = __webpack_require__(39);
 
 var _detailsCard = __webpack_require__(92);
 
@@ -8987,7 +8986,7 @@ var RegisterPage = function RegisterPage() {
             _react2.default.createElement(
                 _semanticUiReact.Grid.Column,
                 { width: 5 },
-                _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(54) }),
+                _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(29) }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     _semanticUiReact.Card,
@@ -9651,8 +9650,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 121 */,
-/* 122 */
+/* 121 */
 /***/ (function(module, exports) {
 
 module.exports= {
@@ -9662,7 +9660,7 @@ module.exports= {
 };
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -9671,7 +9669,7 @@ module.exports = {
 
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -9680,61 +9678,61 @@ module.exports = {
 
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror");
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/lib/codemirror.css");
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/mode/meta.js");
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/theme/rubyblue.css");
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports) {
 
 module.exports = require("fbjs/lib/emptyFunction");
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types/factory");
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-codemirror");
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-gitgraph");
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = require("superagent");
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
