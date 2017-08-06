@@ -23,7 +23,7 @@ class ButtonMenuItem extends React.Component{
     render(){
         return(
             <Menu.Item>
-                <Icon size="large" name={this.state.first ? this.props.iconFirst : this.props.iconSecond} onClick={this.handleClick}/>
+                <Icon color="blue" size="large" name={this.state.first ? this.props.iconFirst : this.props.iconSecond} onClick={this.handleClick}/>
             </Menu.Item>
         );
     }

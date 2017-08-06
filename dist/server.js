@@ -285,7 +285,7 @@ module.exports = require("fbjs/lib/warning");
 
 
 
-var _assign = __webpack_require__(17);
+var _assign = __webpack_require__(18);
 
 var ReactCurrentOwner = __webpack_require__(14);
 
@@ -678,7 +678,7 @@ exports.loginAction = loginAction;
 exports.tokenAction = tokenAction;
 exports.logoutAction = logoutAction;
 
-var _types = __webpack_require__(23);
+var _types = __webpack_require__(24);
 
 function loginAction(user, token) {
 	return {
@@ -891,6 +891,33 @@ module.exports = canDefineProperty;
 "use strict";
 
 
+var _colors = __webpack_require__(121);
+
+var _colors2 = _interopRequireDefault(_colors);
+
+var _strings = __webpack_require__(123);
+
+var _strings2 = _interopRequireDefault(_strings);
+
+var _placeholders = __webpack_require__(122);
+
+var _placeholders2 = _interopRequireDefault(_placeholders);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
+    colors: _colors2.default,
+    strings: _strings2.default,
+    placeholders: _placeholders2.default
+};
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -911,13 +938,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("object-assign");
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -934,7 +961,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -952,7 +979,7 @@ module.exports = {
 
 var _prodInvariant = __webpack_require__(9);
 
-var ReactNoopUpdateQueue = __webpack_require__(21);
+var ReactNoopUpdateQueue = __webpack_require__(22);
 
 var canDefineProperty = __webpack_require__(15);
 var emptyObject = __webpack_require__(30);
@@ -1057,7 +1084,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = ReactComponent;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1396,7 +1423,7 @@ var ReactComponentTreeHook = {
 module.exports = ReactComponentTreeHook;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1497,7 +1524,7 @@ var ReactNoopUpdateQueue = {
 module.exports = ReactNoopUpdateQueue;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1512,7 +1539,7 @@ exports.courseAttendedAction = courseAttendedAction;
 exports.courseProjectListAction = courseProjectListAction;
 exports.courseAnnouncementListAction = courseAnnouncementListAction;
 
-var _types = __webpack_require__(23);
+var _types = __webpack_require__(24);
 
 function courseSummaryAction(course) {
   return {
@@ -1552,7 +1579,7 @@ function courseAnnouncementListAction(courseId, announcements) {
 }
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1570,7 +1597,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1667,7 +1694,7 @@ AnnouncementCard.propTypes = {
 exports.default = AnnouncementCard;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1689,33 +1716,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = {
     Form: _form2.default, FormInput: _formInput2.default, PasswordMeter: _passwordMeter2.default
-};
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _colors = __webpack_require__(121);
-
-var _colors2 = _interopRequireDefault(_colors);
-
-var _strings = __webpack_require__(123);
-
-var _strings2 = _interopRequireDefault(_strings);
-
-var _placeholders = __webpack_require__(122);
-
-var _placeholders2 = _interopRequireDefault(_placeholders);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = {
-    colors: _colors2.default,
-    strings: _strings2.default,
-    placeholders: _placeholders2.default
 };
 
 /***/ }),
@@ -1872,7 +1872,7 @@ exports.getCourseAnnouncementList = getCourseAnnouncementList;
 
 var _communicationController = __webpack_require__(53);
 
-var _index = __webpack_require__(16);
+var _index = __webpack_require__(17);
 
 function getAttendedCourses(userId, token, responseFunc) {
     (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
@@ -1962,7 +1962,7 @@ module.exports = REACT_ELEMENT_TYPE;
 
 
 var ReactCurrentOwner = __webpack_require__(14);
-var ReactComponentTreeHook = __webpack_require__(20);
+var ReactComponentTreeHook = __webpack_require__(21);
 var ReactElement = __webpack_require__(8);
 
 var checkReactTypeSpec = __webpack_require__(71);
@@ -2278,7 +2278,7 @@ module.exports = getIteratorFn;
 "use strict";
 
 
-var _types = __webpack_require__(23);
+var _types = __webpack_require__(24);
 
 var _types2 = _interopRequireDefault(_types);
 
@@ -2370,7 +2370,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _constants = __webpack_require__(26);
+var _constants = __webpack_require__(16);
 
 var _propTypes = __webpack_require__(1);
 
@@ -2693,7 +2693,7 @@ var _zxcvbn = __webpack_require__(133);
 
 var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
-var _constants = __webpack_require__(26);
+var _constants = __webpack_require__(16);
 
 var _propTypes = __webpack_require__(1);
 
@@ -2890,7 +2890,7 @@ var ButtonMenuItem = function (_React$Component) {
             return _react2.default.createElement(
                 _semanticUiReact.Menu.Item,
                 null,
-                _react2.default.createElement(_semanticUiReact.Icon, { size: 'large', name: this.state.first ? this.props.iconFirst : this.props.iconSecond, onClick: this.handleClick })
+                _react2.default.createElement(_semanticUiReact.Icon, { color: 'blue', size: 'large', name: this.state.first ? this.props.iconFirst : this.props.iconSecond, onClick: this.handleClick })
             );
         }
     }]);
@@ -2976,6 +2976,8 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _semanticUiReact = __webpack_require__(2);
 
+var _constants = __webpack_require__(16);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3001,7 +3003,7 @@ var LinkMenuItem = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: this.props.destination },
+                    { style: { color: _constants.colors.linkColor }, to: this.props.destination },
                     this.props.title
                 )
             );
@@ -3479,11 +3481,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(25);
+var _FormComponents = __webpack_require__(26);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(16);
+var _database = __webpack_require__(17);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -3622,7 +3624,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(18);
+var _routes = __webpack_require__(19);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -3923,10 +3925,10 @@ module.exports = PooledClass;
 
 
 
-var _assign = __webpack_require__(17);
+var _assign = __webpack_require__(18);
 
 var ReactChildren = __webpack_require__(64);
-var ReactComponent = __webpack_require__(19);
+var ReactComponent = __webpack_require__(20);
 var ReactPureComponent = __webpack_require__(69);
 var ReactClass = __webpack_require__(65);
 var ReactDOMFactories = __webpack_require__(66);
@@ -4229,12 +4231,12 @@ module.exports = ReactChildren;
 
 
 var _prodInvariant = __webpack_require__(9),
-    _assign = __webpack_require__(17);
+    _assign = __webpack_require__(18);
 
-var ReactComponent = __webpack_require__(19);
+var ReactComponent = __webpack_require__(20);
 var ReactElement = __webpack_require__(8);
 var ReactPropTypeLocationNames = __webpack_require__(34);
-var ReactNoopUpdateQueue = __webpack_require__(21);
+var ReactNoopUpdateQueue = __webpack_require__(22);
 
 var emptyObject = __webpack_require__(30);
 var invariant = __webpack_require__(10);
@@ -5177,10 +5179,10 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _assign = __webpack_require__(17);
+var _assign = __webpack_require__(18);
 
-var ReactComponent = __webpack_require__(19);
-var ReactNoopUpdateQueue = __webpack_require__(21);
+var ReactComponent = __webpack_require__(20);
+var ReactNoopUpdateQueue = __webpack_require__(22);
 
 var emptyObject = __webpack_require__(30);
 
@@ -5259,7 +5261,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(20);
+  ReactComponentTreeHook = __webpack_require__(21);
 }
 
 var loggedTypeFailures = {};
@@ -5301,7 +5303,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(20);
+            ReactComponentTreeHook = __webpack_require__(21);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -6846,11 +6848,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _announcementCard = __webpack_require__(24);
+var _announcementCard = __webpack_require__(25);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
-var _constants = __webpack_require__(26);
+var _constants = __webpack_require__(16);
 
 var _calendarCard = __webpack_require__(82);
 
@@ -7812,7 +7814,7 @@ exports.default = SidebarMenu;
 "use strict";
 
 
-var _FormComponents = __webpack_require__(25);
+var _FormComponents = __webpack_require__(26);
 
 var _FormComponents2 = _interopRequireDefault(_FormComponents);
 
@@ -7859,7 +7861,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(18);
+var _routes = __webpack_require__(19);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -7979,7 +7981,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(22);
+var _course2 = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8126,7 +8128,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(22);
+var _course2 = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8255,7 +8257,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(22);
+var _course2 = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8339,7 +8341,7 @@ exports.default = VisibleHomePage;
 
 var _communicationController = __webpack_require__(53);
 
-var _database = __webpack_require__(16);
+var _database = __webpack_require__(17);
 
 function Login(formData, respFunc) {
 
@@ -8561,7 +8563,7 @@ var _reducers = __webpack_require__(56);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _routes = __webpack_require__(18);
+var _routes = __webpack_require__(19);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -8636,7 +8638,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _announcementCard = __webpack_require__(24);
+var _announcementCard = __webpack_require__(25);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
@@ -8705,7 +8707,7 @@ var _profileCard = __webpack_require__(93);
 
 var _profileCard2 = _interopRequireDefault(_profileCard);
 
-var _announcementCard = __webpack_require__(24);
+var _announcementCard = __webpack_require__(25);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
@@ -8927,11 +8929,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(25);
+var _FormComponents = __webpack_require__(26);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(16);
+var _database = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9656,7 +9658,8 @@ module.exports = function (css) {
 module.exports= {
   passwordColors: [
       "red","orange","yellow","olive","green"
-  ]
+  ],
+  linkColor: "#2c3e50"
 };
 
 /***/ }),
