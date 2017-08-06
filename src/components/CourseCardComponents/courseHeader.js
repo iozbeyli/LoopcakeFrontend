@@ -16,14 +16,16 @@ export default class CourseHeader extends React.Component{
     _getDetail() {
 		if (this.props.course) {
             const course = this.props.course;
-            let str = "";
-            for (let i = 0; i < course.instructors.length; ++i) {
-                let ins = course.instructors[i];
-                str += ins.name + " " + ins.surname;
-                if (i!=course.instructors.length) {
-                    str += "\n";
-                }
-            }
+			let str = "";
+			if(this.props.course.instructors){
+				for (let i = 0; i < course.instructors.length; ++i) {
+                	let ins = course.instructors[i];
+                	str += ins.name + " " + ins.surname;
+                	if (i!=course.instructors.length) {
+                    	str += "\n";
+                	}
+            	}
+			}
 			return str;
 		}
     }

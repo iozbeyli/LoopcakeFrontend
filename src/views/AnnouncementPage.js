@@ -16,7 +16,7 @@ class AnnouncementPage extends React.Component{
 
     render(){
         return(
-            <AnnouncementCard announcements={this.state.announcements}/>
+            <AnnouncementCard announcements={this.props.announcements}/>
         );
     }
 

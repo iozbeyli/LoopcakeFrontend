@@ -60,12 +60,7 @@ const SidebarMenu = () => {
         ];
 
     return(
-        <Card fluid raised>
-            <Card.Content>
-                <Menu props={{vertical:true,fluid:true,secondary:true}} items={menuItems}/>
-            </Card.Content>
-        </Card>
-
+        <Menu props={{inverted:true,vertical:true,fluid:true,color:'blue'}} items={menuItems}/>
     );
 
 };

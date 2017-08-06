@@ -14,6 +14,7 @@ const _Header = ({title}) => (
 
 export const DetailsCard = (props) => (
     <Card
+        icon="info"
         title="Details"
         content={
         <Grid>

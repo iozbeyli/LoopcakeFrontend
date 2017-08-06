@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 102);
+/******/ 	return __webpack_require__(__webpack_require__.s = 110);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,6 +92,18 @@ module.exports = require("react-router-dom");
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-cookie");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -115,7 +127,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _cardModal = __webpack_require__(79);
+var _cardModal = __webpack_require__(83);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -251,7 +263,13 @@ _Card.propTypes = {
 exports.default = _Card;
 
 /***/ }),
-/* 5 */
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("fbjs/lib/warning");
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -267,15 +285,15 @@ exports.default = _Card;
 
 
 
-var _assign = __webpack_require__(23);
+var _assign = __webpack_require__(17);
 
-var ReactCurrentOwner = __webpack_require__(12);
+var ReactCurrentOwner = __webpack_require__(14);
 
-var warning = __webpack_require__(10);
-var canDefineProperty = __webpack_require__(13);
+var warning = __webpack_require__(7);
+var canDefineProperty = __webpack_require__(15);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-var REACT_ELEMENT_TYPE = __webpack_require__(26);
+var REACT_ELEMENT_TYPE = __webpack_require__(31);
 
 var RESERVED_PROPS = {
   key: true,
@@ -597,19 +615,7 @@ ReactElement.isValidElement = function (object) {
 module.exports = ReactElement;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-cookie");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -653,19 +659,86 @@ function reactProdInvariant(code) {
 module.exports = reactProdInvariant;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("fbjs/lib/invariant");
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("fbjs/lib/warning");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.loginAction = loginAction;
+exports.tokenAction = tokenAction;
+exports.logoutAction = logoutAction;
+
+var _types = __webpack_require__(23);
+
+function loginAction(user, token) {
+	return {
+		type: _types.LOGIN,
+		token: token,
+		user: user
+	};
+}
+
+function tokenAction(user, token) {
+	return {
+		type: _types.TOKEN,
+		token: token,
+		user: user
+	};
+}
+
+function logoutAction() {
+	return {
+		type: LOGOUT
+	};
+}
 
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _HomePage = __webpack_require__(113);
+
+var _HomePage2 = _interopRequireDefault(_HomePage);
+
+var _LoginPage = __webpack_require__(53);
+
+var _LoginPage2 = _interopRequireDefault(_LoginPage);
+
+var _RegisterPage = __webpack_require__(114);
+
+var _RegisterPage2 = _interopRequireDefault(_RegisterPage);
+
+var _AnnouncementPage = __webpack_require__(111);
+
+var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
+
+var _CoursePage = __webpack_require__(112);
+
+var _CoursePage2 = _interopRequireDefault(_CoursePage);
+
+var _RepoPage = __webpack_require__(115);
+
+var _RepoPage2 = _interopRequireDefault(_RepoPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = { Home: _HomePage2.default, Login: _LoginPage2.default, AnnouncementPage: _AnnouncementPage2.default, CoursePage: _CoursePage2.default, RepoPage: _RepoPage2.default, Register: _RegisterPage2.default };
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -689,7 +762,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _listItem = __webpack_require__(36);
+var _listItem = __webpack_require__(42);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -745,7 +818,7 @@ _List.propTypes = {
 exports.default = _List;
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -769,17 +842,19 @@ exports.default = _List;
  * currently being constructed.
  */
 var ReactCurrentOwner = {
+
   /**
    * @internal
    * @type {ReactComponent}
    */
   current: null
+
 };
 
 module.exports = ReactCurrentOwner;
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -810,13 +885,40 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = canDefineProperty;
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _appRoutes = __webpack_require__(101);
+var _authentication = __webpack_require__(106);
+
+var _authentication2 = _interopRequireDefault(_authentication);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var API_URL = "http://loopcake.com:5567";
+//export const API_URL = "http://172.20.120.133:5567";
+
+module.exports = {
+    Authentication: _authentication2.default,
+    API_URL: API_URL
+};
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("object-assign");
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _appRoutes = __webpack_require__(109);
 
 var _appRoutes2 = _interopRequireDefault(_appRoutes);
 
@@ -827,7 +929,130 @@ module.exports = {
 };
 
 /***/ }),
-/* 15 */
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+
+
+var _prodInvariant = __webpack_require__(9);
+
+var ReactNoopUpdateQueue = __webpack_require__(21);
+
+var canDefineProperty = __webpack_require__(15);
+var emptyObject = __webpack_require__(29);
+var invariant = __webpack_require__(10);
+var warning = __webpack_require__(7);
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactComponent(props, context, updater) {
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+ReactComponent.prototype.isReactComponent = {};
+
+/**
+ * Sets a subset of the state. Always use this to mutate
+ * state. You should treat `this.state` as immutable.
+ *
+ * There is no guarantee that `this.state` will be immediately updated, so
+ * accessing `this.state` after calling this method may return the old value.
+ *
+ * There is no guarantee that calls to `setState` will run synchronously,
+ * as they may eventually be batched together.  You can provide an optional
+ * callback that will be executed when the call to setState is actually
+ * completed.
+ *
+ * When a function is provided to setState, it will be called at some point in
+ * the future (not synchronously). It will be called with the up to date
+ * component arguments (state, props, context). These values can be different
+ * from this.* because your function may be called after receiveProps but before
+ * shouldComponentUpdate, and this new state, props, and context will not yet be
+ * assigned to this.
+ *
+ * @param {object|function} partialState Next partial state or function to
+ *        produce next partial state to be merged with current state.
+ * @param {?function} callback Called after state is updated.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.setState = function (partialState, callback) {
+  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+
+/**
+ * Forces an update. This should only be invoked when it is known with
+ * certainty that we are **not** in a DOM transaction.
+ *
+ * You may want to call this when you know that some deeper aspect of the
+ * component's state has changed but `setState` was not called.
+ *
+ * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * `componentWillUpdate` and `componentDidUpdate`.
+ *
+ * @param {?function} callback Called after update is complete.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.forceUpdate = function (callback) {
+  this.updater.enqueueForceUpdate(this);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'forceUpdate');
+  }
+};
+
+/**
+ * Deprecated APIs. These APIs used to exist on classic React classes but since
+ * we would like to deprecate them, we're not going to move them over to this
+ * modern base class. Instead, we define a getter that warns if it's accessed.
+ */
+if (process.env.NODE_ENV !== 'production') {
+  var deprecatedAPIs = {
+    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+  };
+  var defineDeprecationWarning = function (methodName, info) {
+    if (canDefineProperty) {
+      Object.defineProperty(ReactComponent.prototype, methodName, {
+        get: function () {
+          process.env.NODE_ENV !== 'production' ? warning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]) : void 0;
+          return undefined;
+        }
+      });
+    }
+  };
+  for (var fnName in deprecatedAPIs) {
+    if (deprecatedAPIs.hasOwnProperty(fnName)) {
+      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+    }
+  }
+}
+
+module.exports = ReactComponent;
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -844,12 +1069,12 @@ module.exports = {
 
 
 
-var _prodInvariant = __webpack_require__(8);
+var _prodInvariant = __webpack_require__(9);
 
-var ReactCurrentOwner = __webpack_require__(12);
+var ReactCurrentOwner = __webpack_require__(14);
 
-var invariant = __webpack_require__(9);
-var warning = __webpack_require__(10);
+var invariant = __webpack_require__(10);
+var warning = __webpack_require__(7);
 
 function isNative(fn) {
   // Based on isNative() from Lodash
@@ -857,11 +1082,11 @@ function isNative(fn) {
   var hasOwnProperty = Object.prototype.hasOwnProperty;
   var reIsNative = RegExp('^' + funcToString
   // Take an example native function source for comparison
-  .call(hasOwnProperty
+  .call(hasOwnProperty)
   // Strip regex characters so we can use it for regex
-  ).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'
+  .replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
   // Remove hasOwnProperty from the template to make it generic
-  ).replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
   try {
     var source = funcToString.call(fn);
     return reIsNative.test(source);
@@ -1160,63 +1385,18 @@ var ReactComponentTreeHook = {
 
 
   getRootIDs: getRootIDs,
-  getRegisteredIDs: getItemIDs,
-
-  pushNonStandardWarningStack: function (isCreatingElement, currentSource) {
-    if (typeof console.reactStack !== 'function') {
-      return;
-    }
-
-    var stack = [];
-    var currentOwner = ReactCurrentOwner.current;
-    var id = currentOwner && currentOwner._debugID;
-
-    try {
-      if (isCreatingElement) {
-        stack.push({
-          name: id ? ReactComponentTreeHook.getDisplayName(id) : null,
-          fileName: currentSource ? currentSource.fileName : null,
-          lineNumber: currentSource ? currentSource.lineNumber : null
-        });
-      }
-
-      while (id) {
-        var element = ReactComponentTreeHook.getElement(id);
-        var parentID = ReactComponentTreeHook.getParentID(id);
-        var ownerID = ReactComponentTreeHook.getOwnerID(id);
-        var ownerName = ownerID ? ReactComponentTreeHook.getDisplayName(ownerID) : null;
-        var source = element && element._source;
-        stack.push({
-          name: ownerName,
-          fileName: source ? source.fileName : null,
-          lineNumber: source ? source.lineNumber : null
-        });
-        id = parentID;
-      }
-    } catch (err) {
-      // Internal state is messed up.
-      // Stop building the stack (it's just a nice to have).
-    }
-
-    console.reactStack(stack);
-  },
-  popNonStandardWarningStack: function () {
-    if (typeof console.reactStackEnd !== 'function') {
-      return;
-    }
-    console.reactStackEnd();
-  }
+  getRegisteredIDs: getItemIDs
 };
 
 module.exports = ReactComponentTreeHook;
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /**
- * Copyright 2014-2015, Facebook, Inc.
+ * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -1227,99 +1407,156 @@ module.exports = ReactComponentTreeHook;
 
 
 
-/**
- * Forked from fbjs/warning:
- * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
- *
- * Only change is we use console.warn instead of console.error,
- * and do nothing when 'console' is not supported.
- * This really simplifies the code.
- * ---
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
+var warning = __webpack_require__(7);
 
-var lowPriorityWarning = function () {};
-
-if (process.env.NODE_ENV !== 'production') {
-  var printWarning = function (format) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-    if (typeof console !== 'undefined') {
-      console.warn(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  lowPriorityWarning = function (condition, format) {
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-    if (!condition) {
-      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(undefined, [format].concat(args));
-    }
-  };
+function warnNoop(publicInstance, callerName) {
+  if (process.env.NODE_ENV !== 'production') {
+    var constructor = publicInstance.constructor;
+    process.env.NODE_ENV !== 'production' ? warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
+  }
 }
 
-module.exports = lowPriorityWarning;
+/**
+ * This is the abstract API for an update queue.
+ */
+var ReactNoopUpdateQueue = {
+
+  /**
+   * Checks whether or not this composite component is mounted.
+   * @param {ReactClass} publicInstance The instance we want to test.
+   * @return {boolean} True if mounted, false otherwise.
+   * @protected
+   * @final
+   */
+  isMounted: function (publicInstance) {
+    return false;
+  },
+
+  /**
+   * Enqueue a callback that will be executed after all the pending updates
+   * have processed.
+   *
+   * @param {ReactClass} publicInstance The instance to use as `this` context.
+   * @param {?function} callback Called after state is updated.
+   * @internal
+   */
+  enqueueCallback: function (publicInstance, callback) {},
+
+  /**
+   * Forces an update. This should only be invoked when it is known with
+   * certainty that we are **not** in a DOM transaction.
+   *
+   * You may want to call this when you know that some deeper aspect of the
+   * component's state has changed but `setState` was not called.
+   *
+   * This will not invoke `shouldComponentUpdate`, but it will invoke
+   * `componentWillUpdate` and `componentDidUpdate`.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @internal
+   */
+  enqueueForceUpdate: function (publicInstance) {
+    warnNoop(publicInstance, 'forceUpdate');
+  },
+
+  /**
+   * Replaces all of the state. Always use this or `setState` to mutate state.
+   * You should treat `this.state` as immutable.
+   *
+   * There is no guarantee that `this.state` will be immediately updated, so
+   * accessing `this.state` after calling this method may return the old value.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} completeState Next state.
+   * @internal
+   */
+  enqueueReplaceState: function (publicInstance, completeState) {
+    warnNoop(publicInstance, 'replaceState');
+  },
+
+  /**
+   * Sets a subset of the state. This only exists because _pendingState is
+   * internal. This provides a merging strategy that is not available to deep
+   * properties which is confusing. TODO: Expose pendingState or don't use it
+   * during the merge.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} partialState Next partial state to be merged with state.
+   * @internal
+   */
+  enqueueSetState: function (publicInstance, partialState) {
+    warnNoop(publicInstance, 'setState');
+  }
+};
+
+module.exports = ReactNoopUpdateQueue;
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
-exports.loginAction = loginAction;
-exports.tokenAction = tokenAction;
-exports.logoutAction = logoutAction;
+exports.courseSummaryAction = courseSummaryAction;
+exports.courseAction = courseAction;
+exports.courseProjectListAction = courseProjectListAction;
+exports.courseAnnouncementListAction = courseAnnouncementListAction;
 
-var _types = __webpack_require__(30);
+var _types = __webpack_require__(23);
 
-function loginAction(user, token) {
-	return {
-		type: _types.LOGIN,
-		token: token,
-		user: user
-	};
+function courseSummaryAction(course) {
+  return {
+    type: _types.GET_COURSE_SUMMARY,
+    course: course
+  };
 }
 
-function tokenAction(user, token) {
-	return {
-		type: _types.TOKEN,
-		token: token,
-		user: user
-	};
+function courseAction(course) {
+  return {
+    type: _types.GET_COURSE,
+    course: course
+  };
 }
 
-function logoutAction() {
-	return {
-		type: LOGOUT
-	};
+function courseProjectListAction(courseId, projectList) {
+  return {
+    type: _types.GET_COURSE_PROJECT_LIST,
+    projects: projectList,
+    courseId: courseId
+  };
+}
+
+function courseAnnouncementListAction(courseId, announcements) {
+  return {
+    type: _types.GET_COURSE_ANNOUNCEMENT_LIST,
+    announcements: announcements,
+    courseId: courseId
+  };
 }
 
 /***/ }),
-/* 18 */
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  LOGIN: 'LOGIN',
+  TOKEN: 'TOKEN',
+  LOGOUT: 'LOGOUT',
+  GET_COURSE_SUMMARY: 'GET_COURSE_SUMMARY',
+  GET_COURSE: 'GET_COURSE',
+  GET_COURSE_PROJECT_LIST: 'GET_COURSE_PROJECT_LIST',
+  GET_COURSE_ANNOUNCEMENT_LIST: 'GET_COURSE_ANNOUNCEMENT_LIST'
+};
+
+/***/ }),
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1339,13 +1576,13 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _announcement = __webpack_require__(71);
+var _announcement = __webpack_require__(75);
 
 var _announcement2 = _interopRequireDefault(_announcement);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -1415,21 +1652,21 @@ AnnouncementCard.propTypes = {
 exports.default = AnnouncementCard;
 
 /***/ }),
-/* 19 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _formInput = __webpack_require__(33);
+var _formInput = __webpack_require__(39);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
-var _form = __webpack_require__(89);
+var _form = __webpack_require__(94);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _passwordMeter = __webpack_require__(34);
+var _passwordMeter = __webpack_require__(40);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -1440,7 +1677,34 @@ module.exports = {
 };
 
 /***/ }),
-/* 20 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _colors = __webpack_require__(122);
+
+var _colors2 = _interopRequireDefault(_colors);
+
+var _strings = __webpack_require__(124);
+
+var _strings2 = _interopRequireDefault(_strings);
+
+var _placeholders = __webpack_require__(123);
+
+var _placeholders2 = _interopRequireDefault(_placeholders);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
+    colors: _colors2.default,
+    strings: _strings2.default,
+    placeholders: _placeholders2.default
+};
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1458,29 +1722,29 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _views = __webpack_require__(22);
+var _views = __webpack_require__(12);
 
-var _visibleHomePage = __webpack_require__(128);
+var _visibleHomePage = __webpack_require__(105);
 
 var _visibleHomePage2 = _interopRequireDefault(_visibleHomePage);
 
-var _visibleCoursePage = __webpack_require__(134);
+var _visibleCoursePage = __webpack_require__(104);
 
 var _visibleCoursePage2 = _interopRequireDefault(_visibleCoursePage);
 
-var _AnnouncementPage = __webpack_require__(47);
+var _AnnouncementPage = __webpack_require__(111);
 
 var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
 
-var _components = __webpack_require__(96);
+var _components = __webpack_require__(101);
 
 var _components2 = _interopRequireDefault(_components);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
 var _propTypes = __webpack_require__(1);
 
@@ -1558,223 +1822,59 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 21 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _authentication = __webpack_require__(98);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getAttendedCourses = getAttendedCourses;
+exports.getCourseSummary = getCourseSummary;
+exports.getCourse = getCourse;
+exports.getCourseProjectList = getCourseProjectList;
+exports.getCourseAnnouncementList = getCourseAnnouncementList;
 
-var _authentication2 = _interopRequireDefault(_authentication);
+var _communicationController = __webpack_require__(52);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _index = __webpack_require__(16);
 
-var API_URL = "http://loopcake.com:5567";
-//export const API_URL = "http://172.20.120.133:5567";
+function getAttendedCourses(userId, token, responseFunc) {
+    (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
+}
 
-module.exports = {
-    Authentication: _authentication2.default,
-    API_URL: API_URL
-};
+function getCourseSummary(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId + '/summary', {}, responseFunc, token);
+}
 
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
+function getCourse(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId, {}, responseFunc, token);
+}
 
-"use strict";
+function getCourseProjectList(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/project', { course: courseId }, responseFunc, token);
+}
 
-
-var _HomePage = __webpack_require__(104);
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
-var _LoginPage = __webpack_require__(48);
-
-var _LoginPage2 = _interopRequireDefault(_LoginPage);
-
-var _RegisterPage = __webpack_require__(105);
-
-var _RegisterPage2 = _interopRequireDefault(_RegisterPage);
-
-var _AnnouncementPage = __webpack_require__(47);
-
-var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
-
-var _CoursePage = __webpack_require__(103);
-
-var _CoursePage2 = _interopRequireDefault(_CoursePage);
-
-var _RepoPage = __webpack_require__(106);
-
-var _RepoPage2 = _interopRequireDefault(_RepoPage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = { Home: _HomePage2.default, Login: _LoginPage2.default, AnnouncementPage: _AnnouncementPage2.default, CoursePage: _CoursePage2.default, RepoPage: _RepoPage2.default, Register: _RegisterPage2.default };
+function getCourseAnnouncementList(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/announcement', { course: courseId }, responseFunc, token);
+}
 
 /***/ }),
-/* 23 */
+/* 29 */
 /***/ (function(module, exports) {
 
-module.exports = require("object-assign");
+module.exports = require("fbjs/lib/emptyObject");
 
 /***/ }),
-/* 24 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-
-
-var _prodInvariant = __webpack_require__(8),
-    _assign = __webpack_require__(23);
-
-var ReactNoopUpdateQueue = __webpack_require__(28);
-
-var canDefineProperty = __webpack_require__(13);
-var emptyObject = __webpack_require__(122);
-var invariant = __webpack_require__(9);
-var lowPriorityWarning = __webpack_require__(16);
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactComponent(props, context, updater) {
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-ReactComponent.prototype.isReactComponent = {};
-
-/**
- * Sets a subset of the state. Always use this to mutate
- * state. You should treat `this.state` as immutable.
- *
- * There is no guarantee that `this.state` will be immediately updated, so
- * accessing `this.state` after calling this method may return the old value.
- *
- * There is no guarantee that calls to `setState` will run synchronously,
- * as they may eventually be batched together.  You can provide an optional
- * callback that will be executed when the call to setState is actually
- * completed.
- *
- * When a function is provided to setState, it will be called at some point in
- * the future (not synchronously). It will be called with the up to date
- * component arguments (state, props, context). These values can be different
- * from this.* because your function may be called after receiveProps but before
- * shouldComponentUpdate, and this new state, props, and context will not yet be
- * assigned to this.
- *
- * @param {object|function} partialState Next partial state or function to
- *        produce next partial state to be merged with current state.
- * @param {?function} callback Called after state is updated.
- * @final
- * @protected
- */
-ReactComponent.prototype.setState = function (partialState, callback) {
-  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
-  this.updater.enqueueSetState(this, partialState);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'setState');
-  }
-};
-
-/**
- * Forces an update. This should only be invoked when it is known with
- * certainty that we are **not** in a DOM transaction.
- *
- * You may want to call this when you know that some deeper aspect of the
- * component's state has changed but `setState` was not called.
- *
- * This will not invoke `shouldComponentUpdate`, but it will invoke
- * `componentWillUpdate` and `componentDidUpdate`.
- *
- * @param {?function} callback Called after update is complete.
- * @final
- * @protected
- */
-ReactComponent.prototype.forceUpdate = function (callback) {
-  this.updater.enqueueForceUpdate(this);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'forceUpdate');
-  }
-};
-
-/**
- * Deprecated APIs. These APIs used to exist on classic React classes but since
- * we would like to deprecate them, we're not going to move them over to this
- * modern base class. Instead, we define a getter that warns if it's accessed.
- */
-if (process.env.NODE_ENV !== 'production') {
-  var deprecatedAPIs = {
-    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
-    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
-  };
-  var defineDeprecationWarning = function (methodName, info) {
-    if (canDefineProperty) {
-      Object.defineProperty(ReactComponent.prototype, methodName, {
-        get: function () {
-          lowPriorityWarning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
-          return undefined;
-        }
-      });
-    }
-  };
-  for (var fnName in deprecatedAPIs) {
-    if (deprecatedAPIs.hasOwnProperty(fnName)) {
-      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
-    }
-  }
-}
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactPureComponent(props, context, updater) {
-  // Duplicated from ReactComponent.
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-function ComponentDummy() {}
-ComponentDummy.prototype = ReactComponent.prototype;
-ReactPureComponent.prototype = new ComponentDummy();
-ReactPureComponent.prototype.constructor = ReactPureComponent;
-// Avoid an extra prototype jump for these methods.
-_assign(ReactPureComponent.prototype, ReactComponent.prototype);
-ReactPureComponent.prototype.isPureReactComponent = true;
-
-module.exports = {
-  Component: ReactComponent,
-  PureComponent: ReactPureComponent
-};
-
-/***/ }),
-/* 26 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1799,7 +1899,7 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 module.exports = REACT_ELEMENT_TYPE;
 
 /***/ }),
-/* 27 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1822,16 +1922,15 @@ module.exports = REACT_ELEMENT_TYPE;
 
 
 
-var ReactCurrentOwner = __webpack_require__(12);
-var ReactComponentTreeHook = __webpack_require__(15);
-var ReactElement = __webpack_require__(5);
+var ReactCurrentOwner = __webpack_require__(14);
+var ReactComponentTreeHook = __webpack_require__(20);
+var ReactElement = __webpack_require__(8);
 
-var checkReactTypeSpec = __webpack_require__(65);
+var checkReactTypeSpec = __webpack_require__(71);
 
-var canDefineProperty = __webpack_require__(13);
-var getIteratorFn = __webpack_require__(29);
-var warning = __webpack_require__(10);
-var lowPriorityWarning = __webpack_require__(16);
+var canDefineProperty = __webpack_require__(15);
+var getIteratorFn = __webpack_require__(34);
+var warning = __webpack_require__(7);
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -1972,6 +2071,7 @@ function validatePropTypes(element) {
 }
 
 var ReactElementValidator = {
+
   createElement: function (type, props, children) {
     var validType = typeof type === 'string' || typeof type === 'function';
     // We warn in this case but don't throw. We expect the element creation to
@@ -1980,7 +2080,7 @@ var ReactElementValidator = {
       if (typeof type !== 'function' && typeof type !== 'string') {
         var info = '';
         if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + "it's defined in.";
+          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
         }
 
         var sourceInfo = getSourceInfoErrorAddendum(props);
@@ -1992,10 +2092,7 @@ var ReactElementValidator = {
 
         info += ReactComponentTreeHook.getCurrentStackAddendum();
 
-        var currentSource = props !== null && props !== undefined && props.__source !== undefined ? props.__source : null;
-        ReactComponentTreeHook.pushNonStandardWarningStack(true, currentSource);
         process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
-        ReactComponentTreeHook.popNonStandardWarningStack();
       }
     }
 
@@ -2033,7 +2130,7 @@ var ReactElementValidator = {
         Object.defineProperty(validatedFactory, 'type', {
           enumerable: false,
           get: function () {
-            lowPriorityWarning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
+            process.env.NODE_ENV !== 'production' ? warning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.') : void 0;
             Object.defineProperty(this, 'type', {
               value: type
             });
@@ -2054,112 +2151,43 @@ var ReactElementValidator = {
     validatePropTypes(newElement);
     return newElement;
   }
+
 };
 
 module.exports = ReactElementValidator;
 
 /***/ }),
-/* 28 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /**
- * Copyright 2015-present, Facebook, Inc.
+ * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
+ * 
  */
 
 
 
-var warning = __webpack_require__(10);
+var ReactPropTypeLocationNames = {};
 
-function warnNoop(publicInstance, callerName) {
-  if (process.env.NODE_ENV !== 'production') {
-    var constructor = publicInstance.constructor;
-    process.env.NODE_ENV !== 'production' ? warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
-  }
+if (process.env.NODE_ENV !== 'production') {
+  ReactPropTypeLocationNames = {
+    prop: 'prop',
+    context: 'context',
+    childContext: 'child context'
+  };
 }
 
-/**
- * This is the abstract API for an update queue.
- */
-var ReactNoopUpdateQueue = {
-  /**
-   * Checks whether or not this composite component is mounted.
-   * @param {ReactClass} publicInstance The instance we want to test.
-   * @return {boolean} True if mounted, false otherwise.
-   * @protected
-   * @final
-   */
-  isMounted: function (publicInstance) {
-    return false;
-  },
-
-  /**
-   * Enqueue a callback that will be executed after all the pending updates
-   * have processed.
-   *
-   * @param {ReactClass} publicInstance The instance to use as `this` context.
-   * @param {?function} callback Called after state is updated.
-   * @internal
-   */
-  enqueueCallback: function (publicInstance, callback) {},
-
-  /**
-   * Forces an update. This should only be invoked when it is known with
-   * certainty that we are **not** in a DOM transaction.
-   *
-   * You may want to call this when you know that some deeper aspect of the
-   * component's state has changed but `setState` was not called.
-   *
-   * This will not invoke `shouldComponentUpdate`, but it will invoke
-   * `componentWillUpdate` and `componentDidUpdate`.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @internal
-   */
-  enqueueForceUpdate: function (publicInstance) {
-    warnNoop(publicInstance, 'forceUpdate');
-  },
-
-  /**
-   * Replaces all of the state. Always use this or `setState` to mutate state.
-   * You should treat `this.state` as immutable.
-   *
-   * There is no guarantee that `this.state` will be immediately updated, so
-   * accessing `this.state` after calling this method may return the old value.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {object} completeState Next state.
-   * @internal
-   */
-  enqueueReplaceState: function (publicInstance, completeState) {
-    warnNoop(publicInstance, 'replaceState');
-  },
-
-  /**
-   * Sets a subset of the state. This only exists because _pendingState is
-   * internal. This provides a merging strategy that is not available to deep
-   * properties which is confusing. TODO: Expose pendingState or don't use it
-   * during the merge.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {object} partialState Next partial state to be merged with state.
-   * @internal
-   */
-  enqueueSetState: function (publicInstance, partialState) {
-    warnNoop(publicInstance, 'setState');
-  }
-};
-
-module.exports = ReactNoopUpdateQueue;
+module.exports = ReactPropTypeLocationNames;
 
 /***/ }),
-/* 29 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2205,24 +2233,24 @@ function getIteratorFn(maybeIterable) {
 module.exports = getIteratorFn;
 
 /***/ }),
-/* 30 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _types = __webpack_require__(23);
+
+var _types2 = _interopRequireDefault(_types);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 module.exports = {
-  LOGIN: 'LOGIN',
-  TOKEN: 'TOKEN',
-  LOGOUT: 'LOGOUT',
-  GET_COURSE_SUMMARY: 'GET_COURSE_SUMMARY',
-  GET_COURSE: 'GET_COURSE',
-  GET_COURSE_PROJECT_LIST: 'GET_COURSE_PROJECT_LIST',
-  GET_COURSE_ANNOUNCEMENT_LIST: 'GET_COURSE_ANNOUNCEMENT_LIST'
+    Types: _types2.default
 };
 
 /***/ }),
-/* 31 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2241,7 +2269,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _list = __webpack_require__(11);
+var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -2285,7 +2313,149 @@ AttachmentList.propTypes = {
 };
 
 /***/ }),
-/* 32 */
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = __webpack_require__(2);
+
+var _constants = __webpack_require__(26);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CourseHeader = function (_React$Component) {
+  _inherits(CourseHeader, _React$Component);
+
+  function CourseHeader() {
+    _classCallCheck(this, CourseHeader);
+
+    return _possibleConstructorReturn(this, (CourseHeader.__proto__ || Object.getPrototypeOf(CourseHeader)).apply(this, arguments));
+  }
+
+  _createClass(CourseHeader, [{
+    key: '_getHeader',
+    value: function _getHeader() {
+      if (this.props.course) {
+        var course = this.props.course;
+        return course.name;
+      }
+    }
+  }, {
+    key: '_getDetail',
+    value: function _getDetail() {
+      if (this.props.course) {
+        var course = this.props.course;
+        var str = "";
+        for (var i = 0; i < course.instructors.length; ++i) {
+          var ins = course.instructors[i];
+          str += ins.name + " " + ins.surname;
+          if (i != course.instructors.length) {
+            str += "\n";
+          }
+        }
+        return str;
+      }
+    }
+  }, {
+    key: '_getAbv',
+    value: function _getAbv() {
+      if (this.props.course) {
+        var course = this.props.course;
+        return course.abbreviation + " " + course.code;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _semanticUiReact.Grid,
+        null,
+        _react2.default.createElement(
+          _semanticUiReact.Grid.Column,
+          { width: 5 },
+          _react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
+        ),
+        _react2.default.createElement(
+          _semanticUiReact.Grid.Column,
+          { width: 11 },
+          _react2.default.createElement(
+            _semanticUiReact.Card.Header,
+            null,
+            this._getHeader()
+          ),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Meta,
+            null,
+            _react2.default.createElement(
+              'span',
+              { className: 'date' },
+              this._getAbv()
+            )
+          ),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Description,
+            null,
+            this._getDetail()
+          )
+        )
+      );
+    }
+  }]);
+
+  return CourseHeader;
+}(_react2.default.Component);
+
+exports.default = CourseHeader;
+
+
+CourseHeader.propTypes = {
+  course: _propTypes2.default.shape({
+    _id: _propTypes2.default.string,
+    name: _propTypes2.default.string,
+    abbreviation: _propTypes2.default.string,
+    code: _propTypes2.default.string,
+    details: _propTypes2.default.shape({
+      year: _propTypes2.default.string,
+      _id: _propTypes2.default.string,
+      relatedCourses: _propTypes2.default.array,
+      programmingLanguages: _propTypes2.default.array,
+      sections: _propTypes2.default.array
+    }),
+    attachments: _propTypes2.default.array,
+    instructors: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+      _id: _propTypes2.default.string,
+      email: _propTypes2.default.string,
+      name: _propTypes2.default.string,
+      surname: _propTypes2.default.string,
+      photo: _propTypes2.default.string
+    }))
+  })
+};
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2304,9 +2474,9 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _ListComponents = __webpack_require__(35);
+var _ListComponents = __webpack_require__(41);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -2367,7 +2537,7 @@ ProjectCard.propTypes = {
 };
 
 /***/ }),
-/* 33 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2385,7 +2555,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _passwordMeter = __webpack_require__(34);
+var _passwordMeter = __webpack_require__(40);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -2462,7 +2632,7 @@ FormInput.defaultProps = {
 exports.default = FormInput;
 
 /***/ }),
-/* 34 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2478,11 +2648,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _zxcvbn = __webpack_require__(127);
+var _zxcvbn = __webpack_require__(134);
 
 var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
-var _constants = __webpack_require__(45);
+var _constants = __webpack_require__(26);
 
 var _propTypes = __webpack_require__(1);
 
@@ -2509,15 +2679,15 @@ PasswordMeter.propTypes = {
 exports.default = PasswordMeter;
 
 /***/ }),
-/* 35 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _listItem = __webpack_require__(36);
+var _listItem = __webpack_require__(42);
 
-var _list = __webpack_require__(11);
+var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -2530,7 +2700,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 36 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2618,7 +2788,7 @@ ListItem.propTypes = {
 };
 
 /***/ }),
-/* 37 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2700,33 +2870,33 @@ ButtonMenuItem.defaultProps = {
 exports.default = ButtonMenuItem;
 
 /***/ }),
-/* 38 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _buttonMenuItem = __webpack_require__(37);
+var _buttonMenuItem = __webpack_require__(43);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _linkMenuItem = __webpack_require__(39);
+var _linkMenuItem = __webpack_require__(45);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _subMenu = __webpack_require__(42);
+var _subMenu = __webpack_require__(48);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
-var _subMenuItem = __webpack_require__(43);
+var _subMenuItem = __webpack_require__(49);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
-var _menu = __webpack_require__(40);
+var _menu = __webpack_require__(46);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _menuItem = __webpack_require__(41);
+var _menuItem = __webpack_require__(47);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -2741,7 +2911,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 39 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2809,7 +2979,7 @@ LinkMenuItem.propTypes = {
 };
 
 /***/ }),
-/* 40 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2831,7 +3001,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _menuItem = __webpack_require__(41);
+var _menuItem = __webpack_require__(47);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -2886,7 +3056,7 @@ _Menu.propTypes = {
 exports.default = _Menu;
 
 /***/ }),
-/* 41 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2906,15 +3076,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _linkMenuItem = __webpack_require__(39);
+var _linkMenuItem = __webpack_require__(45);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _buttonMenuItem = __webpack_require__(37);
+var _buttonMenuItem = __webpack_require__(43);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _subMenuItem = __webpack_require__(43);
+var _subMenuItem = __webpack_require__(49);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
@@ -2964,7 +3134,7 @@ MenuItem.propTypes = {
 exports.default = MenuItem;
 
 /***/ }),
-/* 42 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3034,7 +3204,7 @@ SubMenu.propTypes = {
 };
 
 /***/ }),
-/* 43 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3056,7 +3226,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _subMenu = __webpack_require__(42);
+var _subMenu = __webpack_require__(48);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
@@ -3111,7 +3281,7 @@ SubMenuItem.propTypes = {
 exports.default = SubMenuItem;
 
 /***/ }),
-/* 44 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3126,7 +3296,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _list = __webpack_require__(11);
+var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -3169,34 +3339,7 @@ UserList.propTypes = {
 };
 
 /***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _colors = __webpack_require__(113);
-
-var _colors2 = _interopRequireDefault(_colors);
-
-var _strings = __webpack_require__(115);
-
-var _strings2 = _interopRequireDefault(_strings);
-
-var _placeholders = __webpack_require__(114);
-
-var _placeholders2 = _interopRequireDefault(_placeholders);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = {
-    colors: _colors2.default,
-    strings: _strings2.default,
-    placeholders: _placeholders2.default
-};
-
-/***/ }),
-/* 46 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3208,15 +3351,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
-var _LoginPage = __webpack_require__(48);
+var _LoginPage = __webpack_require__(53);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-var _authentication = __webpack_require__(17);
+var _authentication = __webpack_require__(11);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3238,7 +3381,7 @@ var VisibleLoginPage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(ma
 exports.default = VisibleLoginPage;
 
 /***/ }),
-/* 47 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3247,53 +3390,29 @@ exports.default = VisibleLoginPage;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.post = post;
+exports.get = get;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _superagent = __webpack_require__(133);
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _announcementCard = __webpack_require__(18);
-
-var _announcementCard2 = _interopRequireDefault(_announcementCard);
+var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function post(api, postData, respFunc, token) {
+    _superagent2.default.post(api).send(postData).set('X-API-Key', 'foobar').set('Accept', 'application/json').set('Authorization', 'Bearer ' + token).end(function (err, res) {
+        respFunc(err, res);
+    });
+};
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AnnouncementPage = function (_React$Component) {
-    _inherits(AnnouncementPage, _React$Component);
-
-    function AnnouncementPage(props) {
-        _classCallCheck(this, AnnouncementPage);
-
-        var _this = _possibleConstructorReturn(this, (AnnouncementPage.__proto__ || Object.getPrototypeOf(AnnouncementPage)).call(this, props));
-
-        _this.state = {
-            announcements: [{ title: "Loopcake", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }, { title: "Loopcak", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }, { title: "Loopca", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }]
-        };
-        return _this;
-    }
-
-    _createClass(AnnouncementPage, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(_announcementCard2.default, { announcements: this.state.announcements });
-        }
-    }]);
-
-    return AnnouncementPage;
-}(_react2.default.Component);
-
-exports.default = AnnouncementPage;
+function get(api, getData, respFunc, token) {
+    _superagent2.default.get(api).set('Authorization', 'Bearer ' + token).query(getData).end(function (err, res) {
+        respFunc(err, res);
+    });
+};
 
 /***/ }),
-/* 48 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3311,21 +3430,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(19);
+var _FormComponents = __webpack_require__(25);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(21);
+var _database = __webpack_require__(16);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
-var _authentication = __webpack_require__(17);
+var _authentication = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3393,7 +3512,7 @@ var LoginPage = function (_React$Component) {
                     _react2.default.createElement(
                         _semanticUiReact.Grid.Column,
                         { width: 5 },
-                        _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(49) }),
+                        _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(54) }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
                             _semanticUiReact.Card,
@@ -3430,13 +3549,13 @@ LoginPage.propTypes = {
 exports.default = LoginPage;
 
 /***/ }),
-/* 49 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "loopcakeWhiteLogoWithText.svg?5a4f08fe673e24a06ece825d23f477ea";
 
 /***/ }),
-/* 50 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3452,7 +3571,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
 var _reactRouterDom = __webpack_require__(3);
 
@@ -3460,9 +3579,9 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(14);
+var _routes = __webpack_require__(18);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3501,7 +3620,7 @@ RoutesRoot.propTypes = {
 exports.default = (0, _reactCookie.withCookies)(RoutesRoot);
 
 /***/ }),
-/* 51 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3511,13 +3630,13 @@ Object.defineProperty(exports, "__esModule", {
    value: true
 });
 
-var _redux = __webpack_require__(24);
+var _redux = __webpack_require__(30);
 
-var _userReducer = __webpack_require__(100);
+var _userReducer = __webpack_require__(108);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
-var _course = __webpack_require__(131);
+var _course = __webpack_require__(107);
 
 var _course2 = _interopRequireDefault(_course);
 
@@ -3529,7 +3648,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 52 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3546,25 +3665,25 @@ exports.default = function (body) {
 };
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports) {
 
 module.exports = require("universal-cookie-express");
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3628,7 +3747,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3645,9 +3764,9 @@ module.exports = KeyEscapeUtils;
 
 
 
-var _prodInvariant = __webpack_require__(8);
+var _prodInvariant = __webpack_require__(9);
 
-var invariant = __webpack_require__(9);
+var invariant = __webpack_require__(10);
 
 /**
  * Static poolers. Several custom versions for each potential number of
@@ -3745,7 +3864,7 @@ var PooledClass = {
 module.exports = PooledClass;
 
 /***/ }),
-/* 58 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3761,26 +3880,27 @@ module.exports = PooledClass;
 
 
 
-var _assign = __webpack_require__(23);
+var _assign = __webpack_require__(17);
 
-var ReactBaseClasses = __webpack_require__(25);
-var ReactChildren = __webpack_require__(59);
-var ReactDOMFactories = __webpack_require__(60);
-var ReactElement = __webpack_require__(5);
-var ReactPropTypes = __webpack_require__(62);
-var ReactVersion = __webpack_require__(64);
+var ReactChildren = __webpack_require__(64);
+var ReactComponent = __webpack_require__(19);
+var ReactPureComponent = __webpack_require__(69);
+var ReactClass = __webpack_require__(65);
+var ReactDOMFactories = __webpack_require__(66);
+var ReactElement = __webpack_require__(8);
+var ReactPropTypes = __webpack_require__(67);
+var ReactVersion = __webpack_require__(70);
 
-var createReactClass = __webpack_require__(66);
-var onlyChild = __webpack_require__(67);
+var onlyChild = __webpack_require__(72);
+var warning = __webpack_require__(7);
 
 var createElement = ReactElement.createElement;
 var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
-  var lowPriorityWarning = __webpack_require__(16);
-  var canDefineProperty = __webpack_require__(13);
-  var ReactElementValidator = __webpack_require__(27);
+  var canDefineProperty = __webpack_require__(15);
+  var ReactElementValidator = __webpack_require__(32);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
   createFactory = ReactElementValidator.createFactory;
@@ -3788,27 +3908,18 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var __spread = _assign;
-var createMixin = function (mixin) {
-  return mixin;
-};
 
 if (process.env.NODE_ENV !== 'production') {
-  var warnedForSpread = false;
-  var warnedForCreateMixin = false;
+  var warned = false;
   __spread = function () {
-    lowPriorityWarning(warnedForSpread, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.');
-    warnedForSpread = true;
+    process.env.NODE_ENV !== 'production' ? warning(warned, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.') : void 0;
+    warned = true;
     return _assign.apply(null, arguments);
-  };
-
-  createMixin = function (mixin) {
-    lowPriorityWarning(warnedForCreateMixin, 'React.createMixin is deprecated and should not be used. ' + 'In React v16.0, it will be removed. ' + 'You can use this mixin directly instead. ' + 'See https://fb.me/createmixin-was-never-implemented for more info.');
-    warnedForCreateMixin = true;
-    return mixin;
   };
 }
 
 var React = {
+
   // Modern
 
   Children: {
@@ -3819,8 +3930,8 @@ var React = {
     only: onlyChild
   },
 
-  Component: ReactBaseClasses.Component,
-  PureComponent: ReactBaseClasses.PureComponent,
+  Component: ReactComponent,
+  PureComponent: ReactPureComponent,
 
   createElement: createElement,
   cloneElement: cloneElement,
@@ -3829,9 +3940,12 @@ var React = {
   // Classic
 
   PropTypes: ReactPropTypes,
-  createClass: createReactClass,
+  createClass: ReactClass.createClass,
   createFactory: createFactory,
-  createMixin: createMixin,
+  createMixin: function (mixin) {
+    // Currently a noop. Will be used to validate and trace mixins.
+    return mixin;
+  },
 
   // This looks DOM specific but these are actually isomorphic helpers
   // since they are just generating DOM strings.
@@ -3843,46 +3957,23 @@ var React = {
   __spread: __spread
 };
 
+// TODO: Fix tests so that this deprecation warning doesn't cause failures.
 if (process.env.NODE_ENV !== 'production') {
-  var warnedForCreateClass = false;
   if (canDefineProperty) {
     Object.defineProperty(React, 'PropTypes', {
       get: function () {
-        lowPriorityWarning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated,' + ' and will be removed in  React v16.0.' + ' Use the latest available v15.* prop-types package from npm instead.' + ' For info on usage, compatibility, migration and more, see ' + 'https://fb.me/prop-types-docs');
+        process.env.NODE_ENV !== 'production' ? warning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
         didWarnPropTypesDeprecated = true;
         return ReactPropTypes;
       }
     });
-
-    Object.defineProperty(React, 'createClass', {
-      get: function () {
-        lowPriorityWarning(warnedForCreateClass, 'Accessing createClass via the main React package is deprecated,' + ' and will be removed in React v16.0.' + " Use a plain JavaScript class instead. If you're not yet " + 'ready to migrate, create-react-class v15.* is available ' + 'on npm as a temporary, drop-in replacement. ' + 'For more info see https://fb.me/react-create-class');
-        warnedForCreateClass = true;
-        return createReactClass;
-      }
-    });
   }
-
-  // React.DOM factories are deprecated. Wrap these methods so that
-  // invocations of the React.DOM namespace and alert users to switch
-  // to the `react-dom-factories` package.
-  React.DOM = {};
-  var warnedForFactories = false;
-  Object.keys(ReactDOMFactories).forEach(function (factory) {
-    React.DOM[factory] = function () {
-      if (!warnedForFactories) {
-        lowPriorityWarning(false, 'Accessing factories like React.DOM.%s has been deprecated ' + 'and will be removed in v16.0+. Use the ' + 'react-dom-factories package instead. ' + ' Version 1.0 provides a drop-in replacement.' + ' For more info, see https://fb.me/react-dom-factories', factory);
-        warnedForFactories = true;
-      }
-      return ReactDOMFactories[factory].apply(ReactDOMFactories, arguments);
-    };
-  });
 }
 
 module.exports = React;
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3898,11 +3989,11 @@ module.exports = React;
 
 
 
-var PooledClass = __webpack_require__(57);
-var ReactElement = __webpack_require__(5);
+var PooledClass = __webpack_require__(62);
+var ReactElement = __webpack_require__(8);
 
-var emptyFunction = __webpack_require__(121);
-var traverseAllChildren = __webpack_require__(68);
+var emptyFunction = __webpack_require__(129);
+var traverseAllChildren = __webpack_require__(73);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -4078,7 +4169,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4094,7 +4185,735 @@ module.exports = ReactChildren;
 
 
 
-var ReactElement = __webpack_require__(5);
+var _prodInvariant = __webpack_require__(9),
+    _assign = __webpack_require__(17);
+
+var ReactComponent = __webpack_require__(19);
+var ReactElement = __webpack_require__(8);
+var ReactPropTypeLocationNames = __webpack_require__(33);
+var ReactNoopUpdateQueue = __webpack_require__(21);
+
+var emptyObject = __webpack_require__(29);
+var invariant = __webpack_require__(10);
+var warning = __webpack_require__(7);
+
+var MIXINS_KEY = 'mixins';
+
+// Helper function to allow the creation of anonymous functions which do not
+// have .name set to the name of the variable being assigned to.
+function identity(fn) {
+  return fn;
+}
+
+/**
+ * Policies that describe methods in `ReactClassInterface`.
+ */
+
+
+var injectedMixins = [];
+
+/**
+ * Composite components are higher-level components that compose other composite
+ * or host components.
+ *
+ * To create a new type of `ReactClass`, pass a specification of
+ * your new class to `React.createClass`. The only requirement of your class
+ * specification is that you implement a `render` method.
+ *
+ *   var MyComponent = React.createClass({
+ *     render: function() {
+ *       return <div>Hello World</div>;
+ *     }
+ *   });
+ *
+ * The class specification supports a specific protocol of methods that have
+ * special meaning (e.g. `render`). See `ReactClassInterface` for
+ * more the comprehensive protocol. Any other properties and methods in the
+ * class specification will be available on the prototype.
+ *
+ * @interface ReactClassInterface
+ * @internal
+ */
+var ReactClassInterface = {
+
+  /**
+   * An array of Mixin objects to include when defining your component.
+   *
+   * @type {array}
+   * @optional
+   */
+  mixins: 'DEFINE_MANY',
+
+  /**
+   * An object containing properties and methods that should be defined on
+   * the component's constructor instead of its prototype (static methods).
+   *
+   * @type {object}
+   * @optional
+   */
+  statics: 'DEFINE_MANY',
+
+  /**
+   * Definition of prop types for this component.
+   *
+   * @type {object}
+   * @optional
+   */
+  propTypes: 'DEFINE_MANY',
+
+  /**
+   * Definition of context types for this component.
+   *
+   * @type {object}
+   * @optional
+   */
+  contextTypes: 'DEFINE_MANY',
+
+  /**
+   * Definition of context types this component sets for its children.
+   *
+   * @type {object}
+   * @optional
+   */
+  childContextTypes: 'DEFINE_MANY',
+
+  // ==== Definition methods ====
+
+  /**
+   * Invoked when the component is mounted. Values in the mapping will be set on
+   * `this.props` if that prop is not specified (i.e. using an `in` check).
+   *
+   * This method is invoked before `getInitialState` and therefore cannot rely
+   * on `this.state` or use `this.setState`.
+   *
+   * @return {object}
+   * @optional
+   */
+  getDefaultProps: 'DEFINE_MANY_MERGED',
+
+  /**
+   * Invoked once before the component is mounted. The return value will be used
+   * as the initial value of `this.state`.
+   *
+   *   getInitialState: function() {
+   *     return {
+   *       isOn: false,
+   *       fooBaz: new BazFoo()
+   *     }
+   *   }
+   *
+   * @return {object}
+   * @optional
+   */
+  getInitialState: 'DEFINE_MANY_MERGED',
+
+  /**
+   * @return {object}
+   * @optional
+   */
+  getChildContext: 'DEFINE_MANY_MERGED',
+
+  /**
+   * Uses props from `this.props` and state from `this.state` to render the
+   * structure of the component.
+   *
+   * No guarantees are made about when or how often this method is invoked, so
+   * it must not have side effects.
+   *
+   *   render: function() {
+   *     var name = this.props.name;
+   *     return <div>Hello, {name}!</div>;
+   *   }
+   *
+   * @return {ReactComponent}
+   * @required
+   */
+  render: 'DEFINE_ONCE',
+
+  // ==== Delegate methods ====
+
+  /**
+   * Invoked when the component is initially created and about to be mounted.
+   * This may have side effects, but any external subscriptions or data created
+   * by this method must be cleaned up in `componentWillUnmount`.
+   *
+   * @optional
+   */
+  componentWillMount: 'DEFINE_MANY',
+
+  /**
+   * Invoked when the component has been mounted and has a DOM representation.
+   * However, there is no guarantee that the DOM node is in the document.
+   *
+   * Use this as an opportunity to operate on the DOM when the component has
+   * been mounted (initialized and rendered) for the first time.
+   *
+   * @param {DOMElement} rootNode DOM element representing the component.
+   * @optional
+   */
+  componentDidMount: 'DEFINE_MANY',
+
+  /**
+   * Invoked before the component receives new props.
+   *
+   * Use this as an opportunity to react to a prop transition by updating the
+   * state using `this.setState`. Current props are accessed via `this.props`.
+   *
+   *   componentWillReceiveProps: function(nextProps, nextContext) {
+   *     this.setState({
+   *       likesIncreasing: nextProps.likeCount > this.props.likeCount
+   *     });
+   *   }
+   *
+   * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
+   * transition may cause a state change, but the opposite is not true. If you
+   * need it, you are probably looking for `componentWillUpdate`.
+   *
+   * @param {object} nextProps
+   * @optional
+   */
+  componentWillReceiveProps: 'DEFINE_MANY',
+
+  /**
+   * Invoked while deciding if the component should be updated as a result of
+   * receiving new props, state and/or context.
+   *
+   * Use this as an opportunity to `return false` when you're certain that the
+   * transition to the new props/state/context will not require a component
+   * update.
+   *
+   *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
+   *     return !equal(nextProps, this.props) ||
+   *       !equal(nextState, this.state) ||
+   *       !equal(nextContext, this.context);
+   *   }
+   *
+   * @param {object} nextProps
+   * @param {?object} nextState
+   * @param {?object} nextContext
+   * @return {boolean} True if the component should update.
+   * @optional
+   */
+  shouldComponentUpdate: 'DEFINE_ONCE',
+
+  /**
+   * Invoked when the component is about to update due to a transition from
+   * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
+   * and `nextContext`.
+   *
+   * Use this as an opportunity to perform preparation before an update occurs.
+   *
+   * NOTE: You **cannot** use `this.setState()` in this method.
+   *
+   * @param {object} nextProps
+   * @param {?object} nextState
+   * @param {?object} nextContext
+   * @param {ReactReconcileTransaction} transaction
+   * @optional
+   */
+  componentWillUpdate: 'DEFINE_MANY',
+
+  /**
+   * Invoked when the component's DOM representation has been updated.
+   *
+   * Use this as an opportunity to operate on the DOM when the component has
+   * been updated.
+   *
+   * @param {object} prevProps
+   * @param {?object} prevState
+   * @param {?object} prevContext
+   * @param {DOMElement} rootNode DOM element representing the component.
+   * @optional
+   */
+  componentDidUpdate: 'DEFINE_MANY',
+
+  /**
+   * Invoked when the component is about to be removed from its parent and have
+   * its DOM representation destroyed.
+   *
+   * Use this as an opportunity to deallocate any external resources.
+   *
+   * NOTE: There is no `componentDidUnmount` since your component will have been
+   * destroyed by that point.
+   *
+   * @optional
+   */
+  componentWillUnmount: 'DEFINE_MANY',
+
+  // ==== Advanced methods ====
+
+  /**
+   * Updates the component's currently mounted DOM representation.
+   *
+   * By default, this implements React's rendering and reconciliation algorithm.
+   * Sophisticated clients may wish to override this.
+   *
+   * @param {ReactReconcileTransaction} transaction
+   * @internal
+   * @overridable
+   */
+  updateComponent: 'OVERRIDE_BASE'
+
+};
+
+/**
+ * Mapping from class specification keys to special processing functions.
+ *
+ * Although these are declared like instance properties in the specification
+ * when defining classes using `React.createClass`, they are actually static
+ * and are accessible on the constructor instead of the prototype. Despite
+ * being static, they must be defined outside of the "statics" key under
+ * which all other static methods are defined.
+ */
+var RESERVED_SPEC_KEYS = {
+  displayName: function (Constructor, displayName) {
+    Constructor.displayName = displayName;
+  },
+  mixins: function (Constructor, mixins) {
+    if (mixins) {
+      for (var i = 0; i < mixins.length; i++) {
+        mixSpecIntoComponent(Constructor, mixins[i]);
+      }
+    }
+  },
+  childContextTypes: function (Constructor, childContextTypes) {
+    if (process.env.NODE_ENV !== 'production') {
+      validateTypeDef(Constructor, childContextTypes, 'childContext');
+    }
+    Constructor.childContextTypes = _assign({}, Constructor.childContextTypes, childContextTypes);
+  },
+  contextTypes: function (Constructor, contextTypes) {
+    if (process.env.NODE_ENV !== 'production') {
+      validateTypeDef(Constructor, contextTypes, 'context');
+    }
+    Constructor.contextTypes = _assign({}, Constructor.contextTypes, contextTypes);
+  },
+  /**
+   * Special case getDefaultProps which should move into statics but requires
+   * automatic merging.
+   */
+  getDefaultProps: function (Constructor, getDefaultProps) {
+    if (Constructor.getDefaultProps) {
+      Constructor.getDefaultProps = createMergedResultFunction(Constructor.getDefaultProps, getDefaultProps);
+    } else {
+      Constructor.getDefaultProps = getDefaultProps;
+    }
+  },
+  propTypes: function (Constructor, propTypes) {
+    if (process.env.NODE_ENV !== 'production') {
+      validateTypeDef(Constructor, propTypes, 'prop');
+    }
+    Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
+  },
+  statics: function (Constructor, statics) {
+    mixStaticSpecIntoComponent(Constructor, statics);
+  },
+  autobind: function () {} };
+
+function validateTypeDef(Constructor, typeDef, location) {
+  for (var propName in typeDef) {
+    if (typeDef.hasOwnProperty(propName)) {
+      // use a warning instead of an invariant so components
+      // don't show up in prod but only in __DEV__
+      process.env.NODE_ENV !== 'production' ? warning(typeof typeDef[propName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', Constructor.displayName || 'ReactClass', ReactPropTypeLocationNames[location], propName) : void 0;
+    }
+  }
+}
+
+function validateMethodOverride(isAlreadyDefined, name) {
+  var specPolicy = ReactClassInterface.hasOwnProperty(name) ? ReactClassInterface[name] : null;
+
+  // Disallow overriding of base class methods unless explicitly allowed.
+  if (ReactClassMixin.hasOwnProperty(name)) {
+    !(specPolicy === 'OVERRIDE_BASE') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to override `%s` from your class specification. Ensure that your method names do not overlap with React methods.', name) : _prodInvariant('73', name) : void 0;
+  }
+
+  // Disallow defining methods more than once unless explicitly allowed.
+  if (isAlreadyDefined) {
+    !(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('74', name) : void 0;
+  }
+}
+
+/**
+ * Mixin helper which handles policy validation and reserved
+ * specification keys when building React classes.
+ */
+function mixSpecIntoComponent(Constructor, spec) {
+  if (!spec) {
+    if (process.env.NODE_ENV !== 'production') {
+      var typeofSpec = typeof spec;
+      var isMixinValid = typeofSpec === 'object' && spec !== null;
+
+      process.env.NODE_ENV !== 'production' ? warning(isMixinValid, '%s: You\'re attempting to include a mixin that is either null ' + 'or not an object. Check the mixins included by the component, ' + 'as well as any mixins they include themselves. ' + 'Expected object but got %s.', Constructor.displayName || 'ReactClass', spec === null ? null : typeofSpec) : void 0;
+    }
+
+    return;
+  }
+
+  !(typeof spec !== 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component class or function as a mixin. Instead, just use a regular object.') : _prodInvariant('75') : void 0;
+  !!ReactElement.isValidElement(spec) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component as a mixin. Instead, just use a regular object.') : _prodInvariant('76') : void 0;
+
+  var proto = Constructor.prototype;
+  var autoBindPairs = proto.__reactAutoBindPairs;
+
+  // By handling mixins before any other properties, we ensure the same
+  // chaining order is applied to methods with DEFINE_MANY policy, whether
+  // mixins are listed before or after these methods in the spec.
+  if (spec.hasOwnProperty(MIXINS_KEY)) {
+    RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
+  }
+
+  for (var name in spec) {
+    if (!spec.hasOwnProperty(name)) {
+      continue;
+    }
+
+    if (name === MIXINS_KEY) {
+      // We have already handled mixins in a special case above.
+      continue;
+    }
+
+    var property = spec[name];
+    var isAlreadyDefined = proto.hasOwnProperty(name);
+    validateMethodOverride(isAlreadyDefined, name);
+
+    if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
+      RESERVED_SPEC_KEYS[name](Constructor, property);
+    } else {
+      // Setup methods on prototype:
+      // The following member methods should not be automatically bound:
+      // 1. Expected ReactClass methods (in the "interface").
+      // 2. Overridden methods (that were mixed in).
+      var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
+      var isFunction = typeof property === 'function';
+      var shouldAutoBind = isFunction && !isReactClassMethod && !isAlreadyDefined && spec.autobind !== false;
+
+      if (shouldAutoBind) {
+        autoBindPairs.push(name, property);
+        proto[name] = property;
+      } else {
+        if (isAlreadyDefined) {
+          var specPolicy = ReactClassInterface[name];
+
+          // These cases should already be caught by validateMethodOverride.
+          !(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: Unexpected spec policy %s for key %s when mixing in component specs.', specPolicy, name) : _prodInvariant('77', specPolicy, name) : void 0;
+
+          // For methods which are defined more than once, call the existing
+          // methods before calling the new property, merging if appropriate.
+          if (specPolicy === 'DEFINE_MANY_MERGED') {
+            proto[name] = createMergedResultFunction(proto[name], property);
+          } else if (specPolicy === 'DEFINE_MANY') {
+            proto[name] = createChainedFunction(proto[name], property);
+          }
+        } else {
+          proto[name] = property;
+          if (process.env.NODE_ENV !== 'production') {
+            // Add verbose displayName to the function, which helps when looking
+            // at profiling tools.
+            if (typeof property === 'function' && spec.displayName) {
+              proto[name].displayName = spec.displayName + '_' + name;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function mixStaticSpecIntoComponent(Constructor, statics) {
+  if (!statics) {
+    return;
+  }
+  for (var name in statics) {
+    var property = statics[name];
+    if (!statics.hasOwnProperty(name)) {
+      continue;
+    }
+
+    var isReserved = name in RESERVED_SPEC_KEYS;
+    !!isReserved ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define a reserved property, `%s`, that shouldn\'t be on the "statics" key. Define it as an instance property instead; it will still be accessible on the constructor.', name) : _prodInvariant('78', name) : void 0;
+
+    var isInherited = name in Constructor;
+    !!isInherited ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('79', name) : void 0;
+    Constructor[name] = property;
+  }
+}
+
+/**
+ * Merge two objects, but throw if both contain the same key.
+ *
+ * @param {object} one The first object, which is mutated.
+ * @param {object} two The second object
+ * @return {object} one after it has been mutated to contain everything in two.
+ */
+function mergeIntoWithNoDuplicateKeys(one, two) {
+  !(one && two && typeof one === 'object' && typeof two === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : _prodInvariant('80') : void 0;
+
+  for (var key in two) {
+    if (two.hasOwnProperty(key)) {
+      !(one[key] === undefined) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Tried to merge two objects with the same key: `%s`. This conflict may be due to a mixin; in particular, this may be caused by two getInitialState() or getDefaultProps() methods returning objects with clashing keys.', key) : _prodInvariant('81', key) : void 0;
+      one[key] = two[key];
+    }
+  }
+  return one;
+}
+
+/**
+ * Creates a function that invokes two functions and merges their return values.
+ *
+ * @param {function} one Function to invoke first.
+ * @param {function} two Function to invoke second.
+ * @return {function} Function that invokes the two argument functions.
+ * @private
+ */
+function createMergedResultFunction(one, two) {
+  return function mergedResult() {
+    var a = one.apply(this, arguments);
+    var b = two.apply(this, arguments);
+    if (a == null) {
+      return b;
+    } else if (b == null) {
+      return a;
+    }
+    var c = {};
+    mergeIntoWithNoDuplicateKeys(c, a);
+    mergeIntoWithNoDuplicateKeys(c, b);
+    return c;
+  };
+}
+
+/**
+ * Creates a function that invokes two functions and ignores their return vales.
+ *
+ * @param {function} one Function to invoke first.
+ * @param {function} two Function to invoke second.
+ * @return {function} Function that invokes the two argument functions.
+ * @private
+ */
+function createChainedFunction(one, two) {
+  return function chainedFunction() {
+    one.apply(this, arguments);
+    two.apply(this, arguments);
+  };
+}
+
+/**
+ * Binds a method to the component.
+ *
+ * @param {object} component Component whose method is going to be bound.
+ * @param {function} method Method to be bound.
+ * @return {function} The bound method.
+ */
+function bindAutoBindMethod(component, method) {
+  var boundMethod = method.bind(component);
+  if (process.env.NODE_ENV !== 'production') {
+    boundMethod.__reactBoundContext = component;
+    boundMethod.__reactBoundMethod = method;
+    boundMethod.__reactBoundArguments = null;
+    var componentName = component.constructor.displayName;
+    var _bind = boundMethod.bind;
+    boundMethod.bind = function (newThis) {
+      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      // User is trying to bind() an autobound method; we effectively will
+      // ignore the value of "this" that the user is trying to use, so
+      // let's warn.
+      if (newThis !== component && newThis !== null) {
+        process.env.NODE_ENV !== 'production' ? warning(false, 'bind(): React component methods may only be bound to the ' + 'component instance. See %s', componentName) : void 0;
+      } else if (!args.length) {
+        process.env.NODE_ENV !== 'production' ? warning(false, 'bind(): You are binding a component method to the component. ' + 'React does this for you automatically in a high-performance ' + 'way, so you can safely remove this call. See %s', componentName) : void 0;
+        return boundMethod;
+      }
+      var reboundMethod = _bind.apply(boundMethod, arguments);
+      reboundMethod.__reactBoundContext = component;
+      reboundMethod.__reactBoundMethod = method;
+      reboundMethod.__reactBoundArguments = args;
+      return reboundMethod;
+    };
+  }
+  return boundMethod;
+}
+
+/**
+ * Binds all auto-bound methods in a component.
+ *
+ * @param {object} component Component whose method is going to be bound.
+ */
+function bindAutoBindMethods(component) {
+  var pairs = component.__reactAutoBindPairs;
+  for (var i = 0; i < pairs.length; i += 2) {
+    var autoBindKey = pairs[i];
+    var method = pairs[i + 1];
+    component[autoBindKey] = bindAutoBindMethod(component, method);
+  }
+}
+
+/**
+ * Add more to the ReactClass base class. These are all legacy features and
+ * therefore not already part of the modern ReactComponent.
+ */
+var ReactClassMixin = {
+
+  /**
+   * TODO: This will be deprecated because state should always keep a consistent
+   * type signature and the only use case for this, is to avoid that.
+   */
+  replaceState: function (newState, callback) {
+    this.updater.enqueueReplaceState(this, newState);
+    if (callback) {
+      this.updater.enqueueCallback(this, callback, 'replaceState');
+    }
+  },
+
+  /**
+   * Checks whether or not this composite component is mounted.
+   * @return {boolean} True if mounted, false otherwise.
+   * @protected
+   * @final
+   */
+  isMounted: function () {
+    return this.updater.isMounted(this);
+  }
+};
+
+var ReactClassComponent = function () {};
+_assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
+
+var didWarnDeprecated = false;
+
+/**
+ * Module for creating composite components.
+ *
+ * @class ReactClass
+ */
+var ReactClass = {
+
+  /**
+   * Creates a composite component class given a class specification.
+   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
+   *
+   * @param {object} spec Class specification (which must define `render`).
+   * @return {function} Component constructor function.
+   * @public
+   */
+  createClass: function (spec) {
+    if (process.env.NODE_ENV !== 'production') {
+      process.env.NODE_ENV !== 'production' ? warning(didWarnDeprecated, '%s: React.createClass is deprecated and will be removed in version 16. ' + 'Use plain JavaScript classes instead. If you\'re not yet ready to ' + 'migrate, create-react-class is available on npm as a ' + 'drop-in replacement.', spec && spec.displayName || 'A Component') : void 0;
+      didWarnDeprecated = true;
+    }
+
+    // To keep our warnings more understandable, we'll use a little hack here to
+    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
+    // unnecessarily identify a class without displayName as 'Constructor'.
+    var Constructor = identity(function (props, context, updater) {
+      // This constructor gets overridden by mocks. The argument is used
+      // by mocks to assert on what gets mounted.
+
+      if (process.env.NODE_ENV !== 'production') {
+        process.env.NODE_ENV !== 'production' ? warning(this instanceof Constructor, 'Something is calling a React component directly. Use a factory or ' + 'JSX instead. See: https://fb.me/react-legacyfactory') : void 0;
+      }
+
+      // Wire up auto-binding
+      if (this.__reactAutoBindPairs.length) {
+        bindAutoBindMethods(this);
+      }
+
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+
+      this.state = null;
+
+      // ReactClasses doesn't have constructors. Instead, they use the
+      // getInitialState and componentWillMount methods for initialization.
+
+      var initialState = this.getInitialState ? this.getInitialState() : null;
+      if (process.env.NODE_ENV !== 'production') {
+        // We allow auto-mocks to proceed as if they're returning null.
+        if (initialState === undefined && this.getInitialState._isMockFunction) {
+          // This is probably bad practice. Consider warning here and
+          // deprecating this convenience.
+          initialState = null;
+        }
+      }
+      !(typeof initialState === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : _prodInvariant('82', Constructor.displayName || 'ReactCompositeComponent') : void 0;
+
+      this.state = initialState;
+    });
+    Constructor.prototype = new ReactClassComponent();
+    Constructor.prototype.constructor = Constructor;
+    Constructor.prototype.__reactAutoBindPairs = [];
+
+    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
+
+    mixSpecIntoComponent(Constructor, spec);
+
+    // Initialize the defaultProps property after all mixins have been merged.
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      // This is a tag to indicate that the use of these method names is ok,
+      // since it's used with createClass. If it's not, then it's likely a
+      // mistake so we'll warn you to use the static property, property
+      // initializer or constructor respectively.
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps.isReactClassApproved = {};
+      }
+      if (Constructor.prototype.getInitialState) {
+        Constructor.prototype.getInitialState.isReactClassApproved = {};
+      }
+    }
+
+    !Constructor.prototype.render ? process.env.NODE_ENV !== 'production' ? invariant(false, 'createClass(...): Class specification must implement a `render` method.') : _prodInvariant('83') : void 0;
+
+    if (process.env.NODE_ENV !== 'production') {
+      process.env.NODE_ENV !== 'production' ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component') : void 0;
+    }
+
+    // Reduce time spent doing lookups by setting these on the prototype.
+    for (var methodName in ReactClassInterface) {
+      if (!Constructor.prototype[methodName]) {
+        Constructor.prototype[methodName] = null;
+      }
+    }
+
+    return Constructor;
+  },
+
+  injection: {
+    injectMixin: function (mixin) {
+      injectedMixins.push(mixin);
+    }
+  }
+
+};
+
+module.exports = ReactClass;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+
+
+var ReactElement = __webpack_require__(8);
 
 /**
  * Create a factory that creates HTML tag elements.
@@ -4103,12 +4922,13 @@ var ReactElement = __webpack_require__(5);
  */
 var createDOMFactory = ReactElement.createFactory;
 if (process.env.NODE_ENV !== 'production') {
-  var ReactElementValidator = __webpack_require__(27);
+  var ReactElementValidator = __webpack_require__(32);
   createDOMFactory = ReactElementValidator.createFactory;
 }
 
 /**
  * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
+ * This is also accessible via `React.DOM`.
  *
  * @public
  */
@@ -4252,37 +5072,7 @@ var ReactDOMFactories = {
 module.exports = ReactDOMFactories;
 
 /***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-
-
-var ReactPropTypeLocationNames = {};
-
-if (process.env.NODE_ENV !== 'production') {
-  ReactPropTypeLocationNames = {
-    prop: 'prop',
-    context: 'context',
-    childContext: 'child context'
-  };
-}
-
-module.exports = ReactPropTypeLocationNames;
-
-/***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4298,15 +5088,15 @@ module.exports = ReactPropTypeLocationNames;
 
 
 
-var _require = __webpack_require__(5),
+var _require = __webpack_require__(8),
     isValidElement = _require.isValidElement;
 
-var factory = __webpack_require__(123);
+var factory = __webpack_require__(130);
 
 module.exports = factory(isValidElement);
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4328,7 +5118,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 64 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4344,10 +5134,38 @@ module.exports = ReactPropTypesSecret;
 
 
 
-module.exports = '15.6.1';
+var _assign = __webpack_require__(17);
+
+var ReactComponent = __webpack_require__(19);
+var ReactNoopUpdateQueue = __webpack_require__(21);
+
+var emptyObject = __webpack_require__(29);
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactPureComponent(props, context, updater) {
+  // Duplicated from ReactComponent.
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+function ComponentDummy() {}
+ComponentDummy.prototype = ReactComponent.prototype;
+ReactPureComponent.prototype = new ComponentDummy();
+ReactPureComponent.prototype.constructor = ReactPureComponent;
+// Avoid an extra prototype jump for these methods.
+_assign(ReactPureComponent.prototype, ReactComponent.prototype);
+ReactPureComponent.prototype.isPureReactComponent = true;
+
+module.exports = ReactPureComponent;
 
 /***/ }),
-/* 65 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4363,13 +5181,32 @@ module.exports = '15.6.1';
 
 
 
-var _prodInvariant = __webpack_require__(8);
+module.exports = '15.5.4';
 
-var ReactPropTypeLocationNames = __webpack_require__(61);
-var ReactPropTypesSecret = __webpack_require__(63);
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var invariant = __webpack_require__(9);
-var warning = __webpack_require__(10);
+"use strict";
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+
+
+var _prodInvariant = __webpack_require__(9);
+
+var ReactPropTypeLocationNames = __webpack_require__(33);
+var ReactPropTypesSecret = __webpack_require__(68);
+
+var invariant = __webpack_require__(10);
+var warning = __webpack_require__(7);
 
 var ReactComponentTreeHook;
 
@@ -4379,7 +5216,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(15);
+  ReactComponentTreeHook = __webpack_require__(20);
 }
 
 var loggedTypeFailures = {};
@@ -4421,7 +5258,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(15);
+            ReactComponentTreeHook = __webpack_require__(20);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -4439,7 +5276,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 module.exports = checkReactTypeSpec;
 
 /***/ }),
-/* 66 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4454,39 +5291,11 @@ module.exports = checkReactTypeSpec;
  */
 
 
+var _prodInvariant = __webpack_require__(9);
 
-var _require = __webpack_require__(25),
-    Component = _require.Component;
+var ReactElement = __webpack_require__(8);
 
-var _require2 = __webpack_require__(5),
-    isValidElement = _require2.isValidElement;
-
-var ReactNoopUpdateQueue = __webpack_require__(28);
-var factory = __webpack_require__(120);
-
-module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-
-var _prodInvariant = __webpack_require__(8);
-
-var ReactElement = __webpack_require__(5);
-
-var invariant = __webpack_require__(9);
+var invariant = __webpack_require__(10);
 
 /**
  * Returns the first child in a collection of children and verifies that there
@@ -4510,7 +5319,7 @@ function onlyChild(children) {
 module.exports = onlyChild;
 
 /***/ }),
-/* 68 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4526,15 +5335,15 @@ module.exports = onlyChild;
 
 
 
-var _prodInvariant = __webpack_require__(8);
+var _prodInvariant = __webpack_require__(9);
 
-var ReactCurrentOwner = __webpack_require__(12);
-var REACT_ELEMENT_TYPE = __webpack_require__(26);
+var ReactCurrentOwner = __webpack_require__(14);
+var REACT_ELEMENT_TYPE = __webpack_require__(31);
 
-var getIteratorFn = __webpack_require__(29);
-var invariant = __webpack_require__(9);
-var KeyEscapeUtils = __webpack_require__(56);
-var warning = __webpack_require__(10);
+var getIteratorFn = __webpack_require__(34);
+var invariant = __webpack_require__(10);
+var KeyEscapeUtils = __webpack_require__(61);
+var warning = __webpack_require__(7);
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
@@ -4647,7 +5456,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
       if (process.env.NODE_ENV !== 'production') {
         addendum = ' If you meant to render a collection of children, use an array ' + 'instead or wrap the object using createFragment(object) from the ' + 'React add-ons.';
         if (children._isReactElement) {
-          addendum = " It looks like you're using an element created by a different " + 'version of React. Make sure to use only one copy of React.';
+          addendum = ' It looks like you\'re using an element created by a different ' + 'version of React. Make sure to use only one copy of React.';
         }
         if (ReactCurrentOwner.current) {
           var name = ReactCurrentOwner.current.getName();
@@ -4691,34 +5500,17 @@ function traverseAllChildren(children, callback, traverseContext) {
 module.exports = traverseAllChildren;
 
 /***/ }),
-/* 69 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(58);
+module.exports = __webpack_require__(63);
 
 
 /***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _types = __webpack_require__(30);
-
-var _types2 = _interopRequireDefault(_types);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = {
-    Types: _types2.default
-};
-
-/***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4740,11 +5532,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _announcementContent = __webpack_require__(72);
+var _announcementContent = __webpack_require__(76);
 
 var _announcementContent2 = _interopRequireDefault(_announcementContent);
 
-var _announcementTitle = __webpack_require__(74);
+var _announcementTitle = __webpack_require__(78);
 
 var _announcementTitle2 = _interopRequireDefault(_announcementTitle);
 
@@ -4798,7 +5590,7 @@ Announcement.propTypes = {
 exports.default = Announcement;
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4820,7 +5612,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _announcementModal = __webpack_require__(73);
+var _announcementModal = __webpack_require__(77);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4876,7 +5668,7 @@ AnnouncementContent.propTypes = {
 exports.default = AnnouncementContent;
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4923,7 +5715,7 @@ AnnouncementModal.propTypes = {
 };
 
 /***/ }),
-/* 74 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5008,7 +5800,7 @@ AnnouncementTitle.propTypes = {
 exports.default = AnnouncementTitle;
 
 /***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5023,7 +5815,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -5031,15 +5823,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _attachmentList = __webpack_require__(31);
+var _attachmentList = __webpack_require__(36);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _folder = __webpack_require__(77);
+var _folder = __webpack_require__(81);
 
 var _folder2 = _interopRequireDefault(_folder);
 
-var _attachmentEditor = __webpack_require__(76);
+var _attachmentEditor = __webpack_require__(80);
 
 var _attachmentEditor2 = _interopRequireDefault(_attachmentEditor);
 
@@ -5085,7 +5877,7 @@ AttachmentCard.propTypes = {
 };
 
 /***/ }),
-/* 76 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5162,7 +5954,7 @@ AttachmentEditor.propTypes = {
 };
 
 /***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5184,7 +5976,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _attachmentList = __webpack_require__(31);
+var _attachmentList = __webpack_require__(36);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5254,7 +6046,7 @@ Folder.propTypes = {
 };
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5270,9 +6062,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListComponents = __webpack_require__(35);
+var _ListComponents = __webpack_require__(41);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -5318,7 +6110,7 @@ CalendarCard.data = [{ header: 'Midterm', description: '17.07.2017', buttons: [{
 exports.default = CalendarCard;
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5382,7 +6174,7 @@ CardModal.propTypes = {
 };
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5535,7 +6327,7 @@ Checklist.propTypes = {
 };
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5551,15 +6343,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _checklist = __webpack_require__(80);
+var _checklist = __webpack_require__(84);
 
 var _checklist2 = _interopRequireDefault(_checklist);
 
-var _checklistCreator = __webpack_require__(82);
+var _checklistCreator = __webpack_require__(86);
 
 var _checklistCreator2 = _interopRequireDefault(_checklistCreator);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -5687,7 +6479,7 @@ ChecklistCard.propTypes = {
 };
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5709,7 +6501,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _checklistForm = __webpack_require__(83);
+var _checklistForm = __webpack_require__(87);
 
 var _checklistForm2 = _interopRequireDefault(_checklistForm);
 
@@ -5775,7 +6567,7 @@ ChecklistCreator.propTypes = {
 };
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5797,7 +6589,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _checklistFormInput = __webpack_require__(84);
+var _checklistFormInput = __webpack_require__(88);
 
 var _checklistFormInput2 = _interopRequireDefault(_checklistFormInput);
 
@@ -5900,7 +6692,7 @@ ChecklistForm.propTypes = {
 };
 
 /***/ }),
-/* 84 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5992,7 +6784,7 @@ ChecklistFormInput.propTypes = {
 };
 
 /***/ }),
-/* 85 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6010,19 +6802,19 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _announcementCard = __webpack_require__(18);
+var _announcementCard = __webpack_require__(24);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
-var _constants = __webpack_require__(45);
+var _constants = __webpack_require__(26);
 
-var _calendarCard = __webpack_require__(78);
+var _calendarCard = __webpack_require__(82);
 
 var _calendarCard2 = _interopRequireDefault(_calendarCard);
 
-var _ProjectCard = __webpack_require__(32);
+var _ProjectCard = __webpack_require__(38);
 
-var _gradeCard = __webpack_require__(86);
+var _gradeCard = __webpack_require__(90);
 
 var _gradeCard2 = _interopRequireDefault(_gradeCard);
 
@@ -6030,7 +6822,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _courseHeader = __webpack_require__(132);
+var _courseHeader = __webpack_require__(37);
 
 var _courseHeader2 = _interopRequireDefault(_courseHeader);
 
@@ -6125,7 +6917,7 @@ CourseCard.propTypes = {
 };
 
 /***/ }),
-/* 86 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6137,15 +6929,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _React = __webpack_require__(69);
+var _React = __webpack_require__(74);
 
 var _React2 = _interopRequireDefault(_React);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _list = __webpack_require__(11);
+var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -6190,7 +6982,7 @@ GradeCard.placeholder = [{ header: 'Midterm 2', description: '90.0/200.0', icon:
 exports.default = GradeCard;
 
 /***/ }),
-/* 87 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6209,11 +7001,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _userList = __webpack_require__(44);
+var _userList = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6247,7 +7039,7 @@ StudentCard.propTypes = {
 };
 
 /***/ }),
-/* 88 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6262,7 +7054,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _card = __webpack_require__(4);
+var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
@@ -6272,11 +7064,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _list = __webpack_require__(11);
+var _list = __webpack_require__(13);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _userList = __webpack_require__(44);
+var _userList = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6340,7 +7132,75 @@ DetailsCard.propTypes = {
 };
 
 /***/ }),
-/* 89 */
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _card = __webpack_require__(6);
+
+var _card2 = _interopRequireDefault(_card);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _semanticUiReact = __webpack_require__(2);
+
+var _courseHeader = __webpack_require__(37);
+
+var _courseHeader2 = _interopRequireDefault(_courseHeader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProfileCard = function (_React$Component) {
+    _inherits(ProfileCard, _React$Component);
+
+    function ProfileCard() {
+        _classCallCheck(this, ProfileCard);
+
+        return _possibleConstructorReturn(this, (ProfileCard.__proto__ || Object.getPrototypeOf(ProfileCard)).apply(this, arguments));
+    }
+
+    _createClass(ProfileCard, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_card2.default, {
+                title: 'Profile',
+                content: _react2.default.createElement(_courseHeader2.default, { course: this.props.course })
+            });
+        }
+    }]);
+
+    return ProfileCard;
+}(_react2.default.Component);
+
+exports.default = ProfileCard;
+
+
+ProfileCard.propTypes = {
+    course: _propTypes2.default.object
+};
+
+/***/ }),
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6360,7 +7220,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _formInput = __webpack_require__(33);
+var _formInput = __webpack_require__(39);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
@@ -6461,13 +7321,13 @@ var _initialiseProps = function _initialiseProps() {
 exports.default = LCForm;
 
 /***/ }),
-/* 90 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _navigationBar = __webpack_require__(91);
+var _navigationBar = __webpack_require__(96);
 
 var _navigationBar2 = _interopRequireDefault(_navigationBar);
 
@@ -6478,7 +7338,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 91 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6494,11 +7354,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _app = __webpack_require__(20);
+var _app = __webpack_require__(27);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(38);
+var _MenuComponents = __webpack_require__(44);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6515,7 +7375,7 @@ var NavigationBar = function NavigationBar(_ref) {
         _react2.default.createElement(
             _semanticUiReact.Menu.Item,
             null,
-            _react2.default.createElement('img', { src: __webpack_require__(112) })
+            _react2.default.createElement('img', { src: __webpack_require__(121) })
         ),
         left.map(function (item) {
             return _react2.default.createElement(_MenuComponents.LinkMenuItem, { key: item.title, destination: item.destination, title: item.title });
@@ -6533,7 +7393,7 @@ var NavigationBar = function NavigationBar(_ref) {
 exports.default = NavigationBar;
 
 /***/ }),
-/* 92 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6551,7 +7411,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCodemirror = __webpack_require__(124);
+var _reactCodemirror = __webpack_require__(131);
 
 var _reactCodemirror2 = _interopRequireDefault(_reactCodemirror);
 
@@ -6681,12 +7541,12 @@ var CodeEditor = function (_React$Component) {
 
 function initCodemirror(window) {
     if (!window.CodeMirror) {
-        __webpack_require__(117);
-        window.CodeMirror = __webpack_require__(116);
+        __webpack_require__(126);
+        window.CodeMirror = __webpack_require__(125);
         //require ('node_modules/codemirror/addon/mode/loadmode.js');
+        __webpack_require__(127);
+        __webpack_require__(128);
         __webpack_require__(118);
-        __webpack_require__(119);
-        __webpack_require__(109);
     }
 }
 
@@ -6699,7 +7559,7 @@ CodeEditor.propTypes = {
 exports.default = CodeEditor;
 
 /***/ }),
-/* 93 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6715,7 +7575,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGitgraph = __webpack_require__(125);
+var _reactGitgraph = __webpack_require__(132);
 
 var _reactGitgraph2 = _interopRequireDefault(_reactGitgraph);
 
@@ -6793,13 +7653,13 @@ var CommitGraph = function (_React$Component) {
 exports.default = CommitGraph;
 
 /***/ }),
-/* 94 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _sidebarMenu = __webpack_require__(95);
+var _sidebarMenu = __webpack_require__(100);
 
 var _sidebarMenu2 = _interopRequireDefault(_sidebarMenu);
 
@@ -6810,7 +7670,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 95 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6826,15 +7686,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _app = __webpack_require__(20);
+var _app = __webpack_require__(27);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(38);
+var _MenuComponents = __webpack_require__(44);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _menu = __webpack_require__(40);
+var _menu = __webpack_require__(46);
 
 var _menu2 = _interopRequireDefault(_menu);
 
@@ -6911,21 +7771,21 @@ var SidebarMenu = function SidebarMenu() {
 exports.default = SidebarMenu;
 
 /***/ }),
-/* 96 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _FormComponents = __webpack_require__(19);
+var _FormComponents = __webpack_require__(25);
 
 var _FormComponents2 = _interopRequireDefault(_FormComponents);
 
-var _NavigationComponents = __webpack_require__(90);
+var _NavigationComponents = __webpack_require__(95);
 
 var _NavigationComponents2 = _interopRequireDefault(_NavigationComponents);
 
-var _SidebarComponents = __webpack_require__(94);
+var _SidebarComponents = __webpack_require__(99);
 
 var _SidebarComponents2 = _interopRequireDefault(_SidebarComponents);
 
@@ -6938,7 +7798,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6956,7 +7816,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
 var _reactRouterDom = __webpack_require__(3);
 
@@ -6964,21 +7824,21 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(14);
+var _routes = __webpack_require__(18);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
-var _visibleLoginPage = __webpack_require__(46);
+var _visibleLoginPage = __webpack_require__(51);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
-var _app = __webpack_require__(20);
+var _app = __webpack_require__(27);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _authentication = __webpack_require__(17);
+var _authentication = __webpack_require__(11);
 
-var _views = __webpack_require__(22);
+var _views = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7052,15 +7912,253 @@ Entry.propTypes = {
 exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Entry));
 
 /***/ }),
-/* 98 */
+/* 103 */,
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _communicationController = __webpack_require__(99);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var _database = __webpack_require__(21);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(5);
+
+var _views = __webpack_require__(12);
+
+__webpack_require__(11);
+
+var _reactCookie = __webpack_require__(4);
+
+var _course = __webpack_require__(28);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _course2 = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VisibleCoursePage = function (_Component) {
+  _inherits(VisibleCoursePage, _Component);
+
+  function VisibleCoursePage(props) {
+    _classCallCheck(this, VisibleCoursePage);
+
+    var _this = _possibleConstructorReturn(this, (VisibleCoursePage.__proto__ || Object.getPrototypeOf(VisibleCoursePage)).call(this, props));
+
+    _this._getProjectList = function () {
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Project List", resp);
+          _this.props.courseProjectListAction("59401393ca715c55ba5eb00e", resp.body.data);
+        }
+      };
+      (0, _course.getCourseProjectList)("59401393ca715c55ba5eb00e", _this.props.user.token, handleResponse);
+    };
+
+    _this._getAnnouncementList = function () {
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Announcement List", resp);
+          _this.props.courseAnnouncementListAction("59401393ca715c55ba5eb00e", resp.body.data);
+        }
+      };
+      (0, _course.getCourseAnnouncementList)("59401393ca715c55ba5eb00e", _this.props.user.token, handleResponse);
+    };
+
+    return _this;
+  }
+
+  _createClass(VisibleCoursePage, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      console.log("Props: ", this.props);
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(resp);
+          _this2.props.courseAction(resp.body.data);
+          _this2._getProjectList();
+          _this2._getAnnouncementList();
+        }
+      };
+      (0, _course.getCourse)("59401393ca715c55ba5eb00e", this.props.user.token, handleResponse);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return this.props.course && this.props.course["59401393ca715c55ba5eb00e"] ? _react2.default.createElement(_views.CoursePage, { data: this.props.course["59401393ca715c55ba5eb00e"] }) : null;
+    }
+  }]);
+
+  return VisibleCoursePage;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    courseAction: function courseAction(course) {
+      console.log("Course Action");
+      dispatch((0, _course2.courseAction)(course));
+    },
+    courseProjectListAction: function courseProjectListAction(courseId, projectList) {
+      dispatch((0, _course2.courseProjectListAction)(courseId, projectList));
+    },
+    courseAnnouncementListAction: function courseAnnouncementListAction(courseId, announcementList) {
+      dispatch((0, _course2.courseAnnouncementListAction)(courseId, announcementList));
+    }
+  };
+};
+
+exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VisibleCoursePage));
+;
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(5);
+
+var _views = __webpack_require__(12);
+
+__webpack_require__(11);
+
+var _reactCookie = __webpack_require__(4);
+
+var _course = __webpack_require__(28);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _course2 = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _VisibleHomePage = function (_Component) {
+  _inherits(_VisibleHomePage, _Component);
+
+  function _VisibleHomePage() {
+    _classCallCheck(this, _VisibleHomePage);
+
+    return _possibleConstructorReturn(this, (_VisibleHomePage.__proto__ || Object.getPrototypeOf(_VisibleHomePage)).apply(this, arguments));
+  }
+
+  _createClass(_VisibleHomePage, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      console.log("Props: ", this.props);
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(resp);
+          var courses = [];
+          resp.body.data.forEach(function (element) {
+            var handleCourseResponse = function handleCourseResponse(err, resp) {
+              if (err) {} else {
+                console.log("Course", resp);
+                _this2.props.courseSummaryAction(resp.body.data);
+              }
+            };
+            (0, _course.getCourseSummary)(element._id, _this2.props.user.token, handleCourseResponse);
+          }, _this2);
+        }
+      };
+      (0, _course.getAttendedCourses)(this.props.user.user._id, this.props.user.token, handleResponse);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return this.props.course ? _react2.default.createElement(_views.Home, { courses: Object.keys(this.props.course).map(function (k) {
+          return _this3.props.course[k];
+        }) }) : null;
+    }
+  }]);
+
+  return _VisibleHomePage;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    courseSummaryAction: function courseSummaryAction(course) {
+      console.log("Course Action");
+      dispatch((0, _course2.courseSummaryAction)(course));
+    }
+  };
+};
+
+var VisibleHomePage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_VisibleHomePage));
+
+exports.default = VisibleHomePage;
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _communicationController = __webpack_require__(52);
+
+var _database = __webpack_require__(16);
 
 function Login(formData, respFunc) {
 
@@ -7087,38 +8185,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.post = post;
-exports.get = get;
-
-var _superagent = __webpack_require__(126);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function post(api, postData, respFunc, token) {
-    _superagent2.default.post(api).send(postData).set('X-API-Key', 'foobar').set('Accept', 'application/json').set('Authorization', 'Bearer ' + token).end(function (err, res) {
-        respFunc(err, res);
-    });
-};
-
-function get(api, getData, respFunc, token) {
-    _superagent2.default.get(api).set('Authorization', 'Bearer ' + token).query(getData).end(function (err, res) {
-        respFunc(err, res);
-    });
-};
-
-/***/ }),
-/* 100 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7130,7 +8197,53 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(70);
+var _actions = __webpack_require__(35);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var INITIAL_STATE = {};
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+    var action = arguments[1];
+
+    console.log("course reducer");
+    console.log(action);
+    var course = {};
+    switch (action.type) {
+        case _actions.Types.GET_COURSE_SUMMARY:
+            return _extends({}, state, _defineProperty({}, action.course.course._id, action.course));
+        case _actions.Types.GET_COURSE:
+            course = state[action.course._id];
+            course = _extends({}, course, { course: action.course });
+            return _extends({}, state, _defineProperty({}, action.course._id, course));
+        case _actions.Types.GET_COURSE_PROJECT_LIST:
+            course = state[action.courseId];
+            course = _extends({}, course, { projects: action.projects });
+            return _extends({}, state, _defineProperty({}, action.courseId, course));
+        case _actions.Types.GET_COURSE_ANNOUNCEMENT_LIST:
+            course = state[action.courseId];
+            course = _extends({}, course, { announcements: action.announcements });
+            return _extends({}, state, _defineProperty({}, action.courseId, course));
+        default:
+            return state;
+    }
+};
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(35);
 
 var INITIAL_STATE = {};
 
@@ -7153,7 +8266,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 101 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7171,13 +8284,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _views = __webpack_require__(22);
+var _views = __webpack_require__(12);
 
-var _visibleLoginPage = __webpack_require__(46);
+var _visibleLoginPage = __webpack_require__(51);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
-var _entry = __webpack_require__(97);
+var _entry = __webpack_require__(102);
 
 var _entry2 = _interopRequireDefault(_entry);
 
@@ -7215,13 +8328,13 @@ var AppRoutes = function (_React$Component) {
 exports.default = AppRoutes;
 
 /***/ }),
-/* 102 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(53);
+var _express = __webpack_require__(58);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -7229,29 +8342,29 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(54);
+var _server = __webpack_require__(59);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _template = __webpack_require__(52);
+var _template = __webpack_require__(57);
 
 var _template2 = _interopRequireDefault(_template);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _redux = __webpack_require__(24);
+var _redux = __webpack_require__(30);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(5);
 
-var _reducers = __webpack_require__(51);
+var _reducers = __webpack_require__(56);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _routes = __webpack_require__(14);
+var _routes = __webpack_require__(18);
 
-var _reactCookie = __webpack_require__(6);
+var _reactCookie = __webpack_require__(4);
 
-var _RoutesRoot = __webpack_require__(50);
+var _RoutesRoot = __webpack_require__(55);
 
 var _RoutesRoot2 = _interopRequireDefault(_RoutesRoot);
 
@@ -7260,7 +8373,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 var context = {};
 
-var cookiesMiddleware = __webpack_require__(55);
+var cookiesMiddleware = __webpack_require__(60);
 
 
 app.use(_express2.default.static('dist/public'));
@@ -7306,7 +8419,7 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 103 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7322,27 +8435,82 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _StudentCard = __webpack_require__(87);
+var _announcementCard = __webpack_require__(24);
+
+var _announcementCard2 = _interopRequireDefault(_announcementCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AnnouncementPage = function (_React$Component) {
+    _inherits(AnnouncementPage, _React$Component);
+
+    function AnnouncementPage(props) {
+        _classCallCheck(this, AnnouncementPage);
+
+        var _this = _possibleConstructorReturn(this, (AnnouncementPage.__proto__ || Object.getPrototypeOf(AnnouncementPage)).call(this, props));
+
+        _this.state = {
+            announcements: [{ title: "Loopcake", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }, { title: "Loopcak", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }, { title: "Loopca", courseTitle: "Computer Design", date: "Yesterday", content: "Awesome" }]
+        };
+        return _this;
+    }
+
+    _createClass(AnnouncementPage, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_announcementCard2.default, { announcements: this.state.announcements });
+        }
+    }]);
+
+    return AnnouncementPage;
+}(_react2.default.Component);
+
+exports.default = AnnouncementPage;
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _StudentCard = __webpack_require__(91);
 
 var _reactRouterDom = __webpack_require__(3);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _ProjectCard = __webpack_require__(32);
+var _ProjectCard = __webpack_require__(38);
 
-var _detailsCard = __webpack_require__(88);
+var _detailsCard = __webpack_require__(92);
 
-var _profileCard = __webpack_require__(133);
+var _profileCard = __webpack_require__(93);
 
 var _profileCard2 = _interopRequireDefault(_profileCard);
 
-var _announcementCard = __webpack_require__(18);
+var _announcementCard = __webpack_require__(24);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
-var _attachmentCard = __webpack_require__(75);
+var _attachmentCard = __webpack_require__(79);
 
-var _checklistCard = __webpack_require__(81);
+var _checklistCard = __webpack_require__(85);
 
 var _checklistCard2 = _interopRequireDefault(_checklistCard);
 
@@ -7455,7 +8623,7 @@ CoursePage.propTypes = {
 exports.default = CoursePage;
 
 /***/ }),
-/* 104 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7475,7 +8643,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _courseCard = __webpack_require__(85);
+var _courseCard = __webpack_require__(89);
 
 var _courseCard2 = _interopRequireDefault(_courseCard);
 
@@ -7542,7 +8710,7 @@ Home.propTypes = {
 };
 
 /***/ }),
-/* 105 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7556,11 +8724,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(19);
+var _FormComponents = __webpack_require__(25);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(21);
+var _database = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7615,7 +8783,7 @@ var RegisterPage = function RegisterPage() {
             _react2.default.createElement(
                 _semanticUiReact.Grid.Column,
                 { width: 5 },
-                _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(49) }),
+                _react2.default.createElement(_semanticUiReact.Image, { centered: true, height: 50, size: 'small', src: __webpack_require__(54) }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     _semanticUiReact.Card,
@@ -7638,7 +8806,7 @@ var RegisterPage = function RegisterPage() {
 exports.default = RegisterPage;
 
 /***/ }),
-/* 106 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7654,11 +8822,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _codeEditor = __webpack_require__(92);
+var _codeEditor = __webpack_require__(97);
 
 var _codeEditor2 = _interopRequireDefault(_codeEditor);
 
-var _commitGraph = __webpack_require__(93);
+var _commitGraph = __webpack_require__(98);
 
 var _commitGraph2 = _interopRequireDefault(_commitGraph);
 
@@ -7698,10 +8866,10 @@ var RepoPage = function (_React$Component) {
 exports.default = RepoPage;
 
 /***/ }),
-/* 107 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(108)(undefined);
+exports = module.exports = __webpack_require__(117)(undefined);
 // imports
 
 
@@ -7712,7 +8880,7 @@ exports.push([module.i, ".CodeMirror{\n    height: auto;\n}", ""]);
 
 
 /***/ }),
-/* 108 */
+/* 117 */
 /***/ (function(module, exports) {
 
 /*
@@ -7794,13 +8962,13 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 109 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(107);
+var content = __webpack_require__(116);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -7808,7 +8976,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(110)(content, options);
+var update = __webpack_require__(119)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -7825,7 +8993,7 @@ if(false) {
 }
 
 /***/ }),
-/* 110 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -7871,7 +9039,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(111);
+var	fixUrls = __webpack_require__(120);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -8184,7 +9352,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 111 */
+/* 120 */
 /***/ (function(module, exports) {
 
 
@@ -8279,13 +9447,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 112 */
+/* 121 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 113 */
+/* 122 */
 /***/ (function(module, exports) {
 
 module.exports= {
@@ -8295,7 +9463,7 @@ module.exports= {
 };
 
 /***/ }),
-/* 114 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -8304,7 +9472,7 @@ module.exports = {
 
 
 /***/ }),
-/* 115 */
+/* 124 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -8313,656 +9481,64 @@ module.exports = {
 
 
 /***/ }),
-/* 116 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror");
 
 /***/ }),
-/* 117 */
+/* 126 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/lib/codemirror.css");
 
 /***/ }),
-/* 118 */
+/* 127 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/mode/meta.js");
 
 /***/ }),
-/* 119 */
+/* 128 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/theme/rubyblue.css");
 
 /***/ }),
-/* 120 */
-/***/ (function(module, exports) {
-
-module.exports = require("create-react-class/factory");
-
-/***/ }),
-/* 121 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports = require("fbjs/lib/emptyFunction");
 
 /***/ }),
-/* 122 */
-/***/ (function(module, exports) {
-
-module.exports = require("fbjs/lib/emptyObject");
-
-/***/ }),
-/* 123 */
+/* 130 */
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types/factory");
 
 /***/ }),
-/* 124 */
+/* 131 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-codemirror");
 
 /***/ }),
-/* 125 */
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-gitgraph");
 
 /***/ }),
-/* 126 */
+/* 133 */
 /***/ (function(module, exports) {
 
 module.exports = require("superagent");
 
 /***/ }),
-/* 127 */
+/* 134 */
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
-
-/***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(7);
-
-var _views = __webpack_require__(22);
-
-__webpack_require__(17);
-
-var _reactCookie = __webpack_require__(6);
-
-var _course = __webpack_require__(129);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _course2 = __webpack_require__(130);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _VisibleHomePage = function (_Component) {
-  _inherits(_VisibleHomePage, _Component);
-
-  function _VisibleHomePage() {
-    _classCallCheck(this, _VisibleHomePage);
-
-    return _possibleConstructorReturn(this, (_VisibleHomePage.__proto__ || Object.getPrototypeOf(_VisibleHomePage)).apply(this, arguments));
-  }
-
-  _createClass(_VisibleHomePage, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      var _this2 = this;
-
-      console.log("Props: ", this.props);
-      var handleResponse = function handleResponse(err, resp) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(resp);
-          var courses = [];
-          resp.body.data.forEach(function (element) {
-            var handleCourseResponse = function handleCourseResponse(err, resp) {
-              if (err) {} else {
-                console.log("Course", resp);
-                _this2.props.courseSummaryAction(resp.body.data);
-              }
-            };
-            (0, _course.getCourseSummary)(element._id, _this2.props.user.token, handleCourseResponse);
-          }, _this2);
-        }
-      };
-      (0, _course.getAttendedCourses)(this.props.user.user._id, this.props.user.token, handleResponse);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
-
-      return this.props.course ? _react2.default.createElement(_views.Home, { courses: Object.keys(this.props.course).map(function (k) {
-          return _this3.props.course[k];
-        }) }) : null;
-    }
-  }]);
-
-  return _VisibleHomePage;
-}(_react.Component);
-
-var mapStateToProps = function mapStateToProps(state) {
-  return _extends({}, state);
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    courseSummaryAction: function courseSummaryAction(course) {
-      console.log("Course Action");
-      dispatch((0, _course2.courseSummaryAction)(course));
-    }
-  };
-};
-
-var VisibleHomePage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_VisibleHomePage));
-
-exports.default = VisibleHomePage;
-
-/***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.getAttendedCourses = getAttendedCourses;
-exports.getCourseSummary = getCourseSummary;
-exports.getCourse = getCourse;
-exports.getCourseProjectList = getCourseProjectList;
-exports.getCourseAnnouncementList = getCourseAnnouncementList;
-
-var _communicationController = __webpack_require__(99);
-
-var _index = __webpack_require__(21);
-
-function getAttendedCourses(userId, token, responseFunc) {
-    (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
-}
-
-function getCourseSummary(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId + '/summary', {}, responseFunc, token);
-}
-
-function getCourse(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId, {}, responseFunc, token);
-}
-
-function getCourseProjectList(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/project', { course: courseId }, responseFunc, token);
-}
-
-function getCourseAnnouncementList(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/announcement', { course: courseId }, responseFunc, token);
-}
-
-/***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.courseSummaryAction = courseSummaryAction;
-exports.courseAction = courseAction;
-exports.courseProjectListAction = courseProjectListAction;
-exports.courseAnnouncementListAction = courseAnnouncementListAction;
-
-var _types = __webpack_require__(30);
-
-function courseSummaryAction(course) {
-  return {
-    type: _types.GET_COURSE_SUMMARY,
-    course: course
-  };
-}
-
-function courseAction(course) {
-  return {
-    type: _types.GET_COURSE,
-    course: course
-  };
-}
-
-function courseProjectListAction(courseId, projectList) {
-  return {
-    type: _types.GET_COURSE_PROJECT_LIST,
-    projects: projectList,
-    courseId: courseId
-  };
-}
-
-function courseAnnouncementListAction(courseId, announcements) {
-  return {
-    type: _types.GET_COURSE_ANNOUNCEMENT_LIST,
-    announcements: announcements,
-    courseId: courseId
-  };
-}
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _actions = __webpack_require__(70);
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var INITIAL_STATE = {};
-
-exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-    var action = arguments[1];
-
-    console.log("course reducer");
-    console.log(action);
-    var course = {};
-    switch (action.type) {
-        case _actions.Types.GET_COURSE_SUMMARY:
-            return _extends({}, state, _defineProperty({}, action.course.course._id, action.course));
-        case _actions.Types.GET_COURSE:
-            course = state[action.course._id];
-            course = _extends({}, course, { course: action.course });
-            return _extends({}, state, _defineProperty({}, action.course._id, course));
-        case _actions.Types.GET_COURSE_PROJECT_LIST:
-            course = state[action.courseId];
-            course = _extends({}, course, { projects: action.projects });
-            return _extends({}, state, _defineProperty({}, action.courseId, course));
-        case _actions.Types.GET_COURSE_ANNOUNCEMENT_LIST:
-            course = state[action.courseId];
-            course = _extends({}, course, { announcements: action.announcements });
-            return _extends({}, state, _defineProperty({}, action.courseId, course));
-        default:
-            return state;
-    }
-};
-
-/***/ }),
-/* 132 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _semanticUiReact = __webpack_require__(2);
-
-var _constants = __webpack_require__(45);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CourseHeader = function (_React$Component) {
-  _inherits(CourseHeader, _React$Component);
-
-  function CourseHeader() {
-    _classCallCheck(this, CourseHeader);
-
-    return _possibleConstructorReturn(this, (CourseHeader.__proto__ || Object.getPrototypeOf(CourseHeader)).apply(this, arguments));
-  }
-
-  _createClass(CourseHeader, [{
-    key: '_getHeader',
-    value: function _getHeader() {
-      if (this.props.course) {
-        var course = this.props.course;
-        return course.name;
-      }
-    }
-  }, {
-    key: '_getDetail',
-    value: function _getDetail() {
-      if (this.props.course) {
-        var course = this.props.course;
-        var str = "";
-        for (var i = 0; i < course.instructors.length; ++i) {
-          var ins = course.instructors[i];
-          str += ins.name + " " + ins.surname;
-          if (i != course.instructors.length) {
-            str += "\n";
-          }
-        }
-        return str;
-      }
-    }
-  }, {
-    key: '_getAbv',
-    value: function _getAbv() {
-      if (this.props.course) {
-        var course = this.props.course;
-        return course.abbreviation + " " + course.code;
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _semanticUiReact.Grid,
-        null,
-        _react2.default.createElement(
-          _semanticUiReact.Grid.Column,
-          { width: 5 },
-          _react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Grid.Column,
-          { width: 11 },
-          _react2.default.createElement(
-            _semanticUiReact.Card.Header,
-            null,
-            this._getHeader()
-          ),
-          _react2.default.createElement(
-            _semanticUiReact.Card.Meta,
-            null,
-            _react2.default.createElement(
-              'span',
-              { className: 'date' },
-              this._getAbv()
-            )
-          ),
-          _react2.default.createElement(
-            _semanticUiReact.Card.Description,
-            null,
-            this._getDetail()
-          )
-        )
-      );
-    }
-  }]);
-
-  return CourseHeader;
-}(_react2.default.Component);
-
-exports.default = CourseHeader;
-
-
-CourseHeader.propTypes = {
-  course: _propTypes2.default.shape({
-    _id: _propTypes2.default.string,
-    name: _propTypes2.default.string,
-    abbreviation: _propTypes2.default.string,
-    code: _propTypes2.default.string,
-    details: _propTypes2.default.shape({
-      year: _propTypes2.default.string,
-      _id: _propTypes2.default.string,
-      relatedCourses: _propTypes2.default.array,
-      programmingLanguages: _propTypes2.default.array,
-      sections: _propTypes2.default.array
-    }),
-    attachments: _propTypes2.default.array,
-    instructors: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-      _id: _propTypes2.default.string,
-      email: _propTypes2.default.string,
-      name: _propTypes2.default.string,
-      surname: _propTypes2.default.string,
-      photo: _propTypes2.default.string
-    }))
-  })
-};
-
-/***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _card = __webpack_require__(4);
-
-var _card2 = _interopRequireDefault(_card);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _semanticUiReact = __webpack_require__(2);
-
-var _courseHeader = __webpack_require__(132);
-
-var _courseHeader2 = _interopRequireDefault(_courseHeader);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ProfileCard = function (_React$Component) {
-    _inherits(ProfileCard, _React$Component);
-
-    function ProfileCard() {
-        _classCallCheck(this, ProfileCard);
-
-        return _possibleConstructorReturn(this, (ProfileCard.__proto__ || Object.getPrototypeOf(ProfileCard)).apply(this, arguments));
-    }
-
-    _createClass(ProfileCard, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(_card2.default, {
-                title: 'Profile',
-                content: _react2.default.createElement(_courseHeader2.default, { course: this.props.course })
-            });
-        }
-    }]);
-
-    return ProfileCard;
-}(_react2.default.Component);
-
-exports.default = ProfileCard;
-
-
-ProfileCard.propTypes = {
-    course: _propTypes2.default.object
-};
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(7);
-
-var _views = __webpack_require__(22);
-
-__webpack_require__(17);
-
-var _reactCookie = __webpack_require__(6);
-
-var _course = __webpack_require__(129);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _course2 = __webpack_require__(130);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var VisibleCoursePage = function (_Component) {
-  _inherits(VisibleCoursePage, _Component);
-
-  function VisibleCoursePage(props) {
-    _classCallCheck(this, VisibleCoursePage);
-
-    var _this = _possibleConstructorReturn(this, (VisibleCoursePage.__proto__ || Object.getPrototypeOf(VisibleCoursePage)).call(this, props));
-
-    _this._getProjectList = function () {
-      var handleResponse = function handleResponse(err, resp) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Project List", resp);
-          _this.props.courseProjectListAction("59401393ca715c55ba5eb00e", resp.body.data);
-        }
-      };
-      (0, _course.getCourseProjectList)("59401393ca715c55ba5eb00e", _this.props.user.token, handleResponse);
-    };
-
-    _this._getAnnouncementList = function () {
-      var handleResponse = function handleResponse(err, resp) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Announcement List", resp);
-          _this.props.courseAnnouncementListAction("59401393ca715c55ba5eb00e", resp.body.data);
-        }
-      };
-      (0, _course.getCourseAnnouncementList)("59401393ca715c55ba5eb00e", _this.props.user.token, handleResponse);
-    };
-
-    return _this;
-  }
-
-  _createClass(VisibleCoursePage, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      var _this2 = this;
-
-      console.log("Props: ", this.props);
-      var handleResponse = function handleResponse(err, resp) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(resp);
-          _this2.props.courseAction(resp.body.data);
-          _this2._getProjectList();
-          _this2._getAnnouncementList();
-        }
-      };
-      (0, _course.getCourse)("59401393ca715c55ba5eb00e", this.props.user.token, handleResponse);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-
-      return this.props.course && this.props.course["59401393ca715c55ba5eb00e"] ? _react2.default.createElement(_views.CoursePage, { data: this.props.course["59401393ca715c55ba5eb00e"] }) : null;
-    }
-  }]);
-
-  return VisibleCoursePage;
-}(_react.Component);
-
-var mapStateToProps = function mapStateToProps(state) {
-  return _extends({}, state);
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    courseAction: function courseAction(course) {
-      console.log("Course Action");
-      dispatch((0, _course2.courseAction)(course));
-    },
-    courseProjectListAction: function courseProjectListAction(courseId, projectList) {
-      dispatch((0, _course2.courseProjectListAction)(courseId, projectList));
-    },
-    courseAnnouncementListAction: function courseAnnouncementListAction(courseId, announcementList) {
-      dispatch((0, _course2.courseAnnouncementListAction)(courseId, announcementList));
-    }
-  };
-};
-
-exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VisibleCoursePage));
-;
 
 /***/ })
 /******/ ]);

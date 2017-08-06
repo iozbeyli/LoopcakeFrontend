@@ -20,7 +20,7 @@ class AnnouncementCard extends React.Component{
                     <Announcement
                         key={announcement.title+announcement.date+announcement.content}
                         title={announcement.title}
-                        courseTitle={announcement.courseTitle}
+                        courseTitle={announcement.courseName}
                         date={announcement.date}
                         content={announcement.content}/>
 
@@ -46,9 +46,10 @@ AnnouncementCard.propTypes = {
     announcements: PropTypes.arrayOf(PropTypes.shape(
         {
             title: PropTypes.string.isRequired,
-            courseTitle: PropTypes.string,
+            course: PropTypes.string,
             date: PropTypes.string.isRequired,
             content: PropTypes.string.isRequired,
+            courseName: PropTypes.string
         }
     )),
     editable: PropTypes.bool,

@@ -1,4 +1,9 @@
-import {GET_COURSE_SUMMARY,GET_COURSE,GET_COURSE_PROJECT_LIST,GET_COURSE_ANNOUNCEMENT_LIST} from './types';
+import {
+  GET_COURSE_SUMMARY,
+  GET_COURSE,
+  GET_COURSE_PROJECT_LIST,
+  GET_COURSE_ANNOUNCEMENT_LIST,
+  GET_ATTENDED_COURSE} from './types';
 
 export function courseSummaryAction(course){
 	return{
@@ -12,6 +17,13 @@ export function courseAction(course){
       type: GET_COURSE,
       course: course
     }
+}
+
+export function courseAttendedAction(courses){
+  return{
+    type: GET_ATTENDED_COURSE,
+    courses: courses
+  }
 }
 
 export function courseProjectListAction(courseId,projectList){

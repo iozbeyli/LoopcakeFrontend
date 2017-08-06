@@ -52,12 +52,14 @@ class CoursePage extends React.Component{
             assistants: [
                 {
                     image:'',
-                    header: 'Yahya Hassanzadeh'
+                    name: 'Yahya',
+                    surname:' Hassanzadeh'
                 },
                 {
                     image:'',
-                    header: 'Leila Basri'
-                }
+                    name: 'Leila',
+                    surname:' Basri'
+                },
                 ],
 
 
@@ -94,7 +96,7 @@ class CoursePage extends React.Component{
             <Grid.Column width={4}>
                 <ProfileCard course={this.props.data.course}/>
                 <DetailsCard {...details}/>
-                <StudentCard hidable items={studentList}/>
+                <StudentCard hidable students={this.props.data.course.students}/>
             </Grid.Column>
         </Grid>
 

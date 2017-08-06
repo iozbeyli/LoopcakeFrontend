@@ -10,6 +10,7 @@ export const AttachmentCard = ({attachments,folders,hidable}) => {
         <Card
             hidable={hidable}
             title="Attachments"
+            icon="attach"
             content={
                 <div>
                     <AttachmentList attachments={attachments}/>

@@ -7,11 +7,12 @@ export const UserList = ({items}) => {
 
     let temp = [];
     items.map(item=>{
+        let header = item.name+" "+item.surname;
         temp.push({
             image: item.image,
-            header: item.header,
+            header: header,
             buttons:[{
-                title: <Link to={"/app/student/"+item.header}>Go To Page</Link>,
+                title: <Link to={"/app/student/"+header}>Go To Page</Link>,
                 onClick: ()=>{}
             }]
         }) ;
@@ -24,7 +25,9 @@ export const UserList = ({items}) => {
 
 UserList.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
-        image: PropTypes.string.isRequired,
-        header: PropTypes.string.isRequired
+        _id: PropTypes.string,
+        email: PropTypes.string,
+        name: PropTypes.string,
+        surname: PropTypes.string
     }))
 };
