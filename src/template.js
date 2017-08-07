@@ -3,6 +3,7 @@ export default body => initialState => `
     <html>
         <head>
             <meta charset="UTF-8">
+            <title>Loopcake</title>
             <link rel="stylesheet" type="text/css" href="/semantic.min.css">
         </head>
         <body>
