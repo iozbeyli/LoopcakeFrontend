@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 class CoursePage extends React.Component{
     constructor(props){
         super(props);
+        console.log("func",props.functions);
     }
 
     render(){
@@ -89,7 +90,7 @@ class CoursePage extends React.Component{
         return(
         <Grid>
             <Grid.Column width={12}>
-                <AnnouncementCard announcements={this.props.data.announcements} editable/>
+                <AnnouncementCard functions={{...this.props.functions}} announcements={this.props.data.announcements} editable/>
                 <ProjectCard items={this.props.data.projects}/>
                 <AttachmentCard hidable attachments={attachments} folders={folders} />
             </Grid.Column>
@@ -112,9 +113,9 @@ CoursePage.propTypes={
 		course: PropTypes.object,
 		grades: PropTypes.array,
 		myGroups: PropTypes.array,
-        projects: PropTypes.array,
-        functions: PropTypes.object
-	})
+        projects: PropTypes.array
+    }),
+    functions: PropTypes.object
 };
 
 export default CoursePage;

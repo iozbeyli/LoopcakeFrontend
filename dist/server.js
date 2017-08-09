@@ -460,7 +460,7 @@ var _authentication2 = _interopRequireDefault(_authentication);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var API_URL = exports.API_URL = "http://loopcake.com:5567";
+var API_URL = exports.API_URL = "http://api.loopcake.com";
 //export const API_URL = "http://172.20.120.133:5567";
 
 module.exports = {
@@ -640,7 +640,7 @@ var AnnouncementCard = function (_React$Component) {
                         content: announcement.content });
                 }),
                 editable: this.props.editable && {
-                    content: _react2.default.createElement(_announcementEdit2.default, { setActions: this.setActions }),
+                    content: _react2.default.createElement(_announcementEdit2.default, { createAnnouncement: this.props.functions.createAnnouncement, setActions: this.setActions }),
                     actions: this.state.actions,
                     title: 'Make Announcement',
                     icon: 'announcement'
@@ -664,7 +664,8 @@ AnnouncementCard.propTypes = {
         courseName: _propTypes2.default.string
     })),
     editable: _propTypes2.default.bool,
-    hidable: _propTypes2.default.bool
+    hidable: _propTypes2.default.bool,
+    functions: _propTypes2.default.object
 };
 
 exports.default = AnnouncementCard;
@@ -872,7 +873,7 @@ function getCourseAnnouncementList(courseId, token, responseFunc) {
 }
 
 function makeCourseAnnouncement(title, content, courseId, token, responseFunc) {
-    (0, _communicationController.post)(_index.API_URL + '/announcement/create)', { title: title, content: content, course: courseId }, responseFunc, token);
+    (0, _communicationController.post)(_index.API_URL + '/announcement/create', { title: title, content: content, course: courseId }, responseFunc, token);
 }
 
 /***/ }),
@@ -2067,6 +2068,7 @@ var _superagent2 = _interopRequireDefault(_superagent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function post(api, postData, respFunc, token) {
+    console.log("postData", postData);
     _superagent2.default.post(api).send(postData).set('X-API-Key', 'foobar').set('Accept', 'application/json').set('Authorization', 'Bearer ' + token).end(function (err, res) {
         respFunc(err, res);
     });
@@ -2545,7 +2547,10 @@ var AnnouncementEdit = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (AnnouncementEdit.__proto__ || Object.getPrototypeOf(AnnouncementEdit)).call(this, props));
 
         _this.sendData = function () {
-            console.log(_constants.placeholders.courseId);
+            var handleResult = function handleResult(result) {
+                console.log(result);
+            };
+            _this.props.createAnnouncement(_this.state.formData.title, _this.state.formData.content, handleResult);
         };
 
         _this.handleTitleChange = function (e) {
@@ -2616,7 +2621,8 @@ exports.default = AnnouncementEdit;
 
 AnnouncementEdit.propTypes = {
     setActions: _propTypes2.default.func,
-    makeAnnouncement: _propTypes2.default.func
+    createAnnouncement: _propTypes2.default.func,
+    closeModal: _propTypes2.default.func
 };
 
 /***/ }),
@@ -5006,10 +5012,143 @@ exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStat
 
 /***/ }),
 /* 76 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (61:96)\n\n\u001b[0m \u001b[90m 59 | \u001b[39m\n \u001b[90m 60 | \u001b[39m    render() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 | \u001b[39m       \u001b[36mreturn\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mcourse \u001b[33m&&\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mcourse[placeholders\u001b[33m.\u001b[39mcourseId] \u001b[33m?\u001b[39m \u001b[33m<\u001b[39m\u001b[33mCoursePage\u001b[39m data\u001b[33m=\u001b[39m{\u001b[33m...\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mcourse[placeholders\u001b[33m.\u001b[39mcourseId]}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m \u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\n \u001b[90m    | \u001b[39m                                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 | \u001b[39m    }\n \u001b[90m 63 | \u001b[39m\n \u001b[90m 64 | \u001b[39m}\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(5);
+
+var _views = __webpack_require__(9);
+
+__webpack_require__(7);
+
+var _reactCookie = __webpack_require__(4);
+
+var _course = __webpack_require__(18);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _course2 = __webpack_require__(13);
+
+var _constants = __webpack_require__(8);
+
+var _course3 = __webpack_require__(104);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VisibleCoursePage = function (_Component) {
+  _inherits(VisibleCoursePage, _Component);
+
+  function VisibleCoursePage(props) {
+    _classCallCheck(this, VisibleCoursePage);
+
+    var _this = _possibleConstructorReturn(this, (VisibleCoursePage.__proto__ || Object.getPrototypeOf(VisibleCoursePage)).call(this, props));
+
+    _this._prepareFunctions = function () {
+      return {
+        createAnnouncement: _this.props.createAnnouncement(_constants.placeholders.courseId, _this.props.user.token)
+      };
+    };
+
+    _this._getProjectList = function () {
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Project List", resp);
+          _this.props.courseProjectListAction(_constants.placeholders.courseId, resp.body.data);
+        }
+      };
+      (0, _course.getCourseProjectList)(_constants.placeholders.courseId, _this.props.user.token, handleResponse);
+    };
+
+    _this._getAnnouncementList = function () {
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Announcement List", resp);
+          _this.props.courseAnnouncementListAction(_constants.placeholders.courseId, resp.body.data);
+        }
+      };
+      (0, _course.getCourseAnnouncementList)(_constants.placeholders.courseId, _this.props.user.token, handleResponse);
+    };
+
+    return _this;
+  }
+
+  _createClass(VisibleCoursePage, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      console.log("Props: ", this.props);
+      var handleResponse = function handleResponse(err, resp) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(resp);
+          _this2.props.courseAction(resp.body.data);
+          _this2._getProjectList();
+          _this2._getAnnouncementList();
+        }
+      };
+      (0, _course.getCourse)(_constants.placeholders.courseId, this.props.user.token, handleResponse);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.props.course && this.props.course[_constants.placeholders.courseId] ? _react2.default.createElement(_views.CoursePage, { data: _extends({}, this.props.course[_constants.placeholders.courseId]), functions: this._prepareFunctions() }) : null;
+    }
+  }]);
+
+  return VisibleCoursePage;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createAnnouncement: function createAnnouncement(courseId, token) {
+      return (0, _course3.createAnnouncementFunction)(courseId, token, dispatch);
+    },
+    courseAction: function courseAction(course) {
+      dispatch((0, _course2.courseAction)(course));
+    },
+    courseProjectListAction: function courseProjectListAction(courseId, projectList) {
+      dispatch((0, _course2.courseProjectListAction)(courseId, projectList));
+    },
+    courseAnnouncementListAction: function courseAnnouncementListAction(courseId, announcementList) {
+      dispatch((0, _course2.courseAnnouncementListAction)(courseId, announcementList));
+    }
+  };
+};
+
+exports.default = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VisibleCoursePage));
+;
 
 /***/ }),
 /* 77 */
@@ -5474,6 +5613,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -5522,7 +5663,10 @@ var CoursePage = function (_React$Component) {
     function CoursePage(props) {
         _classCallCheck(this, CoursePage);
 
-        return _possibleConstructorReturn(this, (CoursePage.__proto__ || Object.getPrototypeOf(CoursePage)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (CoursePage.__proto__ || Object.getPrototypeOf(CoursePage)).call(this, props));
+
+        console.log("func", props.functions);
+        return _this;
     }
 
     _createClass(CoursePage, [{
@@ -5583,7 +5727,7 @@ var CoursePage = function (_React$Component) {
                 _react2.default.createElement(
                     _semanticUiReact.Grid.Column,
                     { width: 12 },
-                    _react2.default.createElement(_announcementCard2.default, { announcements: this.props.data.announcements, editable: true }),
+                    _react2.default.createElement(_announcementCard2.default, { functions: _extends({}, this.props.functions), announcements: this.props.data.announcements, editable: true }),
                     _react2.default.createElement(_ProjectCard.ProjectCard, { items: this.props.data.projects }),
                     _react2.default.createElement(_attachmentCard.AttachmentCard, { hidable: true, attachments: attachments, folders: folders })
                 ),
@@ -5608,9 +5752,9 @@ CoursePage.propTypes = {
         course: _propTypes2.default.object,
         grades: _propTypes2.default.array,
         myGroups: _propTypes2.default.array,
-        projects: _propTypes2.default.array,
-        functions: _propTypes2.default.object
-    })
+        projects: _propTypes2.default.array
+    }),
+    functions: _propTypes2.default.object
 };
 
 exports.default = CoursePage;
@@ -6516,6 +6660,45 @@ module.exports = require("superagent");
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createAnnouncementFunction = createAnnouncementFunction;
+
+var _course = __webpack_require__(18);
+
+var _course2 = __webpack_require__(13);
+
+function createAnnouncementFunction(courseId, token, dispatch) {
+    return function (title, content, resultFunc) {
+        var handleResponse = function handleResponse(err, resp) {
+            if (err) {
+                resultFunc("Failed");
+            } else {
+                var handleInnerResponse = function handleInnerResponse(err, resp) {
+                    if (err) {
+                        resultFunc("Failed");
+                    } else {
+                        dispatch((0, _course2.courseAnnouncementListAction)(courseId, resp.body.data));
+                        resultFunc(resp.status);
+                    }
+                };
+                (0, _course.getCourseAnnouncementList)(courseId, token, handleInnerResponse);
+            }
+            console.log(resp);
+        };
+        console.log("token", token);
+        (0, _course.makeCourseAnnouncement)(title, content, courseId, token, handleResponse);
+    };
+}
 
 /***/ })
 /******/ ]);

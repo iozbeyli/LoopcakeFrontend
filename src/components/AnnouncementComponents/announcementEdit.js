@@ -21,7 +21,10 @@ export default class AnnouncementEdit extends React.Component{
     }
 
     sendData = () => {
-        console.log(placeholders.courseId);
+        let handleResult = (result) => {
+           console.log(result);
+        };
+        this.props.createAnnouncement(this.state.formData.title,this.state.formData.content,handleResult);
     }
 
     handleTitleChange = (e) => {
@@ -54,5 +57,6 @@ export default class AnnouncementEdit extends React.Component{
 
 AnnouncementEdit.propTypes = {
     setActions: PropTypes.func,
-    makeAnnouncement: PropTypes.func
+    createAnnouncement: PropTypes.func,
+    closeModal: PropTypes.func
 }

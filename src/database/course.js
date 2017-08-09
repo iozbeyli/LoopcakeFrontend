@@ -22,5 +22,5 @@ export function getCourseAnnouncementList(courseId,token,responseFunc){
 }
 
 export function makeCourseAnnouncement(title,content,courseId,token,responseFunc){
-    post(`${API_URL}/announcement/create)`,{title:title,content:content,course:courseId},responseFunc,token);
+    post(`${API_URL}/announcement/create`,{title:title,content:content,course:courseId},responseFunc,token);
 }

@@ -13,7 +13,6 @@ export const CardModal = ({icon,title,content,actions,deneme}) =>{
         <Modal.Header>
             <Header icon={icon} content={title} />
         </Modal.Header>
-        
         <Modal.Content>
             {content}
         </Modal.Content>

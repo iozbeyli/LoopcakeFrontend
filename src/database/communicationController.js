@@ -1,6 +1,7 @@
 import request from 'superagent';
 
 export function post(api,postData,respFunc, token){
+    console.log("postData",postData);
     request
         .post(api)
         .send(postData)

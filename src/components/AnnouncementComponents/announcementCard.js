@@ -37,7 +37,7 @@ class AnnouncementCard extends React.Component{
                 ))}
                 editable={this.props.editable &&
                     {
-                        content: <AnnouncementEdit setActions={this.setActions}/>,
+                        content: <AnnouncementEdit createAnnouncement={this.props.functions.createAnnouncement} setActions={this.setActions}/>,
                         actions: this.state.actions,
                         title: 'Make Announcement',
                         icon: 'announcement'
@@ -64,7 +64,8 @@ AnnouncementCard.propTypes = {
         }
     )),
     editable: PropTypes.bool,
-    hidable: PropTypes.bool
+    hidable: PropTypes.bool,
+    functions: PropTypes.object
 };
 
 export default AnnouncementCard;

@@ -14,8 +14,11 @@ class VisibleCoursePage extends Component {
       super(props);
    }
 
-   _prepareFunctions = (dispatch) => {
-     let makeAnnouncement = createAnnouncementFunction(placeholders.courseId,this.props.user.token,)
+   _prepareFunctions = () => {
+     return {
+       createAnnouncement: this.props.createAnnouncement(placeholders.courseId,this.props.user.token)
+     }
+    
    }
   
     _getProjectList =()=>{
@@ -58,7 +61,7 @@ class VisibleCoursePage extends Component {
     }
 
     render() {
-       return this.props.course && this.props.course[placeholders.courseId] ? <CoursePage data={...this.props.course[placeholders.courseId]}/> : null
+       return this.props.course && this.props.course[placeholders.courseId] ? <CoursePage data={{...this.props.course[placeholders.courseId]}} functions={this._prepareFunctions()}/> : null
     }
 
 }
@@ -68,6 +71,9 @@ const mapStateToProps = (state) =>({
 });
 
 const mapDispatchToProps = (dispatch) =>({
+    createAnnouncement: (courseId,token)=>{
+      return createAnnouncementFunction(courseId,token,dispatch);
+    },
     courseAction: (course) => {
     	dispatch(courseAction(course))
     },
