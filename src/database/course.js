@@ -20,3 +20,7 @@ export function getCourseProjectList(courseId,token,responseFunc){
 export function getCourseAnnouncementList(courseId,token,responseFunc){
     get(`${API_URL}/announcement`,{course: courseId},responseFunc,token);
 }
+
+export function makeCourseAnnouncement(title,content,courseId,token,responseFunc){
+    post(`${API_URL}/announcement/create)`,{title:title,content:content,course:courseId},responseFunc,token);
+}

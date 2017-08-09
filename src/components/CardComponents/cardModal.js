@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Icon, Label, Modal,Header,Tab} from "semantic-ui-react";
+import {Icon, Label, Modal,Header,Tab,Button} from "semantic-ui-react";
 
 const panes = [
   { menuItem: 'Upload Attachment'},
   { menuItem: 'Create Folder'},
 ]
 
-export const CardModal = ({icon,title,content,actions}) =>{return(
+export const CardModal = ({icon,title,content,actions,deneme}) =>{
+    return(
     <Modal trigger={<Label color="red" attached='bottom right'><Icon name={icon}/>{title}</Label>}>
         <Modal.Header>
             <Header icon={icon} content={title} />
@@ -29,6 +30,6 @@ CardModal.propTypes = {
             PropTypes.element,
             PropTypes.arrayOf(PropTypes.element)
         ]
-    ).isRequired,
-    actions: PropTypes.arrayOf(PropTypes.element)
+    ),
+    actions: PropTypes.arrayOf(PropTypes.element),
 }

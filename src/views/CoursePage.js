@@ -112,7 +112,8 @@ CoursePage.propTypes={
 		course: PropTypes.object,
 		grades: PropTypes.array,
 		myGroups: PropTypes.array,
-		projects: PropTypes.array
+        projects: PropTypes.array,
+        functions: PropTypes.object
 	})
 };
 

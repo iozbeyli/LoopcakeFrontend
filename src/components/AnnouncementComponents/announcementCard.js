@@ -3,10 +3,20 @@ import PropTypes from 'prop-types';
 import Announcement from "./announcement";
 import {Button} from "semantic-ui-react";
 import Card from "../CardComponents/card";
-
+import AnnouncementEdit from './announcementEdit';
 class AnnouncementCard extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            actions: []
+        }
+    }
+
+    setActions = (a) => {
+        this.setState({
+            ...this.state,
+            actions:a
+        });
     }
 
     render(){
@@ -27,7 +37,8 @@ class AnnouncementCard extends React.Component{
                 ))}
                 editable={this.props.editable &&
                     {
-                        content: <Button>Edit</Button>,
+                        content: <AnnouncementEdit setActions={this.setActions}/>,
+                        actions: this.state.actions,
                         title: 'Make Announcement',
                         icon: 'announcement'
                     }
