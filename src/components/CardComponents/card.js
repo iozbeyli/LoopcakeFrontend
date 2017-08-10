@@ -39,7 +39,7 @@ class _Card extends React.Component{
     }
 
     _handleClick = () => {
-        this.setState({...this.state, hidden:!this.state.hidden})
+        this.setState({hidden:!this.state.hidden})
     }
 
     _renderHidableOptionSelectorLabelWithIcon() {

@@ -14,7 +14,6 @@ class AnnouncementCard extends React.Component{
 
     setActions = (a) => {
         this.setState({
-            ...this.state,
             actions:a
         });
     }
