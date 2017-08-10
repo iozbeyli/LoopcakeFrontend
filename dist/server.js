@@ -125,7 +125,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _cardModal = __webpack_require__(55);
+var _cardModal = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -330,7 +330,7 @@ var _HomePage = __webpack_require__(86);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _LoginPage = __webpack_require__(39);
+var _LoginPage = __webpack_require__(40);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -379,7 +379,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _listItem = __webpack_require__(28);
+var _listItem = __webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -506,7 +506,7 @@ exports.getCourseProjectList = getCourseProjectList;
 exports.getCourseAnnouncementList = getCourseAnnouncementList;
 exports.makeCourseAnnouncement = makeCourseAnnouncement;
 
-var _communicationController = __webpack_require__(38);
+var _communicationController = __webpack_require__(39);
 
 var _index = __webpack_require__(13);
 
@@ -616,7 +616,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _announcement = __webpack_require__(46);
+var _announcement = __webpack_require__(47);
 
 var _announcement2 = _interopRequireDefault(_announcement);
 
@@ -626,7 +626,7 @@ var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _announcementEdit = __webpack_require__(48);
+var _announcementEdit = __webpack_require__(49);
 
 var _announcementEdit2 = _interopRequireDefault(_announcementEdit);
 
@@ -714,7 +714,7 @@ exports.default = AnnouncementCard;
 "use strict";
 
 
-var _formInput = __webpack_require__(25);
+var _formInput = __webpack_require__(26);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
@@ -722,7 +722,7 @@ var _form = __webpack_require__(66);
 
 var _form2 = _interopRequireDefault(_form);
 
-var _passwordMeter = __webpack_require__(26);
+var _passwordMeter = __webpack_require__(27);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -968,6 +968,104 @@ AttachmentList.propTypes = {
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.CardModal = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _semanticUiReact = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var panes = [{ menuItem: 'Upload Attachment' }, { menuItem: 'Create Folder' }];
+
+var CardModal = exports.CardModal = function (_React$Component) {
+    _inherits(CardModal, _React$Component);
+
+    function CardModal() {
+        _classCallCheck(this, CardModal);
+
+        return _possibleConstructorReturn(this, (CardModal.__proto__ || Object.getPrototypeOf(CardModal)).apply(this, arguments));
+    }
+
+    _createClass(CardModal, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                icon = _props.icon,
+                title = _props.title,
+                content = _props.content,
+                actions = _props.actions;
+
+            return _react2.default.createElement(
+                _semanticUiReact.Modal,
+                {
+                    trigger: _react2.default.createElement(
+                        _semanticUiReact.Label,
+                        { onClick: this.props.handleModal.openFunc, color: 'red', attached: 'bottom right' },
+                        _react2.default.createElement(_semanticUiReact.Icon, { name: icon }),
+                        title
+                    ),
+                    open: this.props.handleModal.opened,
+                    onClose: this.props.handleModal.closeFunc
+                },
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Header,
+                    null,
+                    _react2.default.createElement(_semanticUiReact.Header, { icon: icon, content: title })
+                ),
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Content,
+                    null,
+                    content
+                ),
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Actions,
+                    null,
+                    actions
+                )
+            );
+        }
+    }]);
+
+    return CardModal;
+}(_react2.default.Component);
+
+CardModal.propTypes = {
+    icon: _propTypes2.default.string.isRequired,
+    title: _propTypes2.default.string.isRequired,
+    content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]),
+    actions: _propTypes2.default.arrayOf(_propTypes2.default.element),
+    handleModal: _propTypes2.default.shape({
+        closeFunc: _propTypes2.default.func,
+        opened: _propTypes2.default.bool,
+        openFunc: _propTypes2.default.func
+    })
+};
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 		value: true
 });
 
@@ -1039,13 +1137,14 @@ var CourseHeader = function (_React$Component) {
 		}, {
 				key: 'render',
 				value: function render() {
+						console.log("Header", this.props.image);
 						return _react2.default.createElement(
 								_semanticUiReact.Grid,
 								null,
 								_react2.default.createElement(
 										_semanticUiReact.Grid.Column,
 										{ width: 5 },
-										_react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: _constants.placeholders.instructorPhoto })
+										_react2.default.createElement(_semanticUiReact.Image, { shape: 'circular', src: this.props.image || _constants.placeholders.instructorPhoto })
 								),
 								_react2.default.createElement(
 										_semanticUiReact.Grid.Column,
@@ -1101,11 +1200,12 @@ CourseHeader.propTypes = {
 						surname: _propTypes2.default.string,
 						photo: _propTypes2.default.string
 				}))
-		})
+		}),
+		image: _propTypes2.default.string
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1124,7 +1224,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _ListComponents = __webpack_require__(27);
+var _ListComponents = __webpack_require__(28);
 
 var _card = __webpack_require__(6);
 
@@ -1183,7 +1283,7 @@ ProjectCard.propTypes = {
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1201,7 +1301,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _passwordMeter = __webpack_require__(26);
+var _passwordMeter = __webpack_require__(27);
 
 var _passwordMeter2 = _interopRequireDefault(_passwordMeter);
 
@@ -1278,7 +1378,7 @@ FormInput.defaultProps = {
 exports.default = FormInput;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1325,13 +1425,13 @@ PasswordMeter.propTypes = {
 exports.default = PasswordMeter;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _listItem = __webpack_require__(28);
+var _listItem = __webpack_require__(29);
 
 var _list = __webpack_require__(10);
 
@@ -1346,7 +1446,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1434,7 +1534,7 @@ ListItem.propTypes = {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1516,33 +1616,33 @@ ButtonMenuItem.defaultProps = {
 exports.default = ButtonMenuItem;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _buttonMenuItem = __webpack_require__(29);
+var _buttonMenuItem = __webpack_require__(30);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _linkMenuItem = __webpack_require__(31);
+var _linkMenuItem = __webpack_require__(32);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _subMenu = __webpack_require__(34);
+var _subMenu = __webpack_require__(35);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
-var _subMenuItem = __webpack_require__(35);
+var _subMenuItem = __webpack_require__(36);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
-var _menu = __webpack_require__(32);
+var _menu = __webpack_require__(33);
 
 var _menu2 = _interopRequireDefault(_menu);
 
-var _menuItem = __webpack_require__(33);
+var _menuItem = __webpack_require__(34);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -1557,7 +1657,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1627,7 +1727,7 @@ LinkMenuItem.propTypes = {
 };
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1649,7 +1749,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _menuItem = __webpack_require__(33);
+var _menuItem = __webpack_require__(34);
 
 var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -1709,7 +1809,7 @@ _Menu.propTypes = {
 exports.default = _Menu;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1729,15 +1829,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _linkMenuItem = __webpack_require__(31);
+var _linkMenuItem = __webpack_require__(32);
 
 var _linkMenuItem2 = _interopRequireDefault(_linkMenuItem);
 
-var _buttonMenuItem = __webpack_require__(29);
+var _buttonMenuItem = __webpack_require__(30);
 
 var _buttonMenuItem2 = _interopRequireDefault(_buttonMenuItem);
 
-var _subMenuItem = __webpack_require__(35);
+var _subMenuItem = __webpack_require__(36);
 
 var _subMenuItem2 = _interopRequireDefault(_subMenuItem);
 
@@ -1787,7 +1887,7 @@ MenuItem.propTypes = {
 exports.default = MenuItem;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1857,7 +1957,7 @@ SubMenu.propTypes = {
 };
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1879,7 +1979,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _subMenu = __webpack_require__(34);
+var _subMenu = __webpack_require__(35);
 
 var _subMenu2 = _interopRequireDefault(_subMenu);
 
@@ -1934,7 +2034,7 @@ SubMenuItem.propTypes = {
 exports.default = SubMenuItem;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1995,7 +2095,7 @@ UserList.propTypes = {
 };
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2009,7 +2109,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _reactRedux = __webpack_require__(5);
 
-var _LoginPage = __webpack_require__(39);
+var _LoginPage = __webpack_require__(40);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -2037,7 +2137,7 @@ var VisibleLoginPage = (0, _reactCookie.withCookies)((0, _reactRedux.connect)(ma
 exports.default = VisibleLoginPage;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2069,7 +2169,7 @@ function get(api, getData, respFunc, token) {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2206,7 +2306,7 @@ LoginPage.propTypes = {
 exports.default = LoginPage;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2271,7 +2371,7 @@ RoutesRoot.propTypes = {
 exports.default = (0, _reactCookie.withCookies)(RoutesRoot);
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2299,7 +2399,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2316,25 +2416,25 @@ exports.default = function (body) {
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("universal-cookie-express");
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2356,11 +2456,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _announcementContent = __webpack_require__(47);
+var _announcementContent = __webpack_require__(48);
 
 var _announcementContent2 = _interopRequireDefault(_announcementContent);
 
-var _announcementTitle = __webpack_require__(50);
+var _announcementTitle = __webpack_require__(51);
 
 var _announcementTitle2 = _interopRequireDefault(_announcementTitle);
 
@@ -2414,7 +2514,7 @@ Announcement.propTypes = {
 exports.default = Announcement;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2436,7 +2536,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _announcementModal = __webpack_require__(49);
+var _announcementModal = __webpack_require__(50);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2492,7 +2592,7 @@ AnnouncementContent.propTypes = {
 exports.default = AnnouncementContent;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2518,7 +2618,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _cardModal = __webpack_require__(55);
+var _cardModal = __webpack_require__(23);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2640,7 +2740,7 @@ AnnouncementEdit.propTypes = {
 };
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2687,7 +2787,7 @@ AnnouncementModal.propTypes = {
 };
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2772,7 +2872,7 @@ AnnouncementTitle.propTypes = {
 exports.default = AnnouncementTitle;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2799,11 +2899,11 @@ var _attachmentList = __webpack_require__(22);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _folder = __webpack_require__(53);
+var _folder = __webpack_require__(54);
 
 var _folder2 = _interopRequireDefault(_folder);
 
-var _attachmentEditor = __webpack_require__(52);
+var _attachmentEditor = __webpack_require__(53);
 
 var _attachmentEditor2 = _interopRequireDefault(_attachmentEditor);
 
@@ -2850,7 +2950,7 @@ AttachmentCard.propTypes = {
 };
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2927,7 +3027,7 @@ AttachmentEditor.propTypes = {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3019,7 +3119,7 @@ Folder.propTypes = {
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3035,7 +3135,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListComponents = __webpack_require__(27);
+var _ListComponents = __webpack_require__(28);
 
 var _card = __webpack_require__(6);
 
@@ -3081,104 +3181,6 @@ CalendarCard.data = [{ header: 'Midterm', description: '17.07.2017', buttons: [{
 			return console.log('clicked');
 		} }] }];
 exports.default = CalendarCard;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.CardModal = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _semanticUiReact = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var panes = [{ menuItem: 'Upload Attachment' }, { menuItem: 'Create Folder' }];
-
-var CardModal = exports.CardModal = function (_React$Component) {
-    _inherits(CardModal, _React$Component);
-
-    function CardModal() {
-        _classCallCheck(this, CardModal);
-
-        return _possibleConstructorReturn(this, (CardModal.__proto__ || Object.getPrototypeOf(CardModal)).apply(this, arguments));
-    }
-
-    _createClass(CardModal, [{
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                icon = _props.icon,
-                title = _props.title,
-                content = _props.content,
-                actions = _props.actions;
-
-            return _react2.default.createElement(
-                _semanticUiReact.Modal,
-                {
-                    trigger: _react2.default.createElement(
-                        _semanticUiReact.Label,
-                        { onClick: this.props.handleModal.openFunc, color: 'red', attached: 'bottom right' },
-                        _react2.default.createElement(_semanticUiReact.Icon, { name: icon }),
-                        title
-                    ),
-                    open: this.props.handleModal.opened,
-                    onClose: this.props.handleModal.closeFunc
-                },
-                _react2.default.createElement(
-                    _semanticUiReact.Modal.Header,
-                    null,
-                    _react2.default.createElement(_semanticUiReact.Header, { icon: icon, content: title })
-                ),
-                _react2.default.createElement(
-                    _semanticUiReact.Modal.Content,
-                    null,
-                    content
-                ),
-                _react2.default.createElement(
-                    _semanticUiReact.Modal.Actions,
-                    null,
-                    actions
-                )
-            );
-        }
-    }]);
-
-    return CardModal;
-}(_react2.default.Component);
-
-CardModal.propTypes = {
-    icon: _propTypes2.default.string.isRequired,
-    title: _propTypes2.default.string.isRequired,
-    content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]),
-    actions: _propTypes2.default.arrayOf(_propTypes2.default.element),
-    handleModal: _propTypes2.default.shape({
-        closeFunc: _propTypes2.default.func,
-        opened: _propTypes2.default.bool,
-        openFunc: _propTypes2.default.func
-    })
-};
 
 /***/ }),
 /* 56 */
@@ -3815,11 +3817,11 @@ var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
 var _constants = __webpack_require__(8);
 
-var _calendarCard = __webpack_require__(54);
+var _calendarCard = __webpack_require__(55);
 
 var _calendarCard2 = _interopRequireDefault(_calendarCard);
 
-var _ProjectCard = __webpack_require__(24);
+var _ProjectCard = __webpack_require__(25);
 
 var _gradeCard = __webpack_require__(62);
 
@@ -3829,7 +3831,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _courseHeader = __webpack_require__(23);
+var _courseHeader = __webpack_require__(24);
 
 var _courseHeader2 = _interopRequireDefault(_courseHeader);
 
@@ -4012,7 +4014,7 @@ var _card = __webpack_require__(6);
 
 var _card2 = _interopRequireDefault(_card);
 
-var _userList = __webpack_require__(36);
+var _userList = __webpack_require__(37);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4074,7 +4076,7 @@ var _list = __webpack_require__(10);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _userList = __webpack_require__(36);
+var _userList = __webpack_require__(37);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4165,7 +4167,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _courseHeader = __webpack_require__(23);
+var _courseHeader = __webpack_require__(24);
 
 var _courseHeader2 = _interopRequireDefault(_courseHeader);
 
@@ -4191,7 +4193,7 @@ var ProfileCard = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(_card2.default, {
                 title: 'Profile',
-                content: _react2.default.createElement(_courseHeader2.default, { course: this.props.course })
+                content: _react2.default.createElement(_courseHeader2.default, { image: this.props.image, course: this.props.course })
             });
         }
     }]);
@@ -4203,7 +4205,8 @@ exports.default = ProfileCard;
 
 
 ProfileCard.propTypes = {
-    course: _propTypes2.default.object
+    course: _propTypes2.default.object,
+    image: _propTypes2.default.string
 };
 
 /***/ }),
@@ -4227,7 +4230,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _formInput = __webpack_require__(25);
+var _formInput = __webpack_require__(26);
 
 var _formInput2 = _interopRequireDefault(_formInput);
 
@@ -4365,7 +4368,7 @@ var _app = __webpack_require__(18);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(30);
+var _MenuComponents = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4690,11 +4693,11 @@ var _app = __webpack_require__(18);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _MenuComponents = __webpack_require__(30);
+var _MenuComponents = __webpack_require__(31);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _menu = __webpack_require__(32);
+var _menu = __webpack_require__(33);
 
 var _menu2 = _interopRequireDefault(_menu);
 
@@ -4820,7 +4823,7 @@ var _routes = __webpack_require__(14);
 
 var _reactCookie = __webpack_require__(4);
 
-var _visibleLoginPage = __webpack_require__(37);
+var _visibleLoginPage = __webpack_require__(38);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
@@ -5079,6 +5082,8 @@ var _reactCookie = __webpack_require__(4);
 
 var _course = __webpack_require__(12);
 
+var _user = __webpack_require__(105);
+
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -5135,6 +5140,9 @@ var VisibleCoursePage = function (_Component) {
       (0, _course.getCourseAnnouncementList)(_constants.placeholders.courseId, _this.props.user.token, handleResponse);
     };
 
+    _this.state = {
+      profilePhoto: null
+    };
     return _this;
   }
 
@@ -5150,6 +5158,12 @@ var VisibleCoursePage = function (_Component) {
         } else {
           console.log(resp);
           _this2.props.courseAction(resp.body.data);
+          var handleImageResponse = function handleImageResponse(img) {
+            _this2.setState({
+              profilePhoto: img
+            });
+          };
+          (0, _user.getImageSource)(resp.body.data.instructors[0].photo, _this2.props.user.token, handleImageResponse);
           _this2._getProjectList();
           _this2._getAnnouncementList();
         }
@@ -5159,7 +5173,8 @@ var VisibleCoursePage = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return this.props.course && this.props.course[_constants.placeholders.courseId] ? _react2.default.createElement(_views.CoursePage, { data: _extends({}, this.props.course[_constants.placeholders.courseId]), functions: this._prepareFunctions() }) : null;
+      var coursePage = _react2.default.createElement(_views.CoursePage, { image: this.state.profilePhoto, data: _extends({}, this.props.course[_constants.placeholders.courseId]), functions: this._prepareFunctions() });
+      return this.props.course && this.props.course[_constants.placeholders.courseId] ? coursePage : null;
     }
   }]);
 
@@ -5305,7 +5320,7 @@ exports.default = VisibleHomePage;
 "use strict";
 
 
-var _communicationController = __webpack_require__(38);
+var _communicationController = __webpack_require__(39);
 
 var _database = __webpack_require__(13);
 
@@ -5494,7 +5509,7 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _views = __webpack_require__(9);
 
-var _visibleLoginPage = __webpack_require__(37);
+var _visibleLoginPage = __webpack_require__(38);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
@@ -5542,7 +5557,7 @@ exports.default = AppRoutes;
 "use strict";
 
 
-var _express = __webpack_require__(43);
+var _express = __webpack_require__(44);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -5550,11 +5565,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(44);
+var _server = __webpack_require__(45);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _template = __webpack_require__(42);
+var _template = __webpack_require__(43);
 
 var _template2 = _interopRequireDefault(_template);
 
@@ -5564,7 +5579,7 @@ var _redux = __webpack_require__(20);
 
 var _reactRedux = __webpack_require__(5);
 
-var _reducers = __webpack_require__(41);
+var _reducers = __webpack_require__(42);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -5572,7 +5587,7 @@ var _routes = __webpack_require__(14);
 
 var _reactCookie = __webpack_require__(4);
 
-var _RoutesRoot = __webpack_require__(40);
+var _RoutesRoot = __webpack_require__(41);
 
 var _RoutesRoot2 = _interopRequireDefault(_RoutesRoot);
 
@@ -5581,7 +5596,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 var context = {};
 
-var cookiesMiddleware = __webpack_require__(45);
+var cookiesMiddleware = __webpack_require__(46);
 
 
 app.use(_express2.default.static('dist/public'));
@@ -5706,7 +5721,7 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _ProjectCard = __webpack_require__(24);
+var _ProjectCard = __webpack_require__(25);
 
 var _detailsCard = __webpack_require__(64);
 
@@ -5718,7 +5733,7 @@ var _announcementCard = __webpack_require__(16);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
-var _attachmentCard = __webpack_require__(51);
+var _attachmentCard = __webpack_require__(52);
 
 var _checklistCard = __webpack_require__(57);
 
@@ -5813,7 +5828,7 @@ var CoursePage = function (_React$Component) {
                 _react2.default.createElement(
                     _semanticUiReact.Grid.Column,
                     { width: 4 },
-                    _react2.default.createElement(_profileCard2.default, { course: this.props.data.course }),
+                    _react2.default.createElement(_profileCard2.default, { image: this.props.image, course: this.props.data.course }),
                     _react2.default.createElement(_detailsCard.DetailsCard, details),
                     _react2.default.createElement(_StudentCard.StudentCard, { hidable: true, students: this.props.data.course.students })
                 )
@@ -5833,7 +5848,8 @@ CoursePage.propTypes = {
         myGroups: _propTypes2.default.array,
         projects: _propTypes2.default.array
     }),
-    functions: _propTypes2.default.object
+    functions: _propTypes2.default.object,
+    image: _propTypes2.default.string
 };
 
 exports.default = CoursePage;
@@ -6739,6 +6755,41 @@ module.exports = require("superagent");
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getImageSource = getImageSource;
+
+var _index = __webpack_require__(13);
+
+function getImageSource(photoId, token, callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.open("GET", "http://api.loopcake.com/download?_id=" + photoId, true);
+    oReq.setRequestHeader("Authorization", "Bearer " + token);
+    // use multiple setRequestHeader calls to set multiple values
+    oReq.responseType = "arraybuffer";
+    oReq.onload = function (oEvent) {
+        var arrayBuffer = oReq.response;
+        console.log("oReq", oReq);
+        // Note: not oReq.responseText
+        if (arrayBuffer) {
+            var u8 = new Uint8Array(arrayBuffer);
+            var b64encoded = btoa(String.fromCharCode.apply(null, u8));
+            var mimetype = "image/png"; // or whatever your image mime type is
+            //document.getElementById("yourimageidhere").src="data:"+mimetype+";base64,"+b64encoded;
+            callback("data:" + mimetype + ";base64," + b64encoded);
+        }
+    };
+    oReq.send(null);
+}
 
 /***/ })
 /******/ ]);

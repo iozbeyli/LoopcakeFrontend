@@ -95,7 +95,7 @@ class CoursePage extends React.Component{
                 <AttachmentCard hidable attachments={attachments} folders={folders} />
             </Grid.Column>
             <Grid.Column width={4}>
-                <ProfileCard course={this.props.data.course}/>
+                <ProfileCard image={this.props.image} course={this.props.data.course}/>
                 <DetailsCard {...details}/>
                 <StudentCard hidable students={this.props.data.course.students}/>
             </Grid.Column>
@@ -115,7 +115,8 @@ CoursePage.propTypes={
 		myGroups: PropTypes.array,
         projects: PropTypes.array
     }),
-    functions: PropTypes.object
+    functions: PropTypes.object,
+    image: PropTypes.string
 };
 
 export default CoursePage;

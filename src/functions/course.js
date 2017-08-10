@@ -18,7 +18,6 @@ export function createAnnouncementFunction(courseId,token,dispatch){
             
         }
         console.log(resp);
-        
     }
         console.log("token",token);
         makeCourseAnnouncement(title,content,courseId,token,handleResponse); 

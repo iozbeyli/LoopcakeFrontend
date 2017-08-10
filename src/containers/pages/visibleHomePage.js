@@ -26,6 +26,7 @@ class _VisibleHomePage extends Component {
               }else{
                 console.log("Course",resp);
                 this.props.courseSummaryAction(resp.body.data);
+                
               }
             }
             getCourseSummary(element._id,this.props.user.token,handleCourseResponse);

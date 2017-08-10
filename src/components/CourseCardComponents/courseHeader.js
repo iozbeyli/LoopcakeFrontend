@@ -39,9 +39,10 @@ export default class CourseHeader extends React.Component{
 
     
     render() {
+		console.log("Header",this.props.image);
         return (<Grid>
         			<Grid.Column width={5}>
-          				<Image shape="circular" src={placeholders.instructorPhoto} />
+          				<Image shape="circular" src={this.props.image || placeholders.instructorPhoto} />
         			</Grid.Column>
         			<Grid.Column width={11}>
           				<Card.Header>
@@ -84,4 +85,5 @@ CourseHeader.propTypes = {
 				}
 			))
 		}),
+		image: PropTypes.string
     }
