@@ -21,11 +21,11 @@ export const AttachmentCard = ({attachments,folders,hidable}) => {
                     }
                 </div>
             }
-            editable={{
+            /*editable={{
               icon:"pencil",
               title: "Edit Attachments",
               content: <AttachmentEditor/>
-          }}
+          }}*/
         />
     );
 };

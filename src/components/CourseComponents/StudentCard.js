@@ -12,11 +12,11 @@ export const StudentCard = ({students,hidable}) => {
             icon="student"
             title="Students"
             content={<UserList items={students}/>}
-            editable={{
+            /*editable={{
                 content:<a>fasd</a>,
                 icon:'add square',
                 title: 'Add Student'
-            }}
+            }}*/
         /> : <Card loading icon="student" title="Students"/>
     );
 }

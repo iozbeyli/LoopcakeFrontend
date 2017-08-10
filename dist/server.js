@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 82);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -113,8 +113,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -146,7 +144,7 @@ var _Card = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (_Card.__proto__ || Object.getPrototypeOf(_Card)).call(this, props));
 
         _this._handleClick = function () {
-            _this.setState(_extends({}, _this.state, { hidden: !_this.state.hidden }));
+            _this.setState({ hidden: !_this.state.hidden });
         };
 
         _this.state = { hidden: props.hidable };
@@ -169,7 +167,7 @@ var _Card = function (_React$Component) {
                 null,
                 content,
                 editable && _react2.default.createElement('br', null),
-                editable && _react2.default.createElement(_cardModal.CardModal, { title: editable.title, icon: editable.icon, content: editable.content, actions: editable.actions, deneme: editable.deneme })
+                editable
             );
         }
     }, {
@@ -249,13 +247,7 @@ _Card.propTypes = {
     title: _propTypes2.default.string,
     icon: _propTypes2.default.string,
     content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]),
-    editable: _propTypes2.default.shape({
-        icon: _propTypes2.default.string.isRequired,
-        title: _propTypes2.default.string.isRequired,
-        content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]).isRequired,
-        actions: _propTypes2.default.arrayOf(_propTypes2.default.element),
-        deneme: _propTypes2.default.object
-    }),
+    editable: _propTypes2.default.element,
     hidable: _propTypes2.default.bool,
     loading: _propTypes2.default.bool
 };
@@ -276,7 +268,7 @@ exports.loginAction = loginAction;
 exports.tokenAction = tokenAction;
 exports.logoutAction = logoutAction;
 
-var _types = __webpack_require__(14);
+var _types = __webpack_require__(15);
 
 function loginAction(user, token) {
 	return {
@@ -307,15 +299,15 @@ function logoutAction() {
 "use strict";
 
 
-var _colors = __webpack_require__(93);
+var _colors = __webpack_require__(94);
 
 var _colors2 = _interopRequireDefault(_colors);
 
-var _strings = __webpack_require__(95);
+var _strings = __webpack_require__(96);
 
 var _strings2 = _interopRequireDefault(_strings);
 
-var _placeholders = __webpack_require__(94);
+var _placeholders = __webpack_require__(95);
 
 var _placeholders2 = _interopRequireDefault(_placeholders);
 
@@ -334,7 +326,7 @@ module.exports = {
 "use strict";
 
 
-var _HomePage = __webpack_require__(85);
+var _HomePage = __webpack_require__(86);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
@@ -342,19 +334,19 @@ var _LoginPage = __webpack_require__(39);
 
 var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-var _RegisterPage = __webpack_require__(86);
+var _RegisterPage = __webpack_require__(87);
 
 var _RegisterPage2 = _interopRequireDefault(_RegisterPage);
 
-var _AnnouncementPage = __webpack_require__(83);
+var _AnnouncementPage = __webpack_require__(84);
 
 var _AnnouncementPage2 = _interopRequireDefault(_AnnouncementPage);
 
-var _CoursePage = __webpack_require__(84);
+var _CoursePage = __webpack_require__(85);
 
 var _CoursePage2 = _interopRequireDefault(_CoursePage);
 
-var _RepoPage = __webpack_require__(87);
+var _RepoPage = __webpack_require__(88);
 
 var _RepoPage2 = _interopRequireDefault(_RepoPage);
 
@@ -450,49 +442,6 @@ exports.default = _List;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.API_URL = undefined;
-
-var _authentication = __webpack_require__(78);
-
-var _authentication2 = _interopRequireDefault(_authentication);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var API_URL = exports.API_URL = "http://api.loopcake.com";
-//export const API_URL = "http://172.20.120.133:5567";
-
-module.exports = {
-    Authentication: _authentication2.default,
-    API_URL: API_URL
-};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _appRoutes = __webpack_require__(81);
-
-var _appRoutes2 = _interopRequireDefault(_appRoutes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = {
-    AppRoutes: _appRoutes2.default
-};
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.courseSummaryAction = courseSummaryAction;
@@ -501,7 +450,7 @@ exports.courseAttendedAction = courseAttendedAction;
 exports.courseProjectListAction = courseProjectListAction;
 exports.courseAnnouncementListAction = courseAnnouncementListAction;
 
-var _types = __webpack_require__(14);
+var _types = __webpack_require__(15);
 
 function courseSummaryAction(course) {
   return {
@@ -541,7 +490,95 @@ function courseAnnouncementListAction(courseId, announcements) {
 }
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getAttendedCourses = getAttendedCourses;
+exports.getCourseSummary = getCourseSummary;
+exports.getCourse = getCourse;
+exports.getCourseProjectList = getCourseProjectList;
+exports.getCourseAnnouncementList = getCourseAnnouncementList;
+exports.makeCourseAnnouncement = makeCourseAnnouncement;
+
+var _communicationController = __webpack_require__(38);
+
+var _index = __webpack_require__(13);
+
+function getAttendedCourses(userId, token, responseFunc) {
+    (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
+}
+
+function getCourseSummary(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId + '/summary', {}, responseFunc, token);
+}
+
+function getCourse(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId, {}, responseFunc, token);
+}
+
+function getCourseProjectList(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/project', { course: courseId }, responseFunc, token);
+}
+
+function getCourseAnnouncementList(courseId, token, responseFunc) {
+    (0, _communicationController.get)(_index.API_URL + '/announcement', { course: courseId }, responseFunc, token);
+}
+
+function makeCourseAnnouncement(title, content, courseId, token, responseFunc) {
+    (0, _communicationController.post)(_index.API_URL + '/announcement/create', { title: title, content: content, course: courseId }, responseFunc, token);
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.API_URL = undefined;
+
+var _authentication = __webpack_require__(78);
+
+var _authentication2 = _interopRequireDefault(_authentication);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var API_URL = exports.API_URL = "http://api.loopcake.com";
+//export const API_URL = "http://172.20.120.133:5567";
+
+module.exports = {
+    Authentication: _authentication2.default,
+    API_URL: API_URL
+};
+
+/***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _appRoutes = __webpack_require__(82);
+
+var _appRoutes2 = _interopRequireDefault(_appRoutes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
+    AppRoutes: _appRoutes2.default
+};
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -559,7 +596,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -568,8 +605,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -612,13 +647,20 @@ var AnnouncementCard = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (AnnouncementCard.__proto__ || Object.getPrototypeOf(AnnouncementCard)).call(this, props));
 
         _this.setActions = function (a) {
-            _this.setState(_extends({}, _this.state, {
+            _this.setState({
                 actions: a
-            }));
+            });
+        };
+
+        _this.closeModal = function () {
+            _this.setState = {
+                modalOpened: false
+            };
         };
 
         _this.state = {
-            actions: []
+            actions: [],
+            modalOpened: false
         };
         return _this;
     }
@@ -639,12 +681,7 @@ var AnnouncementCard = function (_React$Component) {
                         date: announcement.date,
                         content: announcement.content });
                 }),
-                editable: this.props.editable && {
-                    content: _react2.default.createElement(_announcementEdit2.default, { createAnnouncement: this.props.functions.createAnnouncement, setActions: this.setActions }),
-                    actions: this.state.actions,
-                    title: 'Make Announcement',
-                    icon: 'announcement'
-                }
+                editable: this.props.editable && _react2.default.createElement(_announcementEdit2.default, { createAnnouncement: this.props.functions.createAnnouncement, setActions: this.setActions })
             }) : _react2.default.createElement(_card2.default, {
                 loading: true,
                 title: 'Announcements',
@@ -671,7 +708,7 @@ AnnouncementCard.propTypes = {
 exports.default = AnnouncementCard;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -696,7 +733,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -832,51 +869,6 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.getAttendedCourses = getAttendedCourses;
-exports.getCourseSummary = getCourseSummary;
-exports.getCourse = getCourse;
-exports.getCourseProjectList = getCourseProjectList;
-exports.getCourseAnnouncementList = getCourseAnnouncementList;
-exports.makeCourseAnnouncement = makeCourseAnnouncement;
-
-var _communicationController = __webpack_require__(38);
-
-var _index = __webpack_require__(11);
-
-function getAttendedCourses(userId, token, responseFunc) {
-    (0, _communicationController.post)(_index.API_URL + '/course/attended', { _id: userId }, responseFunc, token);
-}
-
-function getCourseSummary(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId + '/summary', {}, responseFunc, token);
-}
-
-function getCourse(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/course/' + courseId, {}, responseFunc, token);
-}
-
-function getCourseProjectList(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/project', { course: courseId }, responseFunc, token);
-}
-
-function getCourseAnnouncementList(courseId, token, responseFunc) {
-    (0, _communicationController.get)(_index.API_URL + '/announcement', { course: courseId }, responseFunc, token);
-}
-
-function makeCourseAnnouncement(title, content, courseId, token, responseFunc) {
-    (0, _communicationController.post)(_index.API_URL + '/announcement/create', { title: title, content: content, course: courseId }, responseFunc, token);
-}
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -895,7 +887,7 @@ module.exports = require("redux");
 "use strict";
 
 
-var _types = __webpack_require__(14);
+var _types = __webpack_require__(15);
 
 var _types2 = _interopRequireDefault(_types);
 
@@ -1171,17 +1163,13 @@ var ProjectCard = exports.ProjectCard = function ProjectCard(_ref) {
     return items ? _react2.default.createElement(_card2.default, {
         icon: 'coffee',
         title: 'Project List',
-        content: _react2.default.createElement(_ListComponents.List, { items: temp }),
-        editable: isEditable && {
-            icon: 'add square',
-            title: 'Create Project',
-            content: _react2.default.createElement(
-                'a',
-                null,
-                'aasdf'
-            )
-        },
-        hidable: hidable
+        content: _react2.default.createElement(_ListComponents.List, { items: temp })
+        /*editable={isEditable && {
+             icon:'add square',
+             title: 'Create Project',
+             content: <a>aasdf</a>
+         }}*/
+        , hidable: hidable
     }) : _react2.default.createElement(_card2.default, { loading: true, icon: 'coffee', title: 'Project List' });
 };
 
@@ -1306,7 +1294,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _zxcvbn = __webpack_require__(103);
+var _zxcvbn = __webpack_require__(104);
 
 var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
@@ -2061,7 +2049,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.post = post;
 exports.get = get;
 
-var _superagent = __webpack_require__(102);
+var _superagent = __webpack_require__(103);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2099,11 +2087,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(16);
+var _FormComponents = __webpack_require__(17);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(11);
+var _database = __webpack_require__(13);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -2242,7 +2230,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(12);
+var _routes = __webpack_require__(14);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -2295,11 +2283,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(20);
 
-var _userReducer = __webpack_require__(80);
+var _userReducer = __webpack_require__(81);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
-var _course = __webpack_require__(79);
+var _course = __webpack_require__(80);
 
 var _course2 = _interopRequireDefault(_course);
 
@@ -2530,6 +2518,8 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _cardModal = __webpack_require__(55);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2546,9 +2536,22 @@ var AnnouncementEdit = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (AnnouncementEdit.__proto__ || Object.getPrototypeOf(AnnouncementEdit)).call(this, props));
 
+        _this.closeModal = function () {
+            _this.setState({
+                modalOpened: false
+            });
+        };
+
+        _this.openModal = function () {
+            _this.setState({
+                modalOpened: true
+            });
+        };
+
         _this.sendData = function () {
             var handleResult = function handleResult(result) {
                 console.log(result);
+                _this.closeModal();
             };
             _this.props.createAnnouncement(_this.state.formData.title, _this.state.formData.content, handleResult);
         };
@@ -2565,27 +2568,7 @@ var AnnouncementEdit = function (_React$Component) {
             });
         };
 
-        _this.state = {
-            formData: {
-                title: '',
-                content: ''
-            }
-        };
-        return _this;
-    }
-
-    _createClass(AnnouncementEdit, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.props.setActions([_react2.default.createElement(
-                _semanticUiReact.Button,
-                { color: 'teal', key: 'Send', onClick: this.sendData },
-                'Send'
-            )]);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
+        _this._renderForm = function () {
             return _react2.default.createElement(
                 _semanticUiReact.Form,
                 null,
@@ -2597,7 +2580,7 @@ var AnnouncementEdit = function (_React$Component) {
                         null,
                         'Title'
                     ),
-                    _react2.default.createElement(_semanticUiReact.Input, { name: 'title', value: this.state.formData.title, onChange: this.handleTitleChange, fluid: true, placeholder: 'Title' })
+                    _react2.default.createElement(_semanticUiReact.Input, { name: 'title', value: _this.state.formData.title, onChange: _this.handleTitleChange, fluid: true, placeholder: 'Title' })
                 ),
                 _react2.default.createElement(
                     _semanticUiReact.Form.Field,
@@ -2607,9 +2590,40 @@ var AnnouncementEdit = function (_React$Component) {
                         null,
                         'Content'
                     ),
-                    _react2.default.createElement(_semanticUiReact.TextArea, { name: 'content', value: this.state.formData.content, onChange: this.handleContentChange, autoHeight: true, placeholder: 'Add Content Here', style: { minHeight: 100 } })
+                    _react2.default.createElement(_semanticUiReact.TextArea, { name: 'content', value: _this.state.formData.content, onChange: _this.handleContentChange, autoHeight: true, placeholder: 'Add Content Here', style: { minHeight: 100 } })
                 )
             );
+        };
+
+        _this.state = {
+            formData: {
+                title: '',
+                content: ''
+            },
+            modalOpened: false,
+            actions: [_react2.default.createElement(
+                _semanticUiReact.Button,
+                { color: 'teal', key: 'Send', onClick: _this.sendData },
+                'Send'
+            )]
+        };
+        return _this;
+    }
+
+    _createClass(AnnouncementEdit, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_cardModal.CardModal, {
+                icon: 'announcement',
+                title: 'Make Announcement',
+                content: this._renderForm(),
+                handleModal: {
+                    opened: this.state.modalOpened,
+                    closeFunc: this.closeModal,
+                    openFunc: this.openModal
+                },
+                actions: this.state.actions
+            });
         }
     }]);
 
@@ -2811,12 +2825,12 @@ var AttachmentCard = exports.AttachmentCard = function AttachmentCard(_ref) {
             folders.map(function (folder) {
                 return _react2.default.createElement(_folder2.default, { key: folder.name, name: folder.name, attachments: folder.attachments });
             })
-        ),
-        editable: {
-            icon: "pencil",
-            title: "Edit Attachments",
-            content: _react2.default.createElement(_attachmentEditor2.default, null)
-        }
+        )
+        /*editable={{
+          icon:"pencil",
+          title: "Edit Attachments",
+          content: <AttachmentEditor/>
+        }}*/
     });
 };
 
@@ -3080,6 +3094,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CardModal = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -3092,46 +3108,76 @@ var _semanticUiReact = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var panes = [{ menuItem: 'Upload Attachment' }, { menuItem: 'Create Folder' }];
 
-var CardModal = exports.CardModal = function CardModal(_ref) {
-    var icon = _ref.icon,
-        title = _ref.title,
-        content = _ref.content,
-        actions = _ref.actions,
-        deneme = _ref.deneme;
+var CardModal = exports.CardModal = function (_React$Component) {
+    _inherits(CardModal, _React$Component);
 
-    return _react2.default.createElement(
-        _semanticUiReact.Modal,
-        { trigger: _react2.default.createElement(
-                _semanticUiReact.Label,
-                { color: 'red', attached: 'bottom right' },
-                _react2.default.createElement(_semanticUiReact.Icon, { name: icon }),
-                title
-            ) },
-        _react2.default.createElement(
-            _semanticUiReact.Modal.Header,
-            null,
-            _react2.default.createElement(_semanticUiReact.Header, { icon: icon, content: title })
-        ),
-        _react2.default.createElement(
-            _semanticUiReact.Modal.Content,
-            null,
-            content
-        ),
-        _react2.default.createElement(
-            _semanticUiReact.Modal.Actions,
-            null,
-            actions
-        )
-    );
-};
+    function CardModal() {
+        _classCallCheck(this, CardModal);
+
+        return _possibleConstructorReturn(this, (CardModal.__proto__ || Object.getPrototypeOf(CardModal)).apply(this, arguments));
+    }
+
+    _createClass(CardModal, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                icon = _props.icon,
+                title = _props.title,
+                content = _props.content,
+                actions = _props.actions;
+
+            return _react2.default.createElement(
+                _semanticUiReact.Modal,
+                {
+                    trigger: _react2.default.createElement(
+                        _semanticUiReact.Label,
+                        { onClick: this.props.handleModal.openFunc, color: 'red', attached: 'bottom right' },
+                        _react2.default.createElement(_semanticUiReact.Icon, { name: icon }),
+                        title
+                    ),
+                    open: this.props.handleModal.opened,
+                    onClose: this.props.handleModal.closeFunc
+                },
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Header,
+                    null,
+                    _react2.default.createElement(_semanticUiReact.Header, { icon: icon, content: title })
+                ),
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Content,
+                    null,
+                    content
+                ),
+                _react2.default.createElement(
+                    _semanticUiReact.Modal.Actions,
+                    null,
+                    actions
+                )
+            );
+        }
+    }]);
+
+    return CardModal;
+}(_react2.default.Component);
 
 CardModal.propTypes = {
     icon: _propTypes2.default.string.isRequired,
     title: _propTypes2.default.string.isRequired,
     content: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.arrayOf(_propTypes2.default.element)]),
-    actions: _propTypes2.default.arrayOf(_propTypes2.default.element)
+    actions: _propTypes2.default.arrayOf(_propTypes2.default.element),
+    handleModal: _propTypes2.default.shape({
+        closeFunc: _propTypes2.default.func,
+        opened: _propTypes2.default.bool,
+        openFunc: _propTypes2.default.func
+    })
 };
 
 /***/ }),
@@ -3422,8 +3468,8 @@ var ChecklistCard = function (_React$Component) {
             _react2.default.createElement(_semanticUiReact.Progress, { percent: this.state.progress, size: 'small', color: 'yellow' }),
             _react2.default.createElement(_checklist2.default, { checkpoints: [{ point: 10, status: true, label: "Naber" }, { point: 30, status: false, label: "fas" }], changeChecklist: this.changeProgress })
           )
-        ),
-        editable: this.state.editable
+        )
+        //editable={this.state.editable}
 
       });
     }
@@ -3763,7 +3809,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _announcementCard = __webpack_require__(15);
+var _announcementCard = __webpack_require__(16);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
@@ -3979,16 +4025,12 @@ var StudentCard = exports.StudentCard = function StudentCard(_ref) {
         hidable: hidable,
         icon: 'student',
         title: 'Students',
-        content: _react2.default.createElement(_userList.UserList, { items: students }),
-        editable: {
-            content: _react2.default.createElement(
-                'a',
-                null,
-                'fasd'
-            ),
-            icon: 'add square',
+        content: _react2.default.createElement(_userList.UserList, { items: students })
+        /*editable={{
+            content:<a>fasd</a>,
+            icon:'add square',
             title: 'Add Student'
-        }
+        }}*/
     }) : _react2.default.createElement(_card2.default, { loading: true, icon: 'student', title: 'Students' });
 };
 
@@ -4319,7 +4361,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _app = __webpack_require__(17);
+var _app = __webpack_require__(18);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -4363,15 +4405,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCodemirror = __webpack_require__(100);
+var _reactCodemirror = __webpack_require__(101);
 
 var _reactCodemirror2 = _interopRequireDefault(_reactCodemirror);
 
@@ -4440,17 +4480,17 @@ var CodeEditor = function (_React$Component) {
                 mode = spec = this.props.fileName;
             }
             if (mode) {
-                this.setState(_extends({}, this.state, {
+                this.setState({
                     initialized: true,
                     mode: spec,
                     code: this.props.code
-                }));
+                });
             } else {
-                this.setState(_extends({}, this.state, {
+                this.setState({
                     initialized: true,
                     mode: 'clike',
                     code: this.props.code
-                }));
+                });
             }
         }
     }, {
@@ -4501,12 +4541,12 @@ var CodeEditor = function (_React$Component) {
 
 function initCodemirror(window) {
     if (!window.CodeMirror) {
-        __webpack_require__(97);
-        window.CodeMirror = __webpack_require__(96);
-        //require ('node_modules/codemirror/addon/mode/loadmode.js');
         __webpack_require__(98);
+        window.CodeMirror = __webpack_require__(97);
+        //require ('node_modules/codemirror/addon/mode/loadmode.js');
         __webpack_require__(99);
-        __webpack_require__(90);
+        __webpack_require__(100);
+        __webpack_require__(91);
     }
 }
 
@@ -4535,7 +4575,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactGitgraph = __webpack_require__(101);
+var _reactGitgraph = __webpack_require__(102);
 
 var _reactGitgraph2 = _interopRequireDefault(_reactGitgraph);
 
@@ -4646,7 +4686,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _app = __webpack_require__(17);
+var _app = __webpack_require__(18);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -4729,7 +4769,7 @@ exports.default = SidebarMenu;
 "use strict";
 
 
-var _FormComponents = __webpack_require__(16);
+var _FormComponents = __webpack_require__(17);
 
 var _FormComponents2 = _interopRequireDefault(_FormComponents);
 
@@ -4776,7 +4816,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routes = __webpack_require__(12);
+var _routes = __webpack_require__(14);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -4784,7 +4824,7 @@ var _visibleLoginPage = __webpack_require__(37);
 
 var _visibleLoginPage2 = _interopRequireDefault(_visibleLoginPage);
 
-var _app = __webpack_require__(17);
+var _app = __webpack_require__(18);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -4890,13 +4930,13 @@ __webpack_require__(7);
 
 var _reactCookie = __webpack_require__(4);
 
-var _course = __webpack_require__(18);
+var _course = __webpack_require__(12);
 
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(13);
+var _course2 = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5037,17 +5077,17 @@ __webpack_require__(7);
 
 var _reactCookie = __webpack_require__(4);
 
-var _course = __webpack_require__(18);
+var _course = __webpack_require__(12);
 
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(13);
+var _course2 = __webpack_require__(11);
 
 var _constants = __webpack_require__(8);
 
-var _course3 = __webpack_require__(104);
+var _course3 = __webpack_require__(79);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5177,13 +5217,13 @@ __webpack_require__(7);
 
 var _reactCookie = __webpack_require__(4);
 
-var _course = __webpack_require__(18);
+var _course = __webpack_require__(12);
 
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _course2 = __webpack_require__(13);
+var _course2 = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5267,7 +5307,7 @@ exports.default = VisibleHomePage;
 
 var _communicationController = __webpack_require__(38);
 
-var _database = __webpack_require__(11);
+var _database = __webpack_require__(13);
 
 function Login(formData, respFunc) {
 
@@ -5295,6 +5335,45 @@ module.exports = {
 
 /***/ }),
 /* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createAnnouncementFunction = createAnnouncementFunction;
+
+var _course = __webpack_require__(12);
+
+var _course2 = __webpack_require__(11);
+
+function createAnnouncementFunction(courseId, token, dispatch) {
+    return function (title, content, resultFunc) {
+        var handleResponse = function handleResponse(err, resp) {
+            if (err) {
+                resultFunc("Failed");
+            } else {
+                var handleInnerResponse = function handleInnerResponse(err, resp) {
+                    if (err) {
+                        resultFunc("Failed");
+                    } else {
+                        dispatch((0, _course2.courseAnnouncementListAction)(courseId, resp.body.data));
+                        resultFunc(resp.status);
+                    }
+                };
+                (0, _course.getCourseAnnouncementList)(courseId, token, handleInnerResponse);
+            }
+            console.log(resp);
+        };
+        console.log("token", token);
+        (0, _course.makeCourseAnnouncement)(title, content, courseId, token, handleResponse);
+    };
+}
+
+/***/ }),
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5360,7 +5439,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5395,7 +5474,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5457,7 +5536,7 @@ var AppRoutes = function (_React$Component) {
 exports.default = AppRoutes;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5489,7 +5568,7 @@ var _reducers = __webpack_require__(41);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _routes = __webpack_require__(12);
+var _routes = __webpack_require__(14);
 
 var _reactCookie = __webpack_require__(4);
 
@@ -5548,7 +5627,7 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5564,7 +5643,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _announcementCard = __webpack_require__(15);
+var _announcementCard = __webpack_require__(16);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
@@ -5603,7 +5682,7 @@ var AnnouncementPage = function (_React$Component) {
 exports.default = AnnouncementPage;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5635,7 +5714,7 @@ var _profileCard = __webpack_require__(65);
 
 var _profileCard2 = _interopRequireDefault(_profileCard);
 
-var _announcementCard = __webpack_require__(15);
+var _announcementCard = __webpack_require__(16);
 
 var _announcementCard2 = _interopRequireDefault(_announcementCard);
 
@@ -5760,7 +5839,7 @@ CoursePage.propTypes = {
 exports.default = CoursePage;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5847,7 +5926,7 @@ Home.propTypes = {
 };
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5861,11 +5940,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FormComponents = __webpack_require__(16);
+var _FormComponents = __webpack_require__(17);
 
 var _semanticUiReact = __webpack_require__(2);
 
-var _database = __webpack_require__(11);
+var _database = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5943,7 +6022,7 @@ var RegisterPage = function RegisterPage() {
 exports.default = RegisterPage;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6003,10 +6082,10 @@ var RepoPage = function (_React$Component) {
 exports.default = RepoPage;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(89)(undefined);
+exports = module.exports = __webpack_require__(90)(undefined);
 // imports
 
 
@@ -6017,7 +6096,7 @@ exports.push([module.i, ".CodeMirror{\n    height: auto;\n}", ""]);
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports) {
 
 /*
@@ -6099,13 +6178,13 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(88);
+var content = __webpack_require__(89);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -6113,7 +6192,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(91)(content, options);
+var update = __webpack_require__(92)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -6130,7 +6209,7 @@ if(false) {
 }
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -6176,7 +6255,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(92);
+var	fixUrls = __webpack_require__(93);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -6489,7 +6568,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports) {
 
 
@@ -6584,7 +6663,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 module.exports= {
@@ -6595,7 +6674,7 @@ module.exports= {
 };
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -6605,7 +6684,7 @@ module.exports = {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -6614,91 +6693,52 @@ module.exports = {
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror");
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/lib/codemirror.css");
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/mode/meta.js");
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports) {
 
 module.exports = require("codemirror/theme/rubyblue.css");
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-codemirror");
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-gitgraph");
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports) {
 
 module.exports = require("superagent");
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports) {
 
 module.exports = require("zxcvbn");
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.createAnnouncementFunction = createAnnouncementFunction;
-
-var _course = __webpack_require__(18);
-
-var _course2 = __webpack_require__(13);
-
-function createAnnouncementFunction(courseId, token, dispatch) {
-    return function (title, content, resultFunc) {
-        var handleResponse = function handleResponse(err, resp) {
-            if (err) {
-                resultFunc("Failed");
-            } else {
-                var handleInnerResponse = function handleInnerResponse(err, resp) {
-                    if (err) {
-                        resultFunc("Failed");
-                    } else {
-                        dispatch((0, _course2.courseAnnouncementListAction)(courseId, resp.body.data));
-                        resultFunc(resp.status);
-                    }
-                };
-                (0, _course.getCourseAnnouncementList)(courseId, token, handleInnerResponse);
-            }
-            console.log(resp);
-        };
-        console.log("token", token);
-        (0, _course.makeCourseAnnouncement)(title, content, courseId, token, handleResponse);
-    };
-}
 
 /***/ })
 /******/ ]);

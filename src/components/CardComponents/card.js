@@ -18,7 +18,7 @@ class _Card extends React.Component{
             <Card.Content>
                 {content}
                 {editable && <br/>}
-                {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions} deneme={editable.deneme}/>}
+                {editable}
             </Card.Content>
         )
     }
@@ -81,16 +81,7 @@ _Card.propTypes={
         PropTypes.element,
         PropTypes.arrayOf(PropTypes.element)
     ]),
-    editable: PropTypes.shape({
-        icon: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        content: PropTypes.oneOfType([
-            PropTypes.element,
-            PropTypes.arrayOf(PropTypes.element)
-        ]).isRequired,
-        actions: PropTypes.arrayOf(PropTypes.element),
-        deneme: PropTypes.object
-    }),
+    editable: PropTypes.element,
     hidable: PropTypes.bool,
     loading: PropTypes.bool
 };

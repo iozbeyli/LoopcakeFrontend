@@ -8,7 +8,8 @@ class AnnouncementCard extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            actions: []
+            actions: [],
+            modalOpened: false
         }
     }
 
@@ -16,6 +17,12 @@ class AnnouncementCard extends React.Component{
         this.setState({
             actions:a
         });
+    }
+
+    closeModal = () => {
+        this.setState={
+            modalOpened: false
+        }
     }
 
     render(){
@@ -34,14 +41,7 @@ class AnnouncementCard extends React.Component{
                         content={announcement.content}/>
 
                 ))}
-                editable={this.props.editable &&
-                    {
-                        content: <AnnouncementEdit createAnnouncement={this.props.functions.createAnnouncement} setActions={this.setActions}/>,
-                        actions: this.state.actions,
-                        title: 'Make Announcement',
-                        icon: 'announcement'
-                    }
-                }
+                editable={this.props.editable && <AnnouncementEdit createAnnouncement={this.props.functions.createAnnouncement} setActions={this.setActions}/>}
             /> : 
             <Card 
             loading
