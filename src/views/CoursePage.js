@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 class CoursePage extends React.Component{
     constructor(props){
         super(props);
+        console.log("func",props.functions);
     }
 
     render(){
@@ -52,12 +53,14 @@ class CoursePage extends React.Component{
             assistants: [
                 {
                     image:'',
-                    header: 'Yahya Hassanzadeh'
+                    name: 'Yahya',
+                    surname:' Hassanzadeh'
                 },
                 {
                     image:'',
-                    header: 'Leila Basri'
-                }
+                    name: 'Leila',
+                    surname:' Basri'
+                },
                 ],
 
 
@@ -87,14 +90,14 @@ class CoursePage extends React.Component{
         return(
         <Grid>
             <Grid.Column width={12}>
-                <AnnouncementCard announcements={this.props.data.announcements} editable/>
+                <AnnouncementCard functions={{...this.props.functions}} announcements={this.props.data.announcements} editable/>
                 <ProjectCard items={this.props.data.projects}/>
                 <AttachmentCard hidable attachments={attachments} folders={folders} />
             </Grid.Column>
             <Grid.Column width={4}>
-                <ProfileCard course={this.props.data.course}/>
+                <ProfileCard image={this.props.image} course={this.props.data.course}/>
                 <DetailsCard {...details}/>
-                <StudentCard hidable items={studentList}/>
+                <StudentCard hidable students={this.props.data.course.students}/>
             </Grid.Column>
         </Grid>
 
@@ -110,8 +113,10 @@ CoursePage.propTypes={
 		course: PropTypes.object,
 		grades: PropTypes.array,
 		myGroups: PropTypes.array,
-		projects: PropTypes.array
-	})
+        projects: PropTypes.array
+    }),
+    functions: PropTypes.object,
+    image: PropTypes.string
 };
 
 export default CoursePage;

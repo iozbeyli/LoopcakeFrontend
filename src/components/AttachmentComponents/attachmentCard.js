@@ -10,6 +10,7 @@ export const AttachmentCard = ({attachments,folders,hidable}) => {
         <Card
             hidable={hidable}
             title="Attachments"
+            icon="attach"
             content={
                 <div>
                     <AttachmentList attachments={attachments}/>
@@ -20,11 +21,11 @@ export const AttachmentCard = ({attachments,folders,hidable}) => {
                     }
                 </div>
             }
-            editable={{
+            /*editable={{
               icon:"pencil",
               title: "Edit Attachments",
               content: <AttachmentEditor/>
-          }}
+          }}*/
         />
     );
 };

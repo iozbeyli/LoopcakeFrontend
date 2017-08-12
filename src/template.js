@@ -3,9 +3,11 @@ export default body => initialState => `
     <html>
         <head>
             <meta charset="UTF-8">
+            <title>Loopcake</title>
+            <link rel="stylesheet" type="text/css" href="/semantic.min.css">
         </head>
         <body>
-            <link rel="stylesheet" href="/semantic.min.css"></link>
+           
             <div id="app" style="height:'100%'">${body}</div>
             <script>
                 window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}

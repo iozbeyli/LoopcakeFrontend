@@ -27,11 +27,11 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
         icon="coffee"
         title="Project List"
         content={<List items={temp}/>}
-        editable={isEditable && {
+        /*editable={isEditable && {
              icon:'add square',
              title: 'Create Project',
              content: <a>aasdf</a>
-         }}
+         }}*/
         hidable={hidable}
       /> : <Card loading icon="coffee" title="Project List"/>
   );

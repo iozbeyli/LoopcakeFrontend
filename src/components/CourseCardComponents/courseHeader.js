@@ -16,14 +16,16 @@ export default class CourseHeader extends React.Component{
     _getDetail() {
 		if (this.props.course) {
             const course = this.props.course;
-            let str = "";
-            for (let i = 0; i < course.instructors.length; ++i) {
-                let ins = course.instructors[i];
-                str += ins.name + " " + ins.surname;
-                if (i!=course.instructors.length) {
-                    str += "\n";
-                }
-            }
+			let str = "";
+			if(this.props.course.instructors){
+				for (let i = 0; i < course.instructors.length; ++i) {
+                	let ins = course.instructors[i];
+                	str += ins.name + " " + ins.surname;
+                	if (i!=course.instructors.length) {
+                    	str += "\n";
+                	}
+            	}
+			}
 			return str;
 		}
     }
@@ -37,9 +39,10 @@ export default class CourseHeader extends React.Component{
 
     
     render() {
+		console.log("Header",this.props.image);
         return (<Grid>
         			<Grid.Column width={5}>
-          				<Image shape="circular" src={placeholders.instructorPhoto} />
+          				<Image shape="circular" src={this.props.image || placeholders.instructorPhoto} />
         			</Grid.Column>
         			<Grid.Column width={11}>
           				<Card.Header>
@@ -82,4 +85,5 @@ CourseHeader.propTypes = {
 				}
 			))
 		}),
+		image: PropTypes.string
     }

@@ -9,7 +9,7 @@ export default class ProfileCard extends React.Component{
             <Card
                 title="Profile"
                 content={
-                    <CourseHeader course={this.props.course}/>
+                    <CourseHeader image={this.props.image} course={this.props.course}/>
                 }
             />
         );
@@ -17,5 +17,6 @@ export default class ProfileCard extends React.Component{
 }
 
 ProfileCard.propTypes = {
-    course: PropTypes.object
+    course: PropTypes.object,
+    image: PropTypes.string
 }

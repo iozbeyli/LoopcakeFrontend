@@ -65,7 +65,7 @@ export default class ChecklistCard extends React.Component{
               </Grid.Column>
             </Grid>
           }
-          editable={this.state.editable}
+          //editable={this.state.editable}
           
       />
 

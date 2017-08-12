@@ -1,3 +1,4 @@
 module.exports = {
-    instructorPhoto: "http://www2.denizyuret.com/public_html/dyuret-cropped.jpg"
+    instructorPhoto: "http://www2.denizyuret.com/public_html/dyuret-cropped.jpg",
+    courseId: "59401393ca715c55ba5eb00e"
 };

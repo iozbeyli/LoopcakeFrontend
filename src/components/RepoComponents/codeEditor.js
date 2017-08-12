@@ -48,14 +48,12 @@ componentDidMount(){
         }
         if (mode) {
             this.setState({
-                ...this.state,
                 initialized: true,
                 mode:spec,
                 code: this.props.code
             })
         } else {
             this.setState({
-                ...this.state,
                 initialized: true,
                 mode: 'clike',
                 code: this.props.code

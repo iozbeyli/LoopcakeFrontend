@@ -18,8 +18,7 @@ class _Card extends React.Component{
             <Card.Content>
                 {content}
                 {editable && <br/>}
-                {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
-                {editable && <CardModal title={editable.title} icon={editable.icon} content={editable.content} actions={editable.actions}/>}
+                {editable}
             </Card.Content>
         )
     }
@@ -40,7 +39,7 @@ class _Card extends React.Component{
     }
 
     _handleClick = () => {
-        this.setState({...this.state, hidden:!this.state.hidden})
+        this.setState({hidden:!this.state.hidden})
     }
 
     _renderHidableOptionSelectorLabelWithIcon() {
@@ -82,15 +81,7 @@ _Card.propTypes={
         PropTypes.element,
         PropTypes.arrayOf(PropTypes.element)
     ]),
-    editable: PropTypes.shape({
-        icon: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        content: PropTypes.oneOfType([
-            PropTypes.element,
-            PropTypes.arrayOf(PropTypes.element)
-        ]).isRequired,
-        actions: PropTypes.arrayOf(PropTypes.element)
-    }),
+    editable: PropTypes.element,
     hidable: PropTypes.bool,
     loading: PropTypes.bool
 };

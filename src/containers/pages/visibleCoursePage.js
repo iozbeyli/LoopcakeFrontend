@@ -4,23 +4,37 @@ import {CoursePage} from '../../views';
 import {} from '../../actions/authentication';
 import { withCookies, Cookies } from 'react-cookie';
 import { getCourse ,getCourseProjectList,getCourseAnnouncementList} from '../../database/course'
+import {getImageSource} from '../../database/user';
 import PropTypes from 'prop-types';
 import {courseAction,courseProjectListAction,courseAnnouncementListAction} from '../../actions/course';
+import {placeholders} from '../../constants';
+import {createAnnouncementFunction} from '../../functions/course';
 
 class VisibleCoursePage extends Component {
    constructor(props){
       super(props);
+      this.state={
+        profilePhoto: null
+      }
    }
+
+   _prepareFunctions = () => {
+     return {
+       createAnnouncement: this.props.createAnnouncement(placeholders.courseId,this.props.user.token)
+     }
+    
+   }
+  
     _getProjectList =()=>{
       let handleResponse = (err,resp) => {
         if(err){
           console.log(err);
         }else{
           console.log("Project List",resp);
-          this.props.courseProjectListAction("59401393ca715c55ba5eb00e",resp.body.data);
+          this.props.courseProjectListAction(placeholders.courseId,resp.body.data);
         }
       }
-      getCourseProjectList("59401393ca715c55ba5eb00e",this.props.user.token,handleResponse);
+      getCourseProjectList(placeholders.courseId,this.props.user.token,handleResponse);
     }
 
     _getAnnouncementList = ()=>{
@@ -29,11 +43,12 @@ class VisibleCoursePage extends Component {
           console.log(err);
         }else{
           console.log("Announcement List",resp);
-          this.props.courseAnnouncementListAction("59401393ca715c55ba5eb00e",resp.body.data);
+          this.props.courseAnnouncementListAction(placeholders.courseId,resp.body.data);
         }
       }
-      getCourseAnnouncementList("59401393ca715c55ba5eb00e",this.props.user.token,handleResponse);
+      getCourseAnnouncementList(placeholders.courseId,this.props.user.token,handleResponse);
     }
+
     componentWillMount() {
       console.log("Props: ", this.props);
       let handleResponse = (err,resp) => {
@@ -42,17 +57,24 @@ class VisibleCoursePage extends Component {
         }else{
           console.log(resp);
           this.props.courseAction(resp.body.data);
+          let handleImageResponse = (img) => {
+            this.setState({
+              profilePhoto: img
+            })
+          };
+          getImageSource(resp.body.data.instructors[0].photo,this.props.user.token,handleImageResponse);
           this._getProjectList();
           this._getAnnouncementList();
         }
       }
-      getCourse("59401393ca715c55ba5eb00e",this.props.user.token,handleResponse);
+      getCourse(placeholders.courseId,this.props.user.token,handleResponse);
     }
 
     render() {
-      
-       return this.props.course && this.props.course["59401393ca715c55ba5eb00e"] ? <CoursePage data={this.props.course["59401393ca715c55ba5eb00e"]}/> : null
+      let coursePage = <CoursePage image={this.state.profilePhoto} data={{...this.props.course[placeholders.courseId]}} functions={this._prepareFunctions()}/>;
+       return this.props.course && this.props.course[placeholders.courseId] ? coursePage : null
     }
+
 }
 
 const mapStateToProps = (state) =>({
@@ -60,8 +82,10 @@ const mapStateToProps = (state) =>({
 });
 
 const mapDispatchToProps = (dispatch) =>({
+    createAnnouncement: (courseId,token)=>{
+      return createAnnouncementFunction(courseId,token,dispatch);
+    },
     courseAction: (course) => {
-    	console.log("Course Action");
     	dispatch(courseAction(course))
     },
     courseProjectListAction: (courseId, projectList) => {

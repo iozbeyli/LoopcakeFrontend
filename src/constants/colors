@@ -1,5 +1,6 @@
 module.exports= {
   passwordColors: [
       "red","orange","yellow","olive","green"
-  ]
+  ],
+  linkColor: "#2c3e50"
 };
