@@ -25,7 +25,7 @@ export default class Folder extends React.Component{
                     {name}
                 </Accordion.Title>
                 <Accordion.Content>
-                    <AttachmentList attachments={attachments}/>
+                    <AttachmentList notInteractable = {this.props.notInteractable} attachments={attachments}/>
                 </Accordion.Content>
             </Accordion>
             );
