@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import List from "../ListComponents/list";
 
-export const AttachmentList = ({attachments}) => {
+export const AttachmentList = ({attachments,notInteractable}) => {
 
     let findFileIcon=(fileType)=>{
         if(fileType==='pdf'){
@@ -13,8 +13,13 @@ export const AttachmentList = ({attachments}) => {
     }
     let temp = [];
     attachments.map(attachment=>{
-
-        temp.push({
+        if(notInteractable){
+            temp.push({
+            icon: findFileIcon(attachment.fileType),
+            header: attachment.name
+        })
+        }else{
+temp.push({
             icon: findFileIcon(attachment.fileType),
             header: attachment.name,
             buttons:[
@@ -28,6 +33,8 @@ export const AttachmentList = ({attachments}) => {
                 }
             ]
         })
+        }
+        
     });
 
     return (
