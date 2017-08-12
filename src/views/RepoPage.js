@@ -3,13 +3,21 @@ import CodeEditor from '../components/RepoComponents/codeEditor';
 import CommitGraph from '../components/RepoComponents/commitGraph';
 import RepoCard from '../components/RepoComponents/repoCard';
 import {Grid, Tab, Header} from 'semantic-ui-react'
+import FineUploaderTraditional from 'fine-uploader-wrappers'
+import Gallery from 'react-fine-uploader'
+import 'react-fine-uploader/gallery/gallery.css'
 
 export default class RepoPage extends React.Component{
 
     static dummyCode = `(lambda (*<8-]= *<8-[= ) (or *<8-]= *<8-[= ))
 (defun :-] (<) (= < 2))
 
+;;;The code below
+;;;does some other stuff
 (defun !(!)(if(and(funcall(lambda(!)(if(and '(< 0)(< ! 2))1 nil))(1+ !))
+
+;;;The code below
+;;;does some stuff
 (not(null '(lambda(!)(if(< 1 !)t nil)))))1(* !(!(1- !)))))`
 
     static dummyFilename = "scheme.lisp"
@@ -34,7 +42,26 @@ export default class RepoPage extends React.Component{
                 name: 'Seller',
                 attachments: RepoPage.attachments
             }
-            ];
+        ];
+    
+
+    static uploader = new FineUploaderTraditional({
+        options: {
+            chunking: {
+                enabled: true
+            },
+            deleteFile: {
+                enabled: true,
+                endpoint: '/uploads'
+            },
+            request: {
+                endpoint: '/uploads'
+            },
+            retry: {
+                enableAuto: true
+            }
+        }
+    });
     
     static tabs = [
         {
@@ -55,9 +82,16 @@ export default class RepoPage extends React.Component{
         },
         { 
             menuItem: {key: 'graph', icon: 'space shuttle', content: 'Git Graph'},
-            render: () => <Tab.Pane><CommitGraph/></Tab.Pane> 
-        }
-    ]
+            render: () => (
+                <Tab.Pane>
+                   <CommitGraph/>
+                    <Gallery uploader={ RepoPage.uploader } />
+                </Tab.Pane> 
+            )
+        },
+
+    ];
+
     render(){
 
         return(
