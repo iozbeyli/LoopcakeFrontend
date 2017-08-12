@@ -12,7 +12,7 @@ export const ProjectCard = ({items, isEditable, hidable}) => {
         temp.push({
             header: item.name,
             buttons:[{
-                title: <Link to={"/app/project/"+item.name}>Go To Page</Link>,
+                title: <Link to={"/project/"+item.name}>Go To Page</Link>,
                 onClick: ()=>{}
             }],
             extra: <Progress color="yellow" percent={30} size="small"/>

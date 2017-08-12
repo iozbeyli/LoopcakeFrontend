@@ -72,6 +72,8 @@ class App extends React.Component {
                                 <Route path={`${this.props.match.url}announcements`} component={AnnouncementPage}/>
                                 <Route path={`${this.props.match.url}course`} component={CoursePage}/>
                                 <Route path={`${this.props.match.url}repo`} component={RepoPage}/>
+                                <Route path={`${this.props.match.url}group`} component={RepoPage}/>
+                                <Route path={`${this.props.match.url}project`} component={RepoPage}/>
                                 </div>
                             
                         </Grid.Column>
