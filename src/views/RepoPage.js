@@ -3,12 +3,12 @@ import CodeEditor from '../components/RepoComponents/codeEditor';
 import CommitGraph from '../components/RepoComponents/commitGraph';
 import RepoCard from '../components/RepoComponents/repoCard';
 import {Grid, Tab, Header} from 'semantic-ui-react'
-/*import FineUploaderTraditional from 'fine-uploader-wrappers'
+/*
+import FineUploaderTraditional from 'fine-uploader-wrappers'
 import Gallery from 'react-fine-uploader'
-import 'react-fine-uploader/gallery/gallery.css'*/
-import 'react-fine-uploader/gallery/gallery.css';
+import 'react-fine-uploader/gallery/gallery.css'
 import {asyncLoad} from '../functions/file-upload';
-
+*/
 export default class RepoPage extends React.Component{
 
     static dummyCode = `(lambda (*<8-]= *<8-[= ) (or *<8-]= *<8-[= ))
