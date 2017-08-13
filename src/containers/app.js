@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid,Sidebar,Segment,Image,Icon,Menu,Header} from 'semantic-ui-react';
-import {RepoPage} from '../views';
+import {RepoPage, GroupPage} from '../views';
 import Home from './pages/visibleHomePage';
 import CoursePage from './pages/visibleCoursePage';
 import AnnouncementPage from './pages/visibleAnnouncementPage';
@@ -72,9 +72,9 @@ class App extends React.Component {
                                 <Route path={`${this.props.match.url}announcements`} component={AnnouncementPage}/>
                                 <Route path={`${this.props.match.url}course`} component={CoursePage}/>
                                 <Route path={`${this.props.match.url}repo`} component={RepoPage}/>
-                                <Route path={`${this.props.match.url}group`} component={RepoPage}/>
+                                <Route path={`${this.props.match.url}group`} component={GroupPage}/>
                                 <Route path={`${this.props.match.url}project`} component={RepoPage}/>
-                                </div>
+                            </div>
                             
                         </Grid.Column>
                     </Grid>

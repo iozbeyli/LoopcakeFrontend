@@ -56,6 +56,25 @@ const SidebarMenu = () => {
                     {name: 'LoopcakeMobile' }
                 ]
             }
+        },
+        {
+            type: 'subMenu',
+            name: 'groups',
+            properties: {
+                header: 'Project Groups',
+                items: [
+                    {
+                        name: 'Ciborg',
+                        element: <Link to="/group/Ciborg" style={{color:'white'}}>Ciborg</Link>
+                    },
+                    {
+                        name: 'L\'Ciborg'
+                    },
+                    {
+                        name: 'A\'Ciborg'
+                    },
+                ]
+            }
         }
         ];
 
