@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../CardComponents/card';
-
+import StudentEdit from './studentEdit';
 import {UserList} from '../UserComponents/userList';
 
 export const StudentCard = ({students,hidable}) => {
@@ -12,11 +12,7 @@ export const StudentCard = ({students,hidable}) => {
             icon="student"
             title="Students"
             content={<UserList items={students}/>}
-            /*editable={{
-                content:<a>fasd</a>,
-                icon:'add square',
-                title: 'Add Student'
-            }}*/
+            editable={<StudentEdit/>}
         /> : <Card loading icon="student" title="Students"/>
     );
 }
